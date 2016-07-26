@@ -1,0 +1,36 @@
+.row {
+  padding-top: 5px;
+}
+
+.toggle {
+  margin-top: 2px;
+  width: 44px;
+  height: 22px;
+  background: #bfbeba;
+  border: 1px solid #e8e7e6;
+  position: relative;
+  cursor: pointer;
+  border-radius: 13px;
+  float: right;
+}
+
+.active {
+  background: #67A032;
+}
+
+.button {
+  border-radius: 100%;
+  width: 24px;
+  height: 24px;
+  margin: -2px;
+  background: #e8e7e6;
+  border: 1px solid #dbd9d7;
+  position: absolute;
+  transition: all .2s .2s ease-out;
+  transition-delay: 0s;
+  left: 0;
+}
+
+.active .button {
+  left: 21px;
+}

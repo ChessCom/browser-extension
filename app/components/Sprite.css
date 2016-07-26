@@ -1,0 +1,185 @@
+.sprite {
+  background-image: url('/img/sprite.png');
+  height: 26px;
+  width: 26px;
+  padding-top: 26px;
+  overflow: hidden;
+  outline: 1px solid red;
+  display: block;
+  background-size: 26px 1118px !important
+}
+.test {
+  background: inline('img/sprite.png');
+}
+
+.sprite.upgrade {
+  background-position: 0 0
+}
+
+.sprite.live {
+  background-position: 0 -26px
+}
+
+.sprite.daily {
+  background-position: 0 -52px
+}
+
+.sprite.computer {
+  background-position: 0 -78px
+}
+
+.sprite.tournaments {
+  background-position: 0 -104px
+}
+
+.sprite.archive {
+  background-position: 0 -130px
+}
+
+.sprite.tactics {
+  background-position: 0 -156px
+}
+
+.sprite.lessons,.menu-sprite.learn {
+  background-position: 0 -182px
+}
+
+.sprite.videos {
+  background-position: 0 -208px
+}
+
+.sprite.articles {
+  background-position: 0 -234px
+}
+
+.sprite.news {
+  background-position: 0 -260px
+}
+
+.sprite.openings {
+  background-position: 0 -286px
+}
+
+.sprite.analysis {
+  background-position: 0 -312px
+}
+
+.sprite.forums {
+  background-position: 0 -338px
+}
+
+.sprite.clubs,.menu-sprite.share {
+  background-position: 0 -364px
+}
+
+.sprite.blogs {
+  background-position: 0 -390px
+}
+
+.sprite.vote-chess {
+  background-position: 0 -416px
+}
+
+.sprite.coaches {
+  background-position: 0 -442px
+}
+
+.sprite.friends {
+  background-position: 0 -468px
+}
+
+.sprite.messages {
+  background-position: 0 -494px
+}
+
+.sprite.trophies {
+  background-position: 0 -520px
+}
+
+.sprite.stats {
+  background-position: 0 -546px
+}
+
+.sprite.themes {
+  background-position: 0 -572px
+}
+
+.sprite.settings {
+  background-position: 0 -598px
+}
+
+.sprite.logo {
+  background-position: 0 -624px
+}
+
+.sprite.home {
+  background-position: 0 -650px
+}
+
+.sprite.hand-pawn,.menu-sprite.play {
+  background-position: 0 -676px
+}
+
+.sprite.explorer {
+  background-position: 0 -702px
+}
+
+.sprite.games {
+  background-position: 0 -728px
+}
+
+.sprite.members {
+  background-position: 0 -754px
+}
+
+.sprite.help {
+  background-position: 0 -780px
+}
+
+.sprite.logout {
+  background-position: 0 -806px
+}
+
+.sprite.profile {
+  background-position: 0 -832px
+}
+
+.sprite.watch {
+  background-position: 0 -858px
+}
+
+.sprite.tv {
+  background-position: 0 -884px
+}
+
+.sprite.puzzle {
+  background-position: 0 -910px
+}
+
+.sprite.gambit {
+  background-position: 0 -936px
+}
+
+.sprite.leaderboard {
+  background-position: 0 -962px
+}
+
+.sprite.chessopedia {
+  background-position: 0 -988px
+}
+
+.sprite.chesskid {
+  background-position: 0 -1014px
+}
+
+.sprite.drills {
+  background-position: 0 -1040px
+}
+
+.sprite.vision {
+  background-position: 0 -1066px
+}
+
+.sprite.mobile {
+  background-position: 0 -1092px
+}

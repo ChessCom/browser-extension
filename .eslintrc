@@ -1,0 +1,21 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "globals": {
+    "chrome": true
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "react/prefer-stateless-function": 0,
+    "consistent-return": 0,
+    "comma-dangle": 0,
+    "spaced-comment": 0,
+    "global-require": 0
+  },
+  "plugins": [
+    "react"
+  ]
+}

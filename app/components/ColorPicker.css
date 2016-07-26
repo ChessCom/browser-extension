@@ -1,0 +1,17 @@
+.row {
+  padding-bottom: 10px;
+}
+
+label {
+  font-size: 0.8rem;
+  line-height: 1.8rem;
+  font-weight: 500;
+}
+
+.arrow {
+  display: block;
+  float: right;
+  position: absolute;
+  top: 40%;
+  right: 10%;
+}

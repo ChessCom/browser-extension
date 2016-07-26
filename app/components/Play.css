@@ -1,0 +1,19 @@
+.play {
+  background: #f1f1f1;
+  padding: 1rem;
+}
+
+.btn {
+  background: #e4902d;
+  display: block;
+  text-align: center;
+  color: white;
+  border-radius: 0.2rem;
+  padding: 1rem 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: 0rem 0.07rem 0rem rgba(172,109,35,1);
+}
+.btn:hover {
+  cursor: pointer;
+}

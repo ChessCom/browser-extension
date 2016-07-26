@@ -1,0 +1,12 @@
+.header {
+  padding: 0.5rem 1rem;
+}
+
+.home {
+  display: inline-block;
+  margin: 0.5rem;
+}
+
+.home:hover {
+  cursor: pointer;
+}

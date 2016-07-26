@@ -1,0 +1,15 @@
+doctype html
+
+html
+  head
+    meta(charset='UTF-8')
+    title Chess.com Browser Extension
+    style.
+      html, body {
+        background-color: rgba(0,0,0,0)
+      }
+  body
+    #root
+    if env !== 'prod'
+      script(src='chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/inject.bundle.js')
+    script(src=env == 'prod' ? '/js/options.bundle.js' : 'https://localhost:3000/js/options.bundle.js')
