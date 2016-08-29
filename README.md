@@ -1,4 +1,4 @@
-![](https://cdn.rawgit.com/ChessCom/browser-extension/blob/master/chrome/assets/img/logo-black.svg)
+![](http://i.imgur.com/5ptPTMF.png)
 
 # Chess.com Browser Extension
 
