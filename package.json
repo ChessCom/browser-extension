@@ -73,6 +73,7 @@
     "react-color": "^2.2.0",
     "react-dock": "^0.2.3",
     "react-dom": "^15.0.2",
-    "reactcss": "^1.0.6"
+    "reactcss": "^1.0.6",
+    "xhr": "^2.2.2"
   }
 }

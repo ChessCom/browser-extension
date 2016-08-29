@@ -13,11 +13,19 @@
   "web_accessible_resources": [
     "inject.html",
     "img/*",
-    "fonts/*"
+    "fonts/*",
+    "content.js",
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.chess.com/*"],
+      "js": ["inject.js"],
+      "all_frames": true
+    }
   ],
   "background": {
     "page": "background.html"
   },
   "permissions": [ "contextMenus", "management", "tabs", "storage", "https://www.chess.com/*" ],
-  "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 https://localhost:3000 'unsafe-eval'; connect-src http://localhost:3000 https://localhost:3000; style-src * 'unsafe-inline' 'self' blob:; img-src 'self' data:; font-src 'self' data:;"
+  "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 https://localhost:3000 'unsafe-eval'; connect-src http://localhost:3000 https://localhost:3000 https://www.chess.com; style-src * 'unsafe-inline' 'self' blob:; img-src 'self' http://images.chesscomfiles.com data:; font-src 'self' data:;"
 }
