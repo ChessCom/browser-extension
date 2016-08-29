@@ -1,5 +1,7 @@
+/* eslint import/no-extraneous-dependencies: 0 */
 const path = require('path');
 const webpack = require('webpack');
+
 const customPath = path.join(__dirname, './customPublicPath');
 
 module.exports = {

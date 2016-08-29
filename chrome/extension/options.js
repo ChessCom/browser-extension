@@ -4,6 +4,6 @@ import Root from '../../app/containers/Root';
 import './options.css';
 
 ReactDOM.render(
-  <Root/>,
-    document.querySelector('#root')
+  <Root />,
+  document.querySelector('#root')
 );

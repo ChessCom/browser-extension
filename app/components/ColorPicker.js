@@ -1,3 +1,4 @@
+/* eslint quote-props: 0 */
 import React, { Component, PropTypes } from 'react';
 import { ChromePicker } from 'react-color';
 import reactCSS from 'reactcss';
@@ -14,20 +15,20 @@ export default class ColorPicker extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-        update: 'style',
-        selector: '',
-        property: '',
-        color: {},
-        displayColorPicker: false
+      update: 'style',
+      selector: '',
+      property: '',
+      color: {},
+      displayColorPicker: false
     };
-    this._checkIfStorageAlreadyExists(this.props.name);
+    this.checkIfStorageAlreadyExists(this.props.name);
   }
 
-  _checkIfStorageAlreadyExists(name) {
-    chrome.storage.sync.get(function(result) {
-      if (result.style.hasOwnProperty(name)) {
-        let color = result.style[name].color;
-        this.setState({ color: color });
+  checkIfStorageAlreadyExists(name) {
+    chrome.storage.sync.get(result => {
+      if ({}.hasOwnProperty.call(result.style, name)) {
+        const store = result.style[name].color;
+        this.setState({ color: store });
       } else {
         this.setState({ color: {
           r: '255',
@@ -36,8 +37,8 @@ export default class ColorPicker extends Component {
           a: '1'
         } });
       }
-    }.bind(this));
-  };
+    });
+  }
 
   handleClick = () => {
     this.setState({ displayColorPicker: !this.state.displayColorPicker });
@@ -47,32 +48,28 @@ export default class ColorPicker extends Component {
     this.setState({ displayColorPicker: false });
   };
 
-  handleChange(props, color, complete) {
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+  handleChange = (color) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
       chrome.tabs.sendMessage(tabs[0].id, {
         update: 'style',
         color: color.rgb,
-        selector: props.selector,
-        property: props.property
-      }, function(response) {
-        console.log('done');
+        selector: this.props.selector,
+        property: this.props.property
       });
     });
   };
 
-  handleChangeComplete(props, color, event) {
+  handleChangeComplete = (color) => {
     this.setState({
       color: color.rgb,
-      selector: props.selector,
-      property: props.property
-    })
-    let state = JSON.parse(JSON.stringify(this.state));
-    let name = this.props.name;
-    let style = {};
+      selector: this.props.selector,
+      property: this.props.property
+    });
+    const state = JSON.parse(JSON.stringify(this.state));
+    const name = this.props.name;
 
-
-    chrome.storage.sync.get('style', function(result) {
-      let obj = result;
+    chrome.storage.sync.get('style', result => {
+      const obj = result;
       if (Object.keys(result).length === 0 && obj.constructor === Object) {
         chrome.storage.sync.set({ style: {} });
         obj.style = {};
@@ -85,13 +82,15 @@ export default class ColorPicker extends Component {
 
   render() {
     const colorpicker = this.props;
+    const inputId = `${this.props.name}_input`;
+    const color = this.state.color;
     const styles = reactCSS({
       'default': {
         color: {
           width: '18px',
           height: '18px',
           borderRadius: '2px',
-          background: `rgba(${ this.state.color.r }, ${ this.state.color.g }, ${ this.state.color.b }, ${ this.state.color.a })`,
+          background: `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`,
           float: 'left',
           marginRight: '30px'
         },
@@ -103,7 +102,7 @@ export default class ColorPicker extends Component {
           display: 'inline-block',
           cursor: 'pointer',
           position: 'relative',
-          float: 'right'
+          'float': 'right'
         },
         popover: {
           position: 'absolute',
@@ -124,25 +123,29 @@ export default class ColorPicker extends Component {
     });
 
     return (
-      <div className={ style.row }>
-        <label>{ colorpicker.title }</label>
-        <div style={ styles.swatch } onClick={this.handleClick}>
-          <div style={ styles.color } />
-          <img className={ style.arrow } src="img/arrow-down-small.png" />
+      <div className={style.row}>
+        <label htmlFor={inputId}>{colorpicker.title}</label>
+        <div id={inputId} style={styles.swatch} onClick={this.handleClick}>
+          <div style={styles.color} />
+          <img
+            className={style.arrow}
+            src="img/arrow-down-small.png"
+            role="presentation"
+          />
         </div>
         { this.state.displayColorPicker ?
-          <div style={ styles.popover }>
-            <div style={ styles.cover } onClick={ this.handleClose }/>
-            <div style={ styles.picker }>
+          <div style={styles.popover}>
+            <div style={styles.cover} onClick={this.handleClose} />
+            <div style={styles.picker}>
               <ChromePicker
-                color={ this.state.color }
-                onChange={ this.handleChange.bind(this, this.props) }
-                onChangeComplete={ this.handleChangeComplete.bind(this, this.props)  }
+                color={this.state.color}
+                onChange={this.handleChange}
+                onChangeComplete={this.handleChangeComplete}
               />
             </div>
           </div>
         : null }
       </div>
-    )
+    );
   }
 }

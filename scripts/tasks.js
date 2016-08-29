@@ -1,3 +1,4 @@
+/* eslint import/no-extraneous-dependencies: 0 */
 require('shelljs/global');
 
 exports.replaceWebpack = () => {

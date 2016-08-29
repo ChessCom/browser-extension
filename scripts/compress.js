@@ -1,3 +1,4 @@
+/* eslint import/no-extraneous-dependencies: 0 */
 const fs = require('fs');
 const ChromeExtension = require('crx');
 /* eslint import/no-unresolved: 0 */
