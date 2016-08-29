@@ -1,17 +1,17 @@
 function updateStyles() {
   // Handles live update from color picker
   chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
+    (request, sender) => {
       if (!sender.tab) {
         if (request.update === 'style') {
-          let color = request.color;
-          let property = request.property;
-          let el = document.querySelectorAll(request.selector);
-          let rgba = `rgba(${color.r},${color.g},${color.b},${color.a})`;
-          el.forEach(function(target) {
-            target.style[property] = rgba;
+          const color = request.color;
+          const property = request.property;
+          const el = document.querySelectorAll(request.selector);
+          const rgba = `rgba(${color.r},${color.g},${color.b},${color.a})`;
+          el.forEach(target => {
+            const element = target;
+            element.style[property] = rgba;
           });
-
         }
       }
     }
@@ -20,20 +20,21 @@ function updateStyles() {
 
 function updateDisplay() {
   chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
+    (request, sender) => {
       if (!sender.tab) {
         if (request.update === 'display') {
-          let el = document.querySelectorAll(request.selector);
+          const el = document.querySelectorAll(request.selector);
           try {
-            el.forEach(function(target) {
+            el.forEach(target => {
+              const element = target;
               if (!request.display) {
-                target.style.display = 'none';
+                element.style.display = 'none';
               } else {
-                target.style.display = 'block';
+                element.style.display = 'block';
               }
             });
           } catch (e) {
-            console.log('Cannot toggle display', e);
+            throw e;
           }
         }
       }

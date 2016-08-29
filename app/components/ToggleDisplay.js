@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import style from './Toggle.css';
 
-let cx = classNames.bind(style);
+const cx = classNames.bind(style);
 
 export default class ToggleDisplay extends Component {
 
@@ -15,77 +15,75 @@ export default class ToggleDisplay extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-        update: 'display',
-        name: this.props.name,
-        selector: this.props.selector,
+      update: 'display',
+      name: this.props.name,
+      selector: this.props.selector,
     };
-    this._checkIfStorageAlreadyExists(this.props.name);
+    this.checkIfStorageAlreadyExists(this.props.name);
   }
-
-  _checkIfStorageAlreadyExists(name) {
-    chrome.storage.sync.get(function(result) {
-      if (!result.hasOwnProperty('display')) {
-        chrome.storage.sync.set({ display: {} });
-      }
-
-      if (result.display.hasOwnProperty(name)) {
-        this.setState({ visible: result.display[name].visible });
-      } else {
-        console.log('NO DISPLAY SETTINGS SET');
-      }
-    }.bind(this));
-  };
 
   componentDidUpdate = () => {
     const name = this.state.name;
-    let display = {
+    const store = {
       [name]: {
         selector: this.state.selector,
         visible: this.state.visible
       }
     };
-    chrome.storage.sync.set({ display: display });
+    chrome.storage.sync.set({ display: store });
 
-    this._sendMessageToDOM();
+    this.sendMessageToDOM();
+  }
+
+  checkIfStorageAlreadyExists(name) {
+    chrome.storage.sync.get(result => {
+      if (!{}.hasOwnProperty.call(result, 'display')) {
+        chrome.storage.sync.set({ display: {} });
+      }
+
+      if ({}.hasOwnProperty.call(result.display, name)) {
+        this.setState({ visible: result.display[name].visible });
+      }
+    });
   }
 
   handleClick = () => {
     const props = this.props;
-    this.setState({ 
+    this.setState({
       visible: !this.state.visible,
       selector: props.selector
     });
   };
 
-  _sendMessageToDOM = () => {
-    let selector = this.props.selector;
-    let visible = this.state.visible;
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+  sendMessageToDOM = () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
       chrome.tabs.sendMessage(tabs[0].id, {
         update: 'display',
-        selector: selector,
-        display: visible
-      }, function(response) {
-        console.log('Sent update display request');
+        selector: this.props.selector,
+        display: this.state.visible
       });
     });
   }
 
   render() {
-    let toggle = cx({
+    const toggle = cx({
       toggle: true,
       active: !this.state.visible
     });
 
+    const inputId = `${this.props.name}_input`;
+
     return (
       <div>
-        <label>{ this.props.title }</label>
+        <label htmlFor={inputId}>{this.props.title}</label>
         <div
+          id={inputId}
           className={toggle}
-          onClick={ this.handleClick }>
-          <div className={ style.button } />
+          onClick={this.handleClick}
+        >
+          <div className={style.button} />
         </div>
       </div>
-    )
+    );
   }
 }

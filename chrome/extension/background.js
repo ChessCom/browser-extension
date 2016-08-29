@@ -1,4 +1,5 @@
 const bluebird = require('bluebird');
+
 global.Promise = bluebird;
 
 function promisifier(method) {

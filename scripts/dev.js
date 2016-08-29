@@ -1,3 +1,4 @@
+/* eslint import/no-extraneous-dependencies: 0 */
 const tasks = require('./tasks');
 const createWebpackServer = require('webpack-httpolyglot-server');
 const devConfig = require('../webpack/dev.config');
