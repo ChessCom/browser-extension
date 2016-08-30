@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
+import Icon from '../components/Icon';
 import Play from '../components/Play';
 import ColorPicker from '../components/ColorPicker';
 import ToggleDisplay from '../components/ToggleDisplay';
@@ -14,7 +15,12 @@ export default class App extends Component {
         <Play />
         <div className={style.main}>
           <h2 className={style.sectionHeading}>
-            <img src="img/interface-icon.png" role="presentation" />
+            <div className={style.sectionHeadingIcon}>
+              <Icon
+                name="square-brush"
+                size="28"
+              />
+            </div>
             Interface
           </h2>
           <ColorPicker
@@ -35,7 +41,12 @@ export default class App extends Component {
             selector="section[ng-controller='MemberActivityCtrl']"
           />
         </div>
-        <a className={style.suggestions} href="http://goo.gl/forms/AVaggClVWuIyP87k1" target="_blank" rel="noopener noreferrer">Send us your suggestions</a>
+        <a className={style.suggestions} href="http://goo.gl/forms/AVaggClVWuIyP87k1" target="_blank" rel="noopener noreferrer">
+          <div className={style.suggestionsIcon}>
+            <Icon name="circle-question" size="24" />
+          </div>
+          Suggestions
+        </a>
       </div>
     );
   }
