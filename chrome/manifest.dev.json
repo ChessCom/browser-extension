@@ -14,7 +14,7 @@
     "inject.html",
     "img/*",
     "fonts/*",
-    "content.js",
+    "content.js"
   ],
   "content_scripts": [
     {
