@@ -9,7 +9,7 @@ export default class Icon extends Component {
 
   static propTypes = {
     name: PropTypes.string.isRequired,
-    size: PropTypes.number
+    size: PropTypes.string,
     color: PropTypes.string
   };
 
@@ -23,7 +23,7 @@ export default class Icon extends Component {
     });
 
     const iconStyle = {
-      fontSize: this.props.size
+      fontSize: parseInt(this.props.size, 10),
       color: `rgba(${this.props.color})`
     };
 
