@@ -20,6 +20,7 @@ export default class App extends Component {
               <Icon
                 name="square-brush"
                 size="28"
+                color="43,43,43,1"
               />
             </div>
             Interface
