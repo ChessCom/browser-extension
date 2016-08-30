@@ -22,6 +22,13 @@ export default class ColorPicker extends Component {
       displayColorPicker: false
     };
     this.checkIfStorageAlreadyExists(this.props.name);
+    chrome.storage.onChanged.addListener((changes) => {
+      const newValue = changes.style.newValue;
+      if (Object.keys(newValue).length === 0 && newValue.constructor === Object) {
+        this.checkIfStorageAlreadyExists();
+        this.handleChange(newValue);
+      }
+    });
   }
 
   checkIfStorageAlreadyExists(name) {
