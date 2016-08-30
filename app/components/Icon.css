@@ -1,0 +1,1045 @@
+@font-face {
+  font-family: 'Chess';
+  src: url('../../chrome/assets/fonts/chessglyph-regular.woff');
+}
+.icon {
+  font-family: 'Chess';
+  font-weight: normal;
+  font-style: normal;
+  speak: none;
+  text-align: center;
+  color: #8c8a88;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+}
+
+.icon:hover {
+  text-decoration: none
+}
+
+.icon-magnifying-glass {
+  padding-left: 1px;
+  margin-left: -1px
+}
+
+.icon-chess:before {
+  content: '\0069'
+}
+
+.icon-960:before {
+  content: '\010C'
+}
+
+.icon-chess960:before {
+  content: '\010C'
+}
+
+.icon-threecheck:before {
+  content: '\00CB'
+}
+
+.icon-kingofthehill:before {
+  content: '\012A'
+}
+
+.icon-losers:before {
+  content: '\012B'
+}
+
+.icon-crazyhouse:before {
+  content: '\010E'
+}
+
+.icon-bughouse:before {
+  content: '\011A'
+}
+
+.icon-nav-horizontal:before {
+  content: '\0052'
+}
+
+.icon-nav-vertical:before {
+  content: '\00E7'
+}
+
+.icon-nav-expanded:before {
+  content: '\03E1'
+}
+
+.icon-nav-collapsed:before {
+  content: '\03E0'
+}
+
+.icon-bug:before {
+  content: '\00F5'
+}
+
+.icon-hourglass:before {
+  content: '\03FA'
+}
+
+.icon-camera:before {
+  content: '\0048'
+}
+
+.icon-camera-plus:before {
+  content: '\03DF'
+}
+
+.icon-globe:before {
+  content: '\004D'
+}
+
+.icon-order:before {
+  content: '\004F'
+}
+
+.icon-flag:before {
+  content: '\0059'
+}
+
+.icon-calendar:before {
+  content: '\0061'
+}
+
+.icon-calendar-alt:before {
+  content: '\0032'
+}
+
+.icon-daily:before {
+  content: '\0032'
+}
+
+.icon-chat:before {
+  content: '\0063'
+}
+
+.icon-chat-alt:before {
+  content: '\007A'
+}
+
+.icon-chat-x:before {
+  content: '\2044'
+}
+
+.icon-chess-book:before {
+  content: '\006F'
+}
+
+.icon-filter:before {
+  content: '\203A'
+}
+
+.icon-lock:before {
+  content: '\0064'
+}
+
+.icon-inbox:before {
+  content: '\0065'
+}
+
+.icon-lightbulb:before {
+  content: '\0067'
+}
+
+.icon-nametag:before {
+  content: '\0068'
+}
+
+.icon-mail:before {
+  content: '\0075'
+}
+
+.icon-mail-alt:before {
+  content: '\0079'
+}
+
+.icon-mail-plus:before {
+  content: '\006B'
+}
+
+.icon-mail-exclaimation:before {
+  content: '\03BB'
+}
+
+.icon-book:before {
+  content: '\006F'
+}
+
+.icon-book-alt:before {
+  content: '\00A4'
+}
+
+.icon-book-open:before {
+  content: '\00B4'
+}
+
+.icon-files:before {
+  content: '\03C3'
+}
+
+.icon-popup:before {
+  content: '\0070'
+}
+
+.icon-bell:before {
+  content: '\0071'
+}
+
+.icon-menu:before {
+  content: '\0074'
+}
+
+.icon-home:before {
+  content: '\0077'
+}
+
+.icon-home-alt:before {
+  content: '\03DB'
+}
+
+.icon-lightning:before {
+  content: '\0034'
+}
+
+.icon-blitz:before {
+  content: '\0034'
+}
+
+.icon-bullet:before {
+  content: '\0035'
+}
+
+.icon-chess960:before {
+  content: '\0036'
+}
+
+.icon-chess-board-puzzle:before {
+  content: '\0037'
+}
+
+.icon-chess-board-puzzle-reversed:before {
+  content: '\03DE'
+}
+
+.icon-fire-puzzle:before {
+  content: '\0371'
+}
+
+.icon-computer:before {
+  content: '\0039'
+}
+
+.icon-computer-search:before {
+  content: '\03BE'
+}
+
+.icon-tag:before {
+  content: '\00BD'
+}
+
+.icon-toolbox:before {
+  content: '\00BC'
+}
+
+.icon-cake:before {
+  content: '\00BE'
+}
+
+.icon-asterisk:before {
+  content: '\002A'
+}
+
+.icon-trash:before {
+  content: '\2022'
+}
+
+.icon-download:before {
+  content: '\0022'
+}
+
+.icon-display-grid:before {
+  content: '\00AB'
+}
+
+.icon-display-slider:before {
+  content: '\2039'
+}
+
+.icon-display-list:before {
+  content: '\203A'
+}
+
+.icon-pushpin:before {
+  content: '\00BB'
+}
+
+.icon-key:before {
+  content: '\00A2'
+}
+
+.icon-page:before {
+  content: '\00A3'
+}
+
+.icon-page-alt:before {
+  content: '\20AC'
+}
+
+.icon-page-pencil:before {
+  content: '\0078'
+}
+
+.icon-news:before {
+  content: '\0045'
+}
+
+.icon-equal:before {
+  content: '\003D'
+}
+
+.icon-stats:before {
+  content: '\003B'
+}
+
+.icon-stats-arrow-up:before {
+  content: '\010D'
+}
+
+.icon-stats-x:before {
+  content: '\00F0'
+}
+
+.icon-graphs:before {
+  content: '\03C5'
+}
+
+.icon-binoculars:before {
+  content: '\2014'
+}
+
+.icon-magnifying-glass:before {
+  content: '\2013'
+}
+
+.icon-present:before {
+  content: '\00BE'
+}
+
+.icon-exit:before {
+  content: '\00D7'
+}
+
+.icon-handshake:before {
+  content: '\002B'
+}
+
+.icon-cup:before {
+  content: '\2021'
+}
+
+.icon-paper-pencil:before {
+  content: '\03A3'
+}
+
+.icon-todo-list:before {
+  content: '\010F'
+}
+
+.icon-trophy-plus:before {
+  content: '\03A5'
+}
+
+.icon-trophy-minus:before {
+  content: '\03BA'
+}
+
+.icon-trophy-podium:before {
+  content: '\03B5'
+}
+
+.icon-privacy:before {
+  content: '\03B2'
+}
+
+.icon-survey:before {
+  content: '\03C1'
+}
+
+.icon-crossed-swords:before {
+  content: '\03C4'
+}
+
+.icon-checkmark-box:before {
+  content: '\03A8'
+}
+
+.icon-checkmark-box-plus:before {
+  content: '\03A6'
+}
+
+.icon-tracked-content:before {
+  content: '\00D5'
+}
+
+.icon-queen-wreath:before {
+  content: '\00F1'
+}
+
+.icon-crosshair:before {
+  content: '\0111'
+}
+
+.icon-shield:before {
+  content: '\014B'
+}
+
+.icon-chip:before {
+  content: '\00F6'
+}
+
+.icon-smiley:before {
+  content: '\03C2'
+}
+
+.icon-eye:before {
+  content: '\0057'
+}
+
+.icon-select:before {
+  content: '\03AD'
+}
+
+.icon-undo:before {
+  content: '\004C'
+}
+
+.icon-link:before {
+  content: '\0041'
+}
+
+.icon-x:before {
+  content: '\0042'
+}
+
+.icon-reply:before {
+  content: '\0043'
+}
+
+.icon-checkmark:before {
+  content: '\0047'
+}
+
+.icon-redo:before {
+  content: '\003A'
+}
+
+.icon-plus:before {
+  content: '\0056'
+}
+
+.icon-list:before {
+  content: '\0072'
+}
+
+.icon-embed:before {
+  content: '\221E'
+}
+
+.icon-image-plus:before {
+  content: '\03B6'
+}
+
+.icon-follow:before {
+  content: '\03CE'
+}
+
+.icon-unfollow:before {
+  content: '\03CD'
+}
+
+.icon-quote:before {
+  content: '\00D6'
+}
+
+.icon-circle:before {
+  content: '\0054'
+}
+
+.icon-circle-dashboard:before {
+  content: '\004E'
+}
+
+.icon-circle-x:before {
+  content: '\0051'
+}
+
+.icon-circle-3-dots:before {
+  content: '\038F'
+}
+
+.icon-circle-timer:before {
+  content: '\0033'
+}
+
+.icon-standard:before {
+  content: '\0033'
+}
+
+.icon-circle-gearwheel:before {
+  content: '\00B7'
+}
+
+.icon-circle-clock:before {
+  content: '\0027'
+}
+
+.icon-circle-clock-alt:before {
+  content: '\00B0'
+}
+
+.icon-circle-question:before {
+  content: '\0028'
+}
+
+.icon-circle-info:before {
+  content: '\0029'
+}
+
+.icon-circle-arrow:before {
+  content: '\00F7'
+}
+
+.icon-circle-block:before {
+  content: '\222B'
+}
+
+.icon-circle-stop:before {
+  content: '\0026'
+}
+
+.icon-circle-danger:before {
+  content: '\2020'
+}
+
+.icon-circle-checkmark:before {
+  content: '\03C7'
+}
+
+.icon-square-reply:before {
+  content: '\0058'
+}
+
+.icon-square-pencil:before {
+  content: '\005A'
+}
+
+.icon-square-brush:before {
+  content: '\006C'
+}
+
+.icon-square-in:before {
+  content: '\00A1'
+}
+
+.icon-square-out:before {
+  content: '\00BF'
+}
+
+.icon-square-bottom-in:before {
+  content: '\039E'
+}
+
+.icon-square-x:before {
+  content: '\00FC'
+}
+
+.icon-square-checkmark:before {
+  content: '\03BF'
+}
+
+.icon-square-four:before {
+  content: '\03F8'
+}
+
+.icon-caret-up:before {
+  content: '\007C'
+}
+
+.icon-caret-down:before {
+  content: '\003F'
+}
+
+.icon-caret-left:before {
+  content: '\002F'
+}
+
+.icon-caret-right:before {
+  content: '\005C'
+}
+
+.icon-chevron-up:before {
+  content: '\003E'
+}
+
+.icon-chevron-bottom:before {
+  content: '\003C'
+}
+
+.icon-chevron-left:before {
+  content: '\002C'
+}
+
+.icon-chevron-right:before {
+  content: '\2026'
+}
+
+.icon-double-chevron-left:before {
+  content: '\0021'
+}
+
+.icon-double-chevron-right:before {
+  content: '\03B1'
+}
+
+.icon-chevron-previous:before {
+  content: '\0023'
+}
+
+.icon-chevron-next:before {
+  content: '\0040'
+}
+
+.icon-chevron-down:before {
+  content: '\0030'
+}
+
+.icon-arrow-return:before {
+  content: '\005F'
+}
+
+.icon-arrow-up:before {
+  content: '\007D'
+}
+
+.icon-arrow-down:before {
+  content: '\007B'
+}
+
+.icon-arrow-left:before {
+  content: '\005B'
+}
+
+.icon-arrow-right:before {
+  content: '\005D'
+}
+
+.icon-round-arrow-return:before {
+  content: '\03BC'
+}
+
+.icon-bold-arrow-right:before {
+  content: '\0386'
+}
+
+.icon-arrow-cross:before {
+  content: '\0110'
+}
+
+.icon-user:before {
+  content: '\0062'
+}
+
+.icon-users:before {
+  content: '\006D'
+}
+
+.icon-users-alt:before {
+  content: '\006E'
+}
+
+.icon-user-info:before {
+  content: '\0076'
+}
+
+.icon-user-question:before {
+  content: '\002D'
+}
+
+.icon-user-search:before {
+  content: '\0024'
+}
+
+.icon-user-search-alt:before {
+  content: '\014a'
+}
+
+.icon-user-feed:before {
+  content: '\0025'
+}
+
+.icon-user-block:before {
+  content: '\00A6'
+}
+
+.icon-user-plus:before {
+  content: '\00B6'
+}
+
+.icon-users-plus:before {
+  content: '\00FF'
+}
+
+.icon-user-x:before {
+  content: '\00A7'
+}
+
+.icon-user-chain:before {
+  content: '\0159'
+}
+
+.icon-user-broken-chain:before {
+  content: '\0158'
+}
+
+.icon-user-shield:before {
+  content: '\03DA'
+}
+
+.icon-user-shield-plus:before {
+  content: '\0373'
+}
+
+.icon-chess-board:before {
+  content: '\0069'
+}
+
+.icon-chess-board-alt:before {
+  content: '\2019'
+}
+
+.icon-chess-board-search:before {
+  content: '\0394'
+}
+
+.icon-chess-board-search-alt:before {
+  content: '\03A9'
+}
+
+.icon-question:before {
+  content: '\00A9'
+}
+
+.icon-chess-board-plus:before {
+  content: '\02C6'
+}
+
+.icon-chess-board-arrow:before {
+  content: '\0038'
+}
+
+.icon-chess-board-circle:before {
+  content: '\00AB'
+}
+
+.icon-chess-board-gear:before {
+  content: '\03F7'
+}
+
+.icon-chess-crown:before {
+  content: '\03FB'
+}
+
+.icon-chess-pawn:before {
+  content: '\0031'
+}
+
+.icon-chess-pawn-left-half-rook:before {
+  content: '\0112'
+}
+
+.icon-chess-pawn-right-half-rook:before {
+  content: '\0113'
+}
+
+.icon-chess-pawn-rook:before {
+  content: '\0073'
+}
+
+.icon-chess-pawn-square:before {
+  content: '\03B7'
+}
+
+.icon-chess-pawns:before {
+  content: '\0073'
+}
+
+.icon-chess-move:before {
+  content: '\0030'
+}
+
+.icon-chess-move-alt:before {
+  content: '\006A'
+}
+
+.icon-chess-board-folder:before {
+  content: '\0398'
+}
+
+.icon-chess-board-paper:before {
+  content: '\03A5'
+}
+
+.icon-chess-board-arrow-down:before {
+  content: '\03CC'
+}
+
+.icon-chess-board-arrow-right:before {
+  content: '\03CC'
+}
+
+.icon-chess-board-arrow-right {
+  position: relative;
+  top: 2px;
+  left: -2px;
+  transform: rotate(-90deg);
+}
+
+.icon-chess-board-arrow-left:before {
+  content: '\03CC'
+}
+
+.icon-chess-board-arrow-left {
+  position: relative;
+  top: 2px;
+  left: 2px;
+  transform: rotate(90deg);
+}
+
+.icon-checkbox:before {
+  content: '\03A8'
+}
+
+.icon-checkbox-plus:before {
+  content: '\03A6'
+}
+
+.icon-printer:before {
+  content: '\00E5'
+}
+
+.icon-play:before {
+  content: '\004A'
+}
+
+.icon-pause:before {
+  content: '\004B'
+}
+
+.icon-sound-off:before {
+  content: '\0050'
+}
+
+.icon-sound-on:before {
+  content: '\0055'
+}
+
+.icon-repeat:before {
+  content: '\0066'
+}
+
+.icon-shuffle:before {
+  content: '\0049'
+}
+
+.icon-resize:before {
+  content: '\03C0'
+}
+
+.icon-favorites:before {
+  content: '\03AE'
+}
+
+.icon-facebook:before {
+  content: '\0053'
+}
+
+.icon-facebook-alt:before {
+  content: '\0044'
+}
+
+.icon-twitter:before {
+  content: '\0046'
+}
+
+.icon-linkedin:before {
+  content: '\00C5'
+}
+
+.icon-tumblr:before {
+  content: '\00EB'
+}
+
+.icon-stumbleupon:before {
+  content: '\00DF'
+}
+
+.icon-reddit:before {
+  content: '\00B1'
+}
+
+.icon-google-plus:before {
+  content: '\00AE'
+}
+
+.icon-youtube:before {
+  content: '\0060'
+}
+
+.icon-share:before {
+  content: '\00A5'
+}
+
+.icon-twitch:before {
+  content: '\0393'
+}
+
+.icon-android:before {
+  content: '\00FE'
+}
+
+.icon-apple:before {
+  content: '\25CA'
+}
+
+.icon-win-phone:before {
+  content: '\03A0'
+}
+
+.icon-thumbs-down:before {
+  content: '\2265'
+}
+
+.icon-thumbs-up:before {
+  content: '\2264'
+}
+
+.icon-card:before {
+  content: '\03DC'
+}
+
+.icon-paypal:before {
+  content: '\0377'
+}
+
+.icon-membership-diamond:before {
+  content: '\0370'
+}
+
+.icon-membership-platinum:before {
+  content: '\0376'
+}
+
+.icon-membership-staff:before {
+  content: '\0372'
+}
+
+.icon-membership-mod:before {
+  content: '\0372'
+}
+
+.icon-membership-gold:before {
+  content: '\03AE'
+}
+
+.icon-circle-hollow:before {
+  content: '\03BD'
+}
+
+.icon-binoculars-crossed:before {
+  content: '\00DE'
+}
+
+.icon-border-resize:before {
+  content: '\03AC'
+}
+
+.icon-maximize:before {
+  content: '\03DD'
+}
+
+.icon-minimize:before {
+  content: '\03D8'
+}
+
+.icon-live360:before {
+  content: '\00D1'
+}
+
+.icon-signal:before {
+  content: '\03AF'
+}
+
+.icon-captured-bishop:before {
+  content: '\0062'
+}
+
+.icon-captured-bishop-2:before {
+  content: '\0042'
+}
+
+.icon-captured-knight:before {
+  content: '\006E'
+}
+
+.icon-captured-knight-2:before {
+  content: '\004E'
+}
+
+.icon-captured-rook:before {
+  content: '\0072'
+}
+
+.icon-captured-rook-2:before {
+  content: '\0052'
+}
+
+.icon-captured-king:before {
+  content: '\006B'
+}
+
+.icon-captured-queen:before {
+  content: '\0071'
+}
+
+.icon-captured-pawn:before {
+  content: '\0031'
+}
+
+.icon-captured-pawn-2:before {
+  content: '\0032'
+}
+
+.icon-captured-pawn-3:before {
+  content: '\0033'
+}
+
+.icon-captured-pawn-4:before {
+  content: '\0034'
+}
+
+.icon-captured-pawn-5:before {
+  content: '\0035'
+}
+
+.icon-captured-pawn-6:before {
+  content: '\0036'
+}
+
+.icon-captured-pawn-7:before {
+  content: '\0037'
+}
+
+.icon-captured-pawn-8:before {
+  content: '\0038'
+}
