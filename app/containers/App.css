@@ -2,9 +2,6 @@
   background: #000;
   margin: 0px 0 40px 0;
   position: relative;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-              0 25px 50px 0 rgba(0, 0, 0, 0.1);
-  /*padding: 5px 20px 50px*/
 }
 
 .normal input::-webkit-input-placeholder {
@@ -54,22 +51,31 @@
 
 .sectionHeading {
   margin-top: 0;
-  color: #666463;
-  font-size: 16px;
+  color: rgb(43, 43, 43);
+  font-size: 14px;
   font-weight: normal;
+  line-height: 20px;
 }
 
-.sectionHeading img {
+.sectionHeadingIcon {
+  float: left;
   margin-right: 10px;
   position: relative;
-  top: 2px;
+  top: -3px;
+}
+
+.suggestionsIcon {
+  position: relative;
+  top: -2px;
+  float: left;
+  margin-right: 3px;
 }
 
 .suggestions {
-  color: #e6912c;
+  color: #8c8a88;
   text-align: center;
   position: absolute;
-  bottom: -30px;
+  bottom: -32px;
   font-weight: bold;
   font-size: 12px;
   text-decoration: none;
