@@ -4,6 +4,7 @@ import Icon from '../components/Icon';
 import Play from '../components/Play';
 import ColorPicker from '../components/ColorPicker';
 import ToggleDisplay from '../components/ToggleDisplay';
+import Reset from '../components/Reset';
 import style from './App.css';
 
 export default class App extends Component {
@@ -40,6 +41,9 @@ export default class App extends Component {
             title="Hide Activity"
             selector="section[ng-controller='MemberActivityCtrl']"
           />
+        </div>
+        <div className={style.resetButton}>
+          <Reset type="all" />
         </div>
         <a className={style.suggestions} href="http://goo.gl/forms/AVaggClVWuIyP87k1" target="_blank" rel="noopener noreferrer">
           <div className={style.suggestionsIcon}>
