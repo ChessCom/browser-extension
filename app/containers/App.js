@@ -31,6 +31,18 @@ export default class App extends Component {
             property="backgroundColor"
           />
           <ColorPicker
+            name="header-sections"
+            title="Header Sections Color"
+            selector="
+              {/* Use a multiline prop for now */}
+              .content-container section .section-header,
+              #sidebar section .section-header,
+              section .forum-category-header,
+              section .load-more-container,
+              section #load-more-container"
+            property="backgroundColor"
+          />
+          <ColorPicker
             name="sidebar"
             title="Sidebar Background Color"
             selector="#sidebar section"
