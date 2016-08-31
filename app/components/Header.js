@@ -17,9 +17,9 @@ export default class Header extends Component {
     if (!this.props.user.loading) {
       if (this.props.user.loggedIn) {
         userInfo = (
-          <div>
-            {this.props.user.username}
-            <img src={'http:' + this.props.user.avatarUrl}/>
+          <div className={style.userInfo}>
+            <span className={style.username}>{this.props.user.username}</span>
+            <img width="25" src={'http:' + this.props.user.avatarUrl}/>
           </div>
         );
       } else if (this.props.user.onChessCom && !this.props.user.onV3) {

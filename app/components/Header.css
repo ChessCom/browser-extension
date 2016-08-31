@@ -1,5 +1,30 @@
 .header {
-  padding: 0.5rem 1rem;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.header img {
+  float: left;
+}
+
+.userInfo {
+  float: right;
+  color: #fff;
+}
+
+.userInfo img {
+  margin: 0 0 0 15px;
+  float: right;
+}
+
+.username {
+  margin: 4px 0 -4px;
+  max-width: 140px;
+  font-size: 13px;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  opacity: .8;
 }
 
 .home {
