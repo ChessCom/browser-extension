@@ -1,5 +1,7 @@
 .header {
   padding: 15px;
+  height: 55px;
+  font-size: 13px;
   overflow: hidden;
 }
 
@@ -12,6 +14,16 @@
   color: #fff;
 }
 
+.btn {
+  cursor: pointer;
+  float: right;
+  background: #e4902d;
+  color: white;
+  padding: 0 13px;
+  border-radius: 3px;
+  height: 25px;
+}
+
 .userInfo img {
   margin: 0 0 0 15px;
   float: right;
@@ -20,7 +32,6 @@
 .username {
   margin: 4px 0 -4px;
   max-width: 140px;
-  font-size: 13px;
   overflow: hidden;
   display: inline-block;
   text-overflow: ellipsis;

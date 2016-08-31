@@ -24,11 +24,11 @@ export default class Header extends Component {
         );
       } else if (this.props.user.onChessCom && !this.props.user.onV3) {
         userInfo = (
-          <button onClick={this.goTo.bind(null, 'switch')}>New Chess.com</button>
+          <button className={style.btn} onClick={this.goTo.bind(null, 'switch')}>New Chess.com</button>
         );
       } else {
         userInfo = (
-          <button onClick={this.goTo.bind(null, 'login')}>Login</button>
+          <button className={style.btn} onClick={this.goTo.bind(null, 'login')}>Login</button>
         );
       }
     }
