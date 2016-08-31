@@ -25,12 +25,15 @@ export default class Play extends Component {
 
   render() {
     const type = this.state.type;
-    return (
-      <div className={style.play}>
-        <ul>
-        </ul>
-        <a className={style.btn} onClick={this.handlePlay}>Play</a>
-      </div>
-    );
+    if (this.props.user.loggedIn) {
+      return (
+        <div className={style.play}>
+          <ul>
+          </ul>
+          <a className={style.btn} onClick={this.handlePlay}>Play</a>
+        </div>
+      );
+    }
+    return (<div />);
   }
 }
