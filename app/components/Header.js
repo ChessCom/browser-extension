@@ -7,12 +7,18 @@ export default class Header extends Component {
     user: PropTypes.object.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      slug: ''
+    };
+  }
+
   // We need to a routing function to handle actions
   // that send the user to various url targets on site
-  // goHome() is just a stub
-  goTo(slug) {
+  goTo() {
     chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-      chrome.tabs.update(tabs[0].id, { url: `https://www.chess.com/${slug}` });
+      chrome.tabs.update(tabs[0].id, { url: `https://www.chess.com/${this.state.slug}` });
     });
   }
 
@@ -27,14 +33,16 @@ export default class Header extends Component {
           </div>
         );
       } else if (this.props.user.onChessCom && !this.props.user.onV3) {
+        this.setState({ slug: 'switch' });
         userInfo = (
-          <button className={style.btn} onClick={this.goTo.bind(null, 'switch')}>
+          <button className={style.btn} onClick={this.goTo}>
             New Chess.com
           </button>
         );
       } else {
+        this.setState({ slug: 'login' });
         userInfo = (
-          <button className={style.btn} onClick={this.goTo.bind(null, 'login')}>Login</button>
+          <button className={style.btn} onClick={this.goTo}>Login</button>
         );
       }
     }

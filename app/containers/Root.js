@@ -13,8 +13,8 @@ export default class Root extends Component {
         onChessCom: null,
         loggedIn: null
       }
-    }
-  };
+    };
+  }
 
   componentDidMount() {
     const user = this.state.user;
