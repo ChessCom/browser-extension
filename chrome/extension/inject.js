@@ -4,13 +4,22 @@ function updateStyles() {
     (request, sender) => {
       if (!sender.tab) {
         if (request.update === 'style') {
-          const color = request.color;
           const property = request.property;
           const el = document.querySelectorAll(request.selector);
-          const rgba = `rgba(${color.r},${color.g},${color.b},${color.a})`;
+          const color = request.color;
+          let rgba;
+
+          if (color) {
+            rgba = `rgba(${color.r},${color.g},${color.b},${color.a})`;
+          }
+
           el.forEach(target => {
             const element = target;
-            element.style[property] = rgba;
+            if (request.color) {
+              element.style[property] = rgba;
+            } else {
+              element.removeAttribute('style');
+            }
           });
         }
       }
