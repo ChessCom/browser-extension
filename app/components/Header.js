@@ -1,26 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import style from './Header.css';
+import Link from './Link';
 
 export default class Header extends Component {
 
   static propTypes = {
     user: PropTypes.object.isRequired,
   };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      slug: ''
-    };
-  }
-
-  // We need to a routing function to handle actions
-  // that send the user to various url targets on site
-  goTo() {
-    chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-      chrome.tabs.update(tabs[0].id, { url: `https://www.chess.com/${this.state.slug}` });
-    });
-  }
 
   render() {
     let userInfo = (<div />);
@@ -33,16 +19,18 @@ export default class Header extends Component {
           </div>
         );
       } else if (this.props.user.onChessCom && !this.props.user.onV3) {
-        this.setState({ slug: 'switch' });
         userInfo = (
-          <button className={style.btn} onClick={this.goTo}>
-            New Chess.com
-          </button>
+          <Link slug="switch">
+            <button className={style.btn}>
+              New Chess.com
+            </button>
+          </Link>
         );
       } else {
-        this.setState({ slug: 'login' });
         userInfo = (
-          <button className={style.btn} onClick={this.goTo}>Login</button>
+          <Link slug="login">
+            <button className={style.btn}>Login</button>
+          </Link>
         );
       }
     }
