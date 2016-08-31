@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Header from '../components/Header';
 import Icon from '../components/Icon';
 import Play from '../components/Play';
@@ -9,10 +9,14 @@ import style from './App.css';
 
 export default class App extends Component {
 
+  static propTypes = {
+    user: PropTypes.object.isRequired
+  };
+
   render() {
     return (
       <div className={style.normal}>
-        <Header />
+        <Header user={this.props.user} />
         <Play />
         <div className={style.main}>
           <h2 className={style.sectionHeading}>

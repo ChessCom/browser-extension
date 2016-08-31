@@ -55,3 +55,14 @@ window.addEventListener('load', () => {
   updateStyles();
   updateDisplay();
 });
+
+window.addEventListener('message', (event) => {
+  // We only accept messages from ourselves
+  if (event.source !== window) {
+    return;
+  }
+
+  if (event.data.username) {
+    chrome.storage.sync.set({ user: event.data });
+  }
+}, false);
