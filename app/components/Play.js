@@ -28,9 +28,6 @@ export default class Play extends Component {
     return (
       <div className={style.play}>
         <ul>
-          {Object.keys(type).map(key =>
-            <li>{type[key]}</li>
-          )}
         </ul>
         <a className={style.btn} onClick={this.handlePlay}>Play</a>
       </div>

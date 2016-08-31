@@ -17,7 +17,7 @@ export default class App extends Component {
     return (
       <div className={style.normal}>
         <Header user={this.props.user} />
-        <Play />
+        <Play user={this.props.user} />
         <div className={style.main}>
           <h2 className={style.sectionHeading}>
             <div className={style.sectionHeadingIcon}>
