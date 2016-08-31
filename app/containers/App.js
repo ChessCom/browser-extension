@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Header from '../components/Header';
 import Icon from '../components/Icon';
 import Play from '../components/Play';
@@ -9,10 +9,14 @@ import style from './App.css';
 
 export default class App extends Component {
 
+  static propTypes = {
+    user: PropTypes.object.isRequired
+  };
+
   render() {
     return (
       <div className={style.normal}>
-        <Header user={this.props.user}/>
+        <Header user={this.props.user} />
         <Play />
         <div className={style.main}>
           <h2 className={style.sectionHeading}>
@@ -30,7 +34,7 @@ export default class App extends Component {
             title="Content Background Color"
             selector="#content .section-wrapper"
             property="backgroundColor"
-            />
+          />
           <ColorPicker
             name="header-sections"
             title="Header Sections Color"
@@ -48,12 +52,12 @@ export default class App extends Component {
             title="Sidebar Background Color"
             selector="#sidebar section"
             property="backgroundColor"
-            />
+          />
           <ToggleDisplay
             name="activity"
             title="Hide Activity"
             selector="section[ng-controller='MemberActivityCtrl']"
-            />
+          />
         </div>
         <div className={style.resetButton}>
           <Reset type="all" />

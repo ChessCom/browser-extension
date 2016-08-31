@@ -1,11 +1,12 @@
+import xhr from 'xhr';
 import React, { Component } from 'react';
 import App from './App';
-import xhr from 'xhr';
 
-let Root = React.createClass({
+export default class Root extends Component {
 
-  getInitialState() {
-    return {
+  constructor() {
+    super();
+    this.state = {
       user: {
         loading: true,
         onV3: null,
@@ -13,40 +14,69 @@ let Root = React.createClass({
         loggedIn: null
       }
     }
-  },
+  };
 
-  /**
-   * Once a promise is fulfilled we should call this function. This is
-   * the only place where we set user.loading to false.
-   *
-   * @return promise
-   */
-  resolveUser(user) {
-    let userInfoComplete = user.avatarUrl;
-    if (userInfoComplete || user.onChessCom === false ||
-      (user.onV3 !== null && user.onChessCom !== null && user.loggedIn !== null)) {
-      user.loading = false;
-    }
-    return this.setState({ user: user });
-  },
+  componentDidMount() {
+    const user = this.state.user;
 
-  /**
-   * Earmark the user as currently on Chess.com or not
-   *
-   * @return promise
-   */
-  calcOnChessCom(user) {
-    return new Promise(function (resolve, reject) {
-      return chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-        if (tabs[0].url.indexOf('chess.com') >= 0) {
-          user.onChessCom = true;
+    this.calcLoggedIn(user).then((user1) => {
+      if (user1.loggedIn) {
+        if (!user1.avatarUrl) {
+          this.setAvatar(user1).then((user2) => {
+            this.resolveUser(user2);
+            // Save the avatar to localStorage so we can cache it
+            chrome.storage.sync.set({ user: user2 });
+          });
         } else {
-          user.onChessCom = false;
+          this.resolveUser(user1);
         }
-        resolve(user);
-      });
+      } else {
+        this.calcOnChessCom(user1).then((user2) => {
+          if (user2.onChessCom) {
+            this.calcOnV3(user2).then((user3) => {
+              this.resolveUser(user3);
+            });
+          } else {
+            this.resolveUser(user2);
+          }
+        });
+      }
     });
-  },
+  }
+
+  /**
+   * This should only be called if we know for a fact that the
+   * user is logged in and their avatar has not yet been cached
+   *
+   * @return Promise
+   */
+  setAvatar(user) {
+    return new Promise(resolve =>
+      xhr.get(`https://www.chess.com/callback/user/popup/${user.username}`,
+        { json: true },
+        (err, resp) => {
+          if (resp.statusCode === 200) {
+            resolve(Object.assign({}, user, { avatarUrl: resp.body.avatarUrl }));
+          }
+          resolve(user);
+        })
+    );
+  }
+
+  /**
+   * @return Promise
+   */
+  calcLoggedIn(user) {
+    return new Promise(resolve =>
+      chrome.storage.sync.get('user', (result) => {
+        if (result.user) {
+          // Add payload and loggedIn property to user
+          resolve(Object.assign({}, user, result.user, { loggedIn: true }));
+        } else {
+          resolve(Object.assign({}, user, { loggedIn: false }));
+        }
+      }));
+  }
 
   /**
    * We have no easy way of knowing the difference between someone who
@@ -57,91 +87,54 @@ let Root = React.createClass({
    * function will determine whether we prompt the user to /switch or to
    * log in. If on V2, then we prompt to switch. Else, we prompt to log in.
    *
-   * @return promise
+   * @return Promise
    */
   calcOnV3(user) {
-    return new Promise(function (resolve, reject) {
-      return xhr.get('https://www.chess.com/callback/user/popup/erik',
+    return new Promise(resolve =>
+      xhr.get('https://www.chess.com/callback/user/popup/chesscom',
         { json: true },
-        function (err, resp) {
+        (err, resp) => {
           if (resp.statusCode === 200) {
-            user.onV3 = true;
+            resolve(Object.assign({}, user, { onV3: true }));
           } else {
-            user.onV3 = false;
+            resolve(Object.assign({}, user, { onV3: false }));
           }
-          resolve(user);
-        });
-    });
-  },
+        }));
+  }
 
   /**
-   * @return promise
+   * Earmark the user as currently on Chess.com or not
+   *
+   * @return Promise
    */
-  calcLoggedIn(user) {
-    return new Promise(function (resolve, reject) {
-      chrome.storage.sync.get('user', function (result) {
-        if (result.user) {
-          // Add payload and loggedIn property to user
-          Object.assign(user, result.user, { loggedIn: true });
+  calcOnChessCom(user) {
+    return new Promise(resolve =>
+      chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+        if (tabs[0].url.indexOf('chess.com') >= 0) {
+          resolve(Object.assign({}, user, { onChessCom: true }));
         } else {
-          user.loggedIn = false;
+          resolve(Object.assign({}, user, { onChessCom: false }));
         }
-        resolve(user);
-      })
-    });
-  },
+      }));
+  }
 
   /**
-   * This sholud only be called if we know for a fact that the
-   * user is logged in and their avatar has not yet been cached
+   * Once a promise is fulfilled we should call this function. This is
+   * the only place where we set user.loading to false.
    *
    * @return promise
    */
-  setAvatar(user) {
-    return new Promise(function (resolve, reject) {
-      return xhr.get('https://www.chess.com/callback/user/popup/' + user.username,
-        { json: true },
-        function (err, resp) {
-          if (resp.statusCode === 200) {
-            user.avatarUrl = resp.body.avatarUrl;
-          }
-          resolve(user);
-        });
-    });
-  },
-
-  componentDidMount() {
-    const that = this;
-    const user = this.state.user;
-
-    this.calcLoggedIn(user).then(function () {
-      if (user.loggedIn) {
-        if (!user.avatarUrl) {
-          that.setAvatar(user).then(function () {
-            that.resolveUser(user);
-            // Save the avatar to localStorage so we can cache it
-            chrome.storage.sync.set({ user: user });
-          });
-        } else {
-          that.resolveUser(user);
-        }
-      } else {
-        that.calcOnChessCom(user).then(function () {
-          if (user.onChessCom) {
-            that.calcOnV3(user).then(function () {
-              that.resolveUser(user);
-            });
-          } else {
-            that.resolveUser(user);
-          }
-        });
-      }
-    });
-  },
+  resolveUser(user) {
+    const userToSave = Object.assign({}, user);
+    const userInfoComplete = user.avatarUrl;
+    if (userInfoComplete || user.onChessCom === false ||
+      (user.onV3 !== null && user.onChessCom !== null && user.loggedIn !== null)) {
+      userToSave.loading = false;
+    }
+    return this.setState({ user: userToSave });
+  }
 
   render() {
     return React.createElement(App, { user: this.state.user });
   }
-});
-
-export default Root;
+}

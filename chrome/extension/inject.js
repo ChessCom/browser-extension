@@ -56,12 +56,13 @@ window.addEventListener('load', () => {
   updateDisplay();
 });
 
-window.addEventListener('message', function(event) {
-    // We only accept messages from ourselves
-    if (event.source != window)
-        return;
+window.addEventListener('message', (event) => {
+  // We only accept messages from ourselves
+  if (event.source !== window) {
+    return;
+  }
 
-    if (event.data.username) {
-        chrome.storage.sync.set({user: event.data});
-    }
+  if (event.data.username) {
+    chrome.storage.sync.set({ user: event.data });
+  }
 }, false);
