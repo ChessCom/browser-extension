@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import lodash from 'lodash';
 import Play from './Play';
 
 export default class PlayContainer extends Component {
@@ -90,12 +91,19 @@ export default class PlayContainer extends Component {
     this.setState({ showTimesBox: !this.state.showTimesBox, showVariantsBox: false });
   }
 
-  changeVariant() {
-    return;
+  changeVariant(variant) {
+    this.setState({ selectedVariant: variant });
   }
 
-  changeTime() {
-    return;
+  changeTime(time) {
+    const update = {};
+    if (lodash.find(this.state.dailyTimes, time)) {
+      update.selectedType = 'daily';
+    } else {
+      update.selectedType = 'live';
+    }
+    update.selectedTime = time;
+    this.setState(update);
   }
 
   render() {
