@@ -19,6 +19,7 @@ function updateStyles() {
               element.style[property] = rgba;
             } else {
               element.removeAttribute('style');
+              location.reload();
             }
           });
         }

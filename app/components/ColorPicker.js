@@ -14,6 +14,7 @@ export default class ColorPicker extends Component {
 
   constructor(props, context) {
     super(props, context);
+
     this.state = {
       update: 'style',
       selector: '',
@@ -21,28 +22,48 @@ export default class ColorPicker extends Component {
       color: {},
       displayColorPicker: false
     };
-    this.checkIfStorageAlreadyExists(this.props.name);
-    chrome.storage.onChanged.addListener((changes) => {
-      const newValue = changes.style.newValue;
-      if (Object.keys(newValue).length === 0 && newValue.constructor === Object) {
-        this.checkIfStorageAlreadyExists();
-        this.handleChange(newValue);
+
+    this.addStorageListener();
+  }
+
+  setDefaultState = () => {
+    chrome.storage.sync.set({ style: {} });
+    this.setState({ color: {
+      r: '255',
+      g: '255',
+      b: '255',
+      a: '1'
+    } });
+  }
+
+  checkIfStorageAlreadyExists = (name) => {
+    chrome.storage.sync.get(result => {
+      if (!{}.hasOwnProperty.call(result, 'style')) {
+        this.setDefaultState();
+        return;
+      }
+
+      if ({}.hasOwnProperty.call(result.style, name)) {
+        const store = result.style[name].color;
+        this.setState({ color: store });
       }
     });
   }
 
-  checkIfStorageAlreadyExists(name) {
-    chrome.storage.sync.get(result => {
-      if ({}.hasOwnProperty.call(result.style, name)) {
-        const store = result.style[name].color;
-        this.setState({ color: store });
-      } else {
-        this.setState({ color: {
-          r: '255',
-          g: '255',
-          b: '255',
-          a: '1'
-        } });
+  addStorageListener = () => {
+    this.checkIfStorageAlreadyExists(this.props.name);
+
+    // Reset color picker when reset button is hit
+    chrome.storage.onChanged.addListener(changes => {
+      try {
+        const newValue = changes.style.newValue;
+
+        if (Object.keys(newValue).length === 0 && newValue.constructor === Object) {
+          this.setDefaultState();
+          this.handleChange(newValue);
+        }
+      } catch (e) {
+        this.checkIfStorageAlreadyExists();
       }
     });
   }

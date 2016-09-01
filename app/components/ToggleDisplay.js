@@ -39,6 +39,7 @@ export default class ToggleDisplay extends Component {
     chrome.storage.sync.get(result => {
       if (!{}.hasOwnProperty.call(result, 'display')) {
         chrome.storage.sync.set({ display: {} });
+        return;
       }
 
       if ({}.hasOwnProperty.call(result.display, name)) {
