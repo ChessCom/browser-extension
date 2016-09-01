@@ -34,13 +34,8 @@ export default class App extends Component {
           <ColorPicker
             name="header-sections"
             title="Header Sections Color"
-            selector="
-              {/* Use a multiline prop for now */}
-              .content-container section .section-header,
-              #sidebar section .section-header,
-              section .forum-category-header,
-              section .load-more-container,
-              section #load-more-container"
+            // eslint-disable-next-line max-len
+            selector=".content-container section .section-header, #sidebar section .section-header, section .forum-category-header, section .load-more-container, section #load-more-container"
             property="backgroundColor"
           />
           <ColorPicker
