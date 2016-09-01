@@ -1,8 +1,11 @@
 import React, { Component, PropTypes } from 'react';
+import classNames from 'classnames/bind';
 import Button from './Button';
 import Icon from '../components/Icon';
 import style from '../components/Play.css';
 import buttonStyle from '../components/Button.css';
+
+const cx = classNames.bind(style);
 
 export default class Variants extends Component {
 
@@ -15,13 +18,18 @@ export default class Variants extends Component {
 
   render() {
     const variants = this.props.variants.map((type, i) => {
+      const className = cx({
+        [buttonStyle.selected]: this.props.isSelectedVariant(type),
+        [buttonStyle.panel]: true
+      });
+
       if (type[this.props.selectedType] === true) {
         return (
           <Button
             key={i}
             onClick={this.props.onClick}
             concern={type}
-            className={buttonStyle.panel}
+            className={className}
           >
             <Icon
               name={type.icon}

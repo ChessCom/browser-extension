@@ -64,8 +64,7 @@ export default class PlayContainer extends Component {
         { label: '10 min', minutes: 10, seconds: 0 },
         { label: '15 | 10', minutes: 15, seconds: 10 },
         { label: '30 min', minutes: 30, seconds: 0 },
-        { label: '45 | 45', minutes: 45, seconds: 45 },
-        { label: 'Custom' }
+        { label: '45 | 45', minutes: 45, seconds: 45 }
       ],
       showVariantsBox: false,
       showTimesBox: false,

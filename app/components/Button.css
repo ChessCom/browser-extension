@@ -6,7 +6,7 @@
   border-radius: 3px;
   color: #666463;
   background: #dbd9d7;
-  font-size: inherit;
+  font-size: 13px;
 }
 
 .selected {
@@ -25,6 +25,7 @@
   text-align: left;
   padding: 12px 15px 12px 45px;
   height: auto;
+  margin: 0;
   position: relative;
 }
 
@@ -81,7 +82,7 @@
   content: '\003F';
 }
 
-.button:nth-child(4n+4) {
+.button:nth-child(4n+5) {
   margin-right: 0;
 }
 

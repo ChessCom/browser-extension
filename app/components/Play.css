@@ -12,6 +12,10 @@
   padding: 0px 0 15px;
 }
 
+.timeHeader {
+  margin: 10px 0 5px;
+}
+
 .btn {
   background: #e4902d;
   display: block;

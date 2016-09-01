@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import Button from './Button';
+import Icon from '../components/Icon';
 import buttonStyle from '../components/Button.css';
 import style from '../components/Play.css';
 
@@ -47,9 +48,18 @@ export default class Times extends Component {
 
     return (
       <div className={style.choicePallete}>
-        <div className="live">{ liveTimes }</div>
-        <div className="daily">{ dailyTimes }</div>
+        <div className="live">
+          <div className={style.timeHeader}>
+            <Icon name="circle-timer" size="28" /> Live</div>
+          { liveTimes }
+        </div>
+        <div className="daily">
+          <div className={style.timeHeader}>
+            <Icon name="calendar-alt" size="28" /> Daily</div>
+          { dailyTimes }
+        </div>
       </div>
     );
   }
 }
+
