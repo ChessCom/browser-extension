@@ -1,0 +1,116 @@
+import React, { Component, PropTypes } from 'react';
+import Play from './Play';
+
+export default class PlayContainer extends Component {
+
+  static propTypes = {
+    user: PropTypes.object.isRequired
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      variants: [
+        {
+          label: 'Standard',
+          value: 'chess',
+          icon: 'chess-board',
+          daily: true,
+          live: true
+        },
+        {
+          label: 'Chess960',
+          value: 'chess960',
+          icon: '960',
+          daily: true,
+          live: true
+        },
+        {
+          label: '3 Check',
+          value: 'threecheck',
+          icon: 'threecheck',
+          live: true
+        },
+        {
+          label: 'King of the Hill',
+          value: 'kingofthehill',
+          icon: 'kingofthehill',
+          live: true
+        },
+        {
+          label: 'Crazyhouse',
+          value: 'crazyhouse',
+          icon: 'crazyhouse',
+          live: true
+        }
+      ],
+      dailyTimes: [
+        { label: '1 day', days: 1 },
+        { label: '2 days', days: 2 },
+        { label: '3 days', days: 3 },
+        { label: '5 days', days: 5 },
+        { label: '7 days', days: 7 },
+        { label: '10 days', days: 10 },
+        { label: '14 days', days: 14 },
+      ],
+      liveTimes: [
+        { label: '1 min', minutes: 1, seconds: 0 },
+        { label: '2 | 1', minutes: 2, seconds: 1 },
+        { label: '3 min', minutes: 3, seconds: 0 },
+        { label: '3 | 2', minutes: 3, seconds: 2 },
+        { label: '5 min', minutes: 5, seconds: 0 },
+        { label: '5 | 5', minutes: 5, seconds: 5 },
+        { label: '10 min', minutes: 10, seconds: 0 },
+        { label: '15 | 10', minutes: 15, seconds: 10 },
+        { label: '30 min', minutes: 30, seconds: 0 },
+        { label: '45 | 45', minutes: 45, seconds: 45 },
+        { label: 'Custom' }
+      ],
+      showVariantsBox: false,
+      showTimesBox: false,
+      selectedType: 'daily'
+    };
+    this.state.selectedVariant = this.state.variants[0];
+    this.state.selectedTime = this.state.dailyTimes[0];
+    this.toggleVariantsBox = this.toggleVariantsBox.bind(this);
+    this.toggleTimesBox = this.toggleTimesBox.bind(this);
+    this.changeVariant = this.changeVariant.bind(this);
+    this.changeTime = this.changeTime.bind(this);
+  }
+
+  handlePlay() {
+    return;
+  }
+
+  toggleVariantsBox() {
+    this.setState({ showVariantsBox: !this.state.showVariantsBox, showTimesBox: false });
+  }
+
+  toggleTimesBox() {
+    this.setState({ showTimesBox: !this.state.showTimesBox, showVariantsBox: false });
+  }
+
+  changeVariant() {
+    return;
+  }
+
+  changeTime() {
+    return;
+  }
+
+  render() {
+    if (this.props.user.loggedIn) {
+      return (
+        React.createElement(Play, {
+          api: Object.assign({}, this.state, {
+            handlePlay: this.handlePlay,
+            toggleVariantsBox: this.toggleVariantsBox,
+            toggleTimesBox: this.toggleTimesBox,
+            changeVariant: this.changeVariant,
+            changeTime: this.changeTime
+          })
+        }));
+    }
+    return null;
+  }
+}

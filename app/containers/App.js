@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Header from '../components/Header';
 import Icon from '../components/Icon';
-import Play from '../components/Play';
+import PlayContainer from '../components/PlayContainer';
 import ColorPicker from '../components/ColorPicker';
 import ToggleDisplay from '../components/ToggleDisplay';
 import Reset from '../components/Reset';
@@ -17,7 +17,7 @@ export default class App extends Component {
     return (
       <div className={style.normal}>
         <Header user={this.props.user} />
-        <Play user={this.props.user} />
+        <PlayContainer user={this.props.user} />
         <div className={style.main}>
           <h2 className={style.sectionHeading}>
             <div className={style.sectionHeadingIcon}>
