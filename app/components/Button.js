@@ -7,10 +7,10 @@ const cx = classNames.bind(style);
 export default class Button extends Component {
 
   static propTypes = {
-    onChange: PropTypes.func.isRequired,
-    concern: PropTypes.object.isRequired,
-    children: PropTypes.string.isRequired,
-    style: PropTypes.style
+    onClick: PropTypes.func.isRequired,
+    concern: PropTypes.object,
+    children: PropTypes.any,
+    className: PropTypes.any
   };
 
   constructor(props) {
@@ -19,12 +19,12 @@ export default class Button extends Component {
   }
 
   onClick() {
-    this.props.onChange(this.props.concern);
+    this.props.onClick(this.props.concern);
   }
 
   render() {
     const className = cx({
-      [this.props.style]: true,
+      [this.props.className]: true,
       button: true
     });
     return (

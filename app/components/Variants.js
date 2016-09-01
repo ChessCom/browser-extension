@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Button from './Button';
+import Icon from '../components/Icon';
 import style from '../components/Play.css';
 import buttonStyle from '../components/Button.css';
 
@@ -8,7 +9,8 @@ export default class Variants extends Component {
   static propTypes = {
     variants: PropTypes.array.isRequired,
     selectedType: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired,
+    isSelectedVariant: PropTypes.func.isRequired
   };
 
   render() {
@@ -17,10 +19,15 @@ export default class Variants extends Component {
         return (
           <Button
             key={i}
-            onChange={this.props.onChange}
+            onClick={this.props.onClick}
             concern={type}
-            style={buttonStyle.large}
+            className={buttonStyle.panel}
           >
+            <Icon
+              name={type.icon}
+              size="28"
+              className={buttonStyle.panelButtonIcon}
+            />
             {type.label}
           </Button>
         );

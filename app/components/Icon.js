@@ -10,7 +10,8 @@ export default class Icon extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     size: PropTypes.string,
-    color: PropTypes.string
+    color: PropTypes.string,
+    className: PropTypes.any
   };
 
   render() {
@@ -19,7 +20,8 @@ export default class Icon extends Component {
 
     const iconClass = cx({
       'icon': true,
-      [iconClassName]: true
+      [iconClassName]: true,
+      [this.props.className]: true
     });
 
     const iconStyle = {

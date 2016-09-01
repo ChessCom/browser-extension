@@ -2,7 +2,6 @@
   cursor: pointer;
   margin: 0 4px 3px 0;
   height: 35px;
-  line-height: 1;
   border-bottom: 1px solid #a7a6a2;
   border-radius: 3px;
   color: #666463;
@@ -10,17 +9,62 @@
   font-size: inherit;
 }
 
+.selected {
+  background: #fff;
+}
+
 .small {
   width: 64px;
   min-width: 64px;
 }
 
-.large {
+.panel {
   width: 100%;
+  border-radius: 0;
+  border: none;
+  text-align: left;
+  padding: 12px 15px 12px 45px;
+  height: auto;
+  position: relative;
+}
+
+.panelButtonIcon {
+  position: absolute;
+  top: 1px;
+  left: 15px;
 }
 
 .huge {
   height: 50px;
+  font-size: 17px;
+  width: 48%;
+  line-height: 1;
+  float: left;
+  position: relative;
+}
+
+.huge:after {
+  position: absolute;
+  font-family: Chess;
+  font-weight: 400;
+  font-style: normal;
+  speak: none;
+  color: #8c8a88;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: '\003F';
+  right: 15px;
+  top: 16px;
+  padding-left: 15px;
+}
+
+.huge:nth-child(2) {
+  margin-right: 0;
+  float: right;
+}
+
+.hugeButtonIcon {
+  line-height: .8;
 }
 
 .btn.btn-arrow:after {

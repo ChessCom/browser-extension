@@ -77,6 +77,8 @@ export default class PlayContainer extends Component {
     this.toggleTimesBox = this.toggleTimesBox.bind(this);
     this.changeVariant = this.changeVariant.bind(this);
     this.changeTime = this.changeTime.bind(this);
+    this.isSelectedTime = this.isSelectedTime.bind(this);
+    this.isSelectedVariant = this.isSelectedVariant.bind(this);
   }
 
   handlePlay() {
@@ -93,6 +95,22 @@ export default class PlayContainer extends Component {
 
   changeVariant(variant) {
     this.setState({ selectedVariant: variant });
+    this.closeBoxes();
+  }
+
+  closeBoxes() {
+    this.setState({
+      showVariantsBox: false,
+      showTimesBox: false
+    });
+  }
+
+  isSelectedVariant(variant) {
+    return lodash.isEqual(this.state.selectedVariant, variant);
+  }
+
+  isSelectedTime(time) {
+    return lodash.isEqual(this.state.selectedTime, time);
   }
 
   changeTime(time) {
@@ -102,6 +120,8 @@ export default class PlayContainer extends Component {
     } else {
       update.selectedType = 'live';
     }
+    // Close the boxes
+    this.closeBoxes();
     update.selectedTime = time;
     this.setState(update);
   }
@@ -115,7 +135,9 @@ export default class PlayContainer extends Component {
             toggleVariantsBox: this.toggleVariantsBox,
             toggleTimesBox: this.toggleTimesBox,
             changeVariant: this.changeVariant,
-            changeTime: this.changeTime
+            changeTime: this.changeTime,
+            isSelectedVariant: this.isSelectedVariant,
+            isSelectedTime: this.isSelectedTime
           })
         }));
     }
