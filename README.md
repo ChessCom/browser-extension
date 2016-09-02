@@ -13,7 +13,8 @@ Do chess your way! Even though Chess.com is working hard to provide the best onl
 ---
 
 ### Contribute
-If you would like to contribute code, please submit a pull request.  
+If you would like to contribute code, please submit a pull request. Meaningful contributors will get a free Diamond membership. 
+
 If you would just like to submit an idea, please go here: [http://goo.gl/forms/AVaggClVWuIyP87k1](http://goo.gl/forms/AVaggClVWuIyP87k1)
 
 #### All contributions should: 
