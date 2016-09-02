@@ -1,6 +1,19 @@
 .play {
   background: #f1f1f1;
-  padding: 1rem;
+  padding: 15px;
+}
+
+.choices {
+  padding: 0 0 10px;
+  overflow: hidden;
+}
+
+.choicePallete {
+  padding: 0px 0 15px;
+}
+
+.timeHeader {
+  margin: 10px 0 5px;
 }
 
 .btn {
@@ -11,9 +24,10 @@
   border-radius: 0.2rem;
   padding: 1rem 0;
   font-size: 1.1rem;
-  font-weight: 700;
   box-shadow: 0rem 0.07rem 0rem rgba(172,109,35,1);
 }
 .btn:hover {
   cursor: pointer;
+  background: #d37e19;
 }
+

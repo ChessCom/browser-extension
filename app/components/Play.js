@@ -1,38 +1,56 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import Variants from './Variants';
+import Times from './Times';
+import Button from './Button';
+import Link from './Link';
+import Icon from '../components/Icon';
 import style from '../components/Play.css';
+import buttonStyle from '../components/Button.css';
 
 export default class Play extends Component {
 
-  // TODO: Extract home.js controller from website Angular controller;
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      type: {
-        standard: 'Standard',
-        live: 'Live960',
-        threecheck: '3 Check'
-      },
-      time: [
-        '3 min'
-      ]
-    };
-  }
-
-  handlePlay() {
-    return;
-  }
+  static propTypes = {
+    api: PropTypes.object.isRequired
+  };
 
   render() {
-    const type = this.state.type;
     return (
       <div className={style.play}>
-        <ul>
-          {Object.keys(type).map(key =>
-            <li>{type[key]}</li>
-          )}
-        </ul>
-        <a className={style.btn} onClick={this.handlePlay}>Play</a>
+        <div className={style.choices}>
+          <Button
+            className={buttonStyle.huge}
+            onClick={this.props.api.toggleVariantsBox}
+          >
+            <Icon
+              name={this.props.api.selectedVariant.icon}
+              size="28"
+              className={buttonStyle.hugeButtonIcon}
+            />
+          </Button>
+          <Button
+            className={buttonStyle.huge}
+            onClick={this.props.api.toggleTimesBox}
+          >
+            <span className="format-icon icon-chess-board" />{this.props.api.selectedTime.label}
+          </Button>
+        </div>
+        {this.props.api.showVariantsBox ?
+          <Variants
+            selectedType={this.props.api.selectedType}
+            variants={this.props.api.variants}
+            onClick={this.props.api.changeVariant}
+            isSelectedVariant={this.props.api.isSelectedVariant}
+          />
+          : null}
+        {this.props.api.showTimesBox ?
+          <Times
+            dailyTimes={this.props.api.dailyTimes}
+            liveTimes={this.props.api.liveTimes}
+            onClick={this.props.api.changeTime}
+            isSelectedTime={this.props.api.isSelectedTime}
+          />
+          : null}
+        <Link slug={this.props.api.playUrl()}><a className={style.btn}>Play</a></Link>
       </div>
     );
   }
