@@ -18,44 +18,44 @@ export default class Times extends Component {
 
   render() {
     const liveTimes = this.props.liveTimes.map((time, i) => {
-        const className = cx({
-          [buttonStyle.selected]: this.props.isSelectedTime(time),
-          [buttonStyle.small]: true
-        });
+      const className = cx({
+        [buttonStyle.selected]: this.props.isSelectedTime(time),
+        [buttonStyle.small]: true
+      });
 
-        return (<Button
-          key={i}
-          onClick={this.props.onClick}
-          concern={time}
-          className={className}
-        >{time.label}</Button>);
-      }
-    );
+      return (<Button
+        key={i}
+        onClick={this.props.onClick}
+        concern={time}
+        className={className}
+      >{time.label}</Button>);
+    });
 
     const dailyTimes = this.props.dailyTimes.map((time, i) => {
-        const className = cx({
-          [buttonStyle.selected]: this.props.isSelectedTime(time),
-          [buttonStyle.small]: true
-        });
-        return (<Button
-          key={i}
-          onClick={this.props.onClick}
-          concern={time}
-          className={className}
-        >{time.label}</Button>);
-      }
-    );
+      const className = cx({
+        [buttonStyle.selected]: this.props.isSelectedTime(time),
+        [buttonStyle.small]: true
+      });
+      return (<Button
+        key={i}
+        onClick={this.props.onClick}
+        concern={time}
+        className={className}
+      >{time.label}</Button>);
+    });
 
     return (
       <div className={style.choicePallete}>
         <div className="live">
           <div className={style.timeHeader}>
-            <Icon name="circle-timer" size="28" /> Live</div>
+            <Icon name="circle-timer" size="28" /> Live
+          </div>
           { liveTimes }
         </div>
         <div className="daily">
           <div className={style.timeHeader}>
-            <Icon name="calendar-alt" size="28" /> Daily</div>
+            <Icon name="calendar-alt" size="28" /> Daily
+          </div>
           { dailyTimes }
         </div>
       </div>

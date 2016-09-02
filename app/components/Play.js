@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Variants from './Variants';
 import Times from './Times';
 import Button from './Button';
+import Link from './Link';
 import Icon from '../components/Icon';
 import style from '../components/Play.css';
 import buttonStyle from '../components/Button.css';
@@ -49,7 +50,7 @@ export default class Play extends Component {
             isSelectedTime={this.props.api.isSelectedTime}
           />
           : null}
-        <a className={style.btn} onClick={this.props.api.handlePlay}>Play</a>
+        <Link slug={this.props.api.playUrl()}><a className={style.btn}>Play</a></Link>
       </div>
     );
   }

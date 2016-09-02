@@ -78,10 +78,20 @@ export default class PlayContainer extends Component {
     this.changeTime = this.changeTime.bind(this);
     this.isSelectedTime = this.isSelectedTime.bind(this);
     this.isSelectedVariant = this.isSelectedVariant.bind(this);
+    this.playUrl = this.playUrl.bind(this);
   }
 
-  handlePlay() {
-    return;
+  playUrl() {
+    let slug;
+    if (this.state.selectedType === 'live') {
+      slug = `live/?#s=${this.state.selectedTime.minutes}m${this.state.selectedTime.seconds}s`;
+    } else {
+      slug = `home/#d=${this.state.selectedTime.days}`;
+    }
+    if (this.state.selectedVariant.value !== 'chess') {
+      slug += `|${this.state.selectedVariant.value}`;
+    }
+    return slug;
   }
 
   toggleVariantsBox() {
@@ -136,7 +146,8 @@ export default class PlayContainer extends Component {
             changeVariant: this.changeVariant,
             changeTime: this.changeTime,
             isSelectedVariant: this.isSelectedVariant,
-            isSelectedTime: this.isSelectedTime
+            isSelectedTime: this.isSelectedTime,
+            playUrl: this.playUrl
           })
         }));
     }
