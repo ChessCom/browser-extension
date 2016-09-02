@@ -129,6 +129,11 @@ export default class PlayContainer extends Component {
     } else {
       update.selectedType = 'live';
     }
+    // If the use has a variant incompatible with daily, revert to
+    // standard
+    if (time.days && !this.state.selectedVariant.daily) {
+      this.setState({ selectedVariant: this.state.variants[0] });
+    }
     // Close the boxes
     this.closeBoxes();
     update.selectedTime = time;
