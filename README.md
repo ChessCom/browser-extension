@@ -6,11 +6,17 @@ Do chess your way! Even though Chess.com is working hard to provide the best onl
 
 ## Download the extension for...
 - Chrome:  
-- Firefox:  
-- Safari:  
-- Opera:  
+- Firefox: (TBA)
+- Safari: (TBA)
+- Opera: (TBA)
 
 ---
+
+### Developing
+
+First clone the repo and then `npm install`. Then to run `npm run dev`.  
+Load the extension via [Chrome Apps & Extensions Developer Tool](https://chrome.google.com/webstore/detail/chrome-apps-extensions-de/ohmmkhmmmpcnpikjeljgnaoabkaalbgc?hl=en).  
+Remember to `npm run lint` before commiting your code!
 
 ### Contribute
 If you would like to contribute code, please submit a pull request. Meaningful contributors will get a free Diamond membership. 
@@ -26,3 +32,5 @@ Check out our current outstanding issues [here](https://github.com/ChessCom/brow
 
 ### Special Thanks
 Huge thanks to all of these people and all of this software:
+
+[Jhen-Jie Hong](https://github.com/jhen0409/react-chrome-extension-boilerplate)
