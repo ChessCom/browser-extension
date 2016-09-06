@@ -5,10 +5,8 @@
 Do chess your way! Even though Chess.com is working hard to provide the best online experience for playing, learning, and sharing chess, we know everyone has different preferences and ideas. We want to encourage everyone to customize their online chess experience as much as they want!
 
 ## Download the extension for...
-- Chrome:  
-- Firefox:  
-- Safari:  
-- Opera:  
+- (Chrome)[]  
+- FireFox *(coming soon)*
 
 ---
 
