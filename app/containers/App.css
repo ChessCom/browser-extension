@@ -101,6 +101,7 @@
 
 .suggestions:hover {
   color: rgb(80, 80, 80);
+  cursor: pointer;
 }
 
 .suggestions:focus {

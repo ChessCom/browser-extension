@@ -13,6 +13,11 @@ export default class App extends Component {
     user: PropTypes.object.isRequired
   };
 
+  handleSuggestionsClick = () => {
+    const suggestions = 'http://goo.gl/forms/AVaggClVWuIyP87k1';
+    chrome.tabs.create({ url: suggestions });
+  }
+
   render() {
     return (
       <div className={style.normal}>
@@ -124,12 +129,12 @@ export default class App extends Component {
         <div className={style.resetButton}>
           <Reset type="all" />
         </div>
-        <a className={style.suggestions} href="http://goo.gl/forms/AVaggClVWuIyP87k1" target="_blank" rel="noopener noreferrer">
+        <div className={style.suggestions} onClick={this.handleSuggestionsClick}>
           <div className={style.suggestionsIcon}>
             <Icon name="circle-question" size="24" />
           </div>
           Suggestions
-        </a>
+        </div>
       </div>
     );
   }
