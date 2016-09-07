@@ -17,6 +17,7 @@ export default class Link extends Component {
   goTo() {
     chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
       chrome.tabs.update(tabs[0].id, { url: `https://www.chess.com/${this.props.slug}` });
+      window.close();
     });
   }
 
