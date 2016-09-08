@@ -34,4 +34,5 @@ Check out our current outstanding issues [here](https://github.com/ChessCom/brow
 Huge thanks to all of these people and all of this software:
 
 [Rish](https://github.com/rish)  
+[Martyn Chamberlin](https://github.com/martynchamberlin)  
 [Jhen-Jie Hong](https://github.com/jhen0409/react-chrome-extension-boilerplate)
