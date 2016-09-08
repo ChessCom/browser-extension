@@ -37,14 +37,15 @@ export default class App extends Component {
           <ColorPicker
             name="content"
             title="Content Background Color"
-            selector=".index #content > section, .user-home #content .section-wrapper"
+            // eslint-disable-next-line max-len
+            selector=".index #content > section, .user-home #content section, #content > section, #content .forum-category-header, #content .forum-table-full tbody>tr:hover, #content .table .row-highlighted>td, #content .table.with-row-highlight>tbody>tr:hover, #content .switchers a.iconized.active"
             property="backgroundColor"
           />
           <ColorPicker
             name="header-sections"
             title="Header Sections Color"
             // eslint-disable-next-line max-len
-            selector="#sidebar .section-header, #content #load-more-container, #sidebar .section-header, .user-home #sidebar .section-header, #content .section-header"
+            selector="main #sidebar .section-header, #content #load-more-container, #sidebar .section-header, .user-home #sidebar .section-header, #content .section-header"
             property="backgroundColor"
           />
           <ColorPicker
@@ -58,7 +59,7 @@ export default class App extends Component {
             name="text"
             title="Text Color"
             // eslint-disable-next-line max-len
-            selector=".index p, .user-home #content section section p, .user-home #content .section-wrapper:not(.dismissible-banner)"
+            selector="#content section, #content article, #content .content-body, #content .content-body h1, #content h1, .index p, .user-home #content section section p, .user-home #content .section-wrapper:not(.dismissible-banner):not(.intro), .view-thread .comments li .user-content > p, #comments .comments .comment-body"
             property="color"
           />
           <ColorPicker
@@ -71,21 +72,22 @@ export default class App extends Component {
           <ColorPicker
             name="link"
             title="Link Color"
-            selector=".index article.content a, .user-home #content .section-wrapper a"
+            // eslint-disable-next-line max-len
+            selector=".index article.content a, .user-home #content .section-wrapper a, #content section a:not(.btn), #content a.username, #content span.username"
             property="color"
           />
           <ColorPicker
             name="header-text"
             title="Section Header Text Color"
             // eslint-disable-next-line max-len
-            selector="#content #load-more-container a, #content #load-more-container span, #content .header-clickable h3.section-clickable a, #content .section-header h3, #content .header-clickable h3, #content .header-clickable h3 a, #sidebar .section-header h3, #sidebar .header-clickable h3.section-clickable a, .section-header a, main #content.content-container .section-header .header-count, main #sidebar .section-header .header-count"
+            selector="#content #load-more-container a, #content #load-more-container span, #content .header-clickable h3.section-clickable a, #content .section-header h3, #content .header-clickable h3, #content .header-clickable h3 a, #sidebar .section-header h3, #sidebar .header-clickable h3.section-clickable a, .section-header a, main #content.content-container .section-header .header-count, main #sidebar .section-header .header-count, .view-thread > h1"
             property="color"
           />
           <ColorPicker
             name="meta-color"
             title="Meta Information Color"
             // eslint-disable-next-line max-len
-            selector=".index ul.content-stats>li [class^=icon-], .index .content-stats time, .index .user-chess-title, .user-home ul.content-stats>li [class^=icon-], .user-home .content-stats time, .user-home .content-stats .user-chess-title, .user-home ul.content-stats, .user-home .content-container ul.content-list>.list-short .amount, .user-home ul.content-list>li"
+            selector="#content ul.content-stats, #content ul.content-stats>li [class^=icon-], .content-stats time, #content .user-chess-title, .user-home ul.content-stats>li [class^=icon-], .user-home .content-stats time, .user-home .content-stats .user-chess-title, .user-home ul.content-stats, .user-home .content-container ul.content-list>.list-short .amount, .user-home ul.content-list>li, .forum-thread time, #content ul.forum-thread>li .cell-time-data>a i, .view-thread .comments .comment-header time, .view-thread .pagination ul li, .view-thread .pagination [class^='icon-'], .navigation .pagination ul li, .view-thread .social-and-follow label, #content .club-info, #content .more-from h2, #comments .comments .comment-header time, #content .user-rating"
             property="color"
           />
           <ColorPicker
@@ -103,7 +105,8 @@ export default class App extends Component {
           <ColorPicker
             name="button-secondary-color"
             title="Button Secondary Color"
-            selector="#sidebar .btn.btn-arrow, .game-controls .btn, .new-game-time .btn"
+            // eslint-disable-next-line max-len
+            selector="#sidebar .btn.btn-arrow, .game-controls .btn, .new-game-time .btn, .view-thread .comments .comment-number"
             property="backgroundColor"
           />
           <ColorPicker
@@ -117,7 +120,7 @@ export default class App extends Component {
             name="icon-color"
             title="Icon Color"
             // eslint-disable-next-line max-len
-            selector=".section-header [class^='icon-'], .section-header [class*=' icon-'], main .header-clickable h3.section-clickable::before, #sidebar .section-clickable [class^='icon-'], #sidebar section .iconized>i, .new-game-time [class^='icon-']"
+            selector=".section-header [class^='icon-'], .section-header [class*=' icon-'], main .header-clickable h3.section-clickable::before, #sidebar .section-clickable [class^='icon-'], #sidebar section .iconized>i, .new-game-time [class^='icon-'], #content section .iconized>i, #content section.section-header .iconized>i, #content section.section-row .iconized>i, #content .section-wrapper [class^='icon-']"
             property="color"
           />
           <ToggleDisplay
