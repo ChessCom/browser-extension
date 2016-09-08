@@ -37,7 +37,7 @@ export default class App extends Component {
           <ColorPicker
             name="content"
             title="Content Background Color"
-            selector=".index #content > section, .user-home #content .section-wrapper"
+            selector=".index #content > section, .user-home #content section, #content section, #content .forum-category-header, #content .forum-table-full tbody>tr:hover"
             property="backgroundColor"
           />
           <ColorPicker
@@ -58,7 +58,7 @@ export default class App extends Component {
             name="text"
             title="Text Color"
             // eslint-disable-next-line max-len
-            selector=".index p, .user-home #content section section p, .user-home #content .section-wrapper:not(.dismissible-banner)"
+            selector="#content section, .index p, .user-home #content section section p, .user-home #content .section-wrapper:not(.dismissible-banner, .intro), .view-thread .comments li .user-content > p"
             property="color"
           />
           <ColorPicker
@@ -71,21 +71,21 @@ export default class App extends Component {
           <ColorPicker
             name="link"
             title="Link Color"
-            selector=".index article.content a, .user-home #content .section-wrapper a"
+            selector=".index article.content a, .user-home #content .section-wrapper a, #content section a:not(.btn)"
             property="color"
           />
           <ColorPicker
             name="header-text"
             title="Section Header Text Color"
             // eslint-disable-next-line max-len
-            selector="#content #load-more-container a, #content #load-more-container span, #content .header-clickable h3.section-clickable a, #content .section-header h3, #content .header-clickable h3, #content .header-clickable h3 a, #sidebar .section-header h3, #sidebar .header-clickable h3.section-clickable a, .section-header a, main #content.content-container .section-header .header-count, main #sidebar .section-header .header-count"
+            selector="#content #load-more-container a, #content #load-more-container span, #content .header-clickable h3.section-clickable a, #content .section-header h3, #content .header-clickable h3, #content .header-clickable h3 a, #sidebar .section-header h3, #sidebar .header-clickable h3.section-clickable a, .section-header a, main #content.content-container .section-header .header-count, main #sidebar .section-header .header-count, .view-thread > h1"
             property="color"
           />
           <ColorPicker
             name="meta-color"
             title="Meta Information Color"
             // eslint-disable-next-line max-len
-            selector=".index ul.content-stats>li [class^=icon-], .index .content-stats time, .index .user-chess-title, .user-home ul.content-stats>li [class^=icon-], .user-home .content-stats time, .user-home .content-stats .user-chess-title, .user-home ul.content-stats, .user-home .content-container ul.content-list>.list-short .amount, .user-home ul.content-list>li"
+            selector="#content ul.content-stats, #content ul.content-stats>li [class^=icon-], .content-stats time, .index .user-chess-title, .user-home ul.content-stats>li [class^=icon-], .user-home .content-stats time, .user-home .content-stats .user-chess-title, .user-home ul.content-stats, .user-home .content-container ul.content-list>.list-short .amount, .user-home ul.content-list>li, .forum-thread time, #content ul.forum-thread>li .cell-time-data>a i, .view-thread .comments .comment-header time, .view-thread .pagination ul li, .view-thread .pagination [class^='icon-'], .view-thread .social-and-follow label, #content .club-info"
             property="color"
           />
           <ColorPicker
@@ -103,7 +103,7 @@ export default class App extends Component {
           <ColorPicker
             name="button-secondary-color"
             title="Button Secondary Color"
-            selector="#sidebar .btn.btn-arrow, .game-controls .btn, .new-game-time .btn"
+            selector="#sidebar .btn.btn-arrow, .game-controls .btn, .new-game-time .btn, .view-thread .comments .comment-number"
             property="backgroundColor"
           />
           <ColorPicker
