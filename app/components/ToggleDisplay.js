@@ -18,6 +18,7 @@ export default class ToggleDisplay extends Component {
       update: 'display',
       name: this.props.name,
       selector: this.props.selector,
+      visible: true
     };
     this.checkIfStorageAlreadyExists(this.props.name);
   }
