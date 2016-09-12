@@ -208,7 +208,7 @@ export default {
           name: 'activity',
           title: 'Hide Activity',
           selector: [
-            'section[ng-controller=\'MemberActivityCtrl\']'
+            'section[ng-controller=MemberActivityCtrl]'
           ]
         },
         {
@@ -250,7 +250,7 @@ export default {
           name: 'trophies',
           title: 'Hide Trophies',
           selector: [
-            'div[ng-controller=\'UserTrophyShowcaseCtrl\']'
+            'div[ng-controller=UserTrophyShowcaseCtrl]'
           ]
         }
       ]
