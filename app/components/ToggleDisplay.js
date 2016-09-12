@@ -80,7 +80,7 @@ export default class ToggleDisplay extends Component {
     const inputId = `${this.props.name}_input`;
 
     return (
-      <div>
+      <div className={style.row}>
         <label htmlFor={inputId}>{this.props.title}</label>
         <div
           id={inputId}
