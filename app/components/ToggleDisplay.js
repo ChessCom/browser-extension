@@ -24,14 +24,18 @@ export default class ToggleDisplay extends Component {
   }
 
   componentDidUpdate = () => {
-    const name = this.state.name;
-    const store = {
-      [name]: {
-        selector: this.state.selector,
-        visible: this.state.visible
+    const name = this.props.name;
+    const state = JSON.parse(JSON.stringify(this.state));
+
+    chrome.storage.sync.get('display', result => {
+      const obj = result;
+      if (Object.keys(result).length === 0 && obj.constructor === Object) {
+        chrome.storage.sync.set({ display: {} });
+        obj.display = {};
       }
-    };
-    chrome.storage.sync.set({ display: store });
+      obj.display[name] = state;
+      chrome.storage.sync.set(obj);
+    });
 
     this.sendMessageToDOM();
   }
