@@ -226,6 +226,13 @@ export default {
           selector: [
             '.user-home #sidebar section:nth-child(3) div:nth-child(1)',
             '.user-home #sidebar section:nth-child(3) .friends-grid'
+          ],
+          helpers: [
+            {
+              type: 'hide',
+              selector: '.user-home #sidebar section:nth-child(3)',
+              relation: 'clubs'
+            }
           ]
         },
         {
@@ -235,6 +242,13 @@ export default {
           selector: [
             '.user-home #sidebar section:nth-child(3) div:nth-child(3)',
             '.user-home #sidebar section:nth-child(3) .clubs'
+          ],
+          helpers: [
+            {
+              type: 'hide',
+              selector: '.user-home #sidebar section:nth-child(3)',
+              relation: 'friends'
+            }
           ]
         },
         {
