@@ -70,6 +70,7 @@ export default class ToggleDisplay extends Component {
 
         if (Object.keys(newValue).length === 0 && newValue.constructor === Object) {
           this.setState({ visible: true });
+          this.sendReload();
         }
       } catch (e) {
         this.checkIfStorageAlreadyExists();
@@ -144,6 +145,14 @@ export default class ToggleDisplay extends Component {
     if (typeof obj.visible !== 'undefined') {
       this.save(obj.name, obj);
     }
+  }
+
+  sendReload = () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+      chrome.tabs.sendMessage(tabs[0].id, {
+        update: 'reload'
+      });
+    });
   }
 
   render() {
