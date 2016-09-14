@@ -10,7 +10,10 @@ export default class Reset extends Component {
 
   handleClick = () => {
     if (this.props.type === 'all') {
-      chrome.storage.sync.set({ style: {} });
+      chrome.storage.sync.set({
+        style: {},
+        display: {}
+      });
     }
   }
 
