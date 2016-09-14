@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from 'react';
+import Icon from './Icon';
 
 export default class Reset extends Component {
 
   static propTypes = {
     type: PropTypes.string.isRequired,
+    icon: PropTypes.string
   };
 
   handleClick = () => {
@@ -15,9 +17,12 @@ export default class Reset extends Component {
   render() {
     return (
       <div onClick={this.handleClick}>
-        { this.props.type === 'all' ?
-          <span>Reset All</span>
+      { this.props.icon ?
+        <Icon name={this.props.icon} size="24" />
         : null }
+      { this.props.type === 'all' ?
+        <span>Reset All</span>
+      : null }
       </div>
     );
   }
