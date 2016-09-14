@@ -4,16 +4,30 @@
   position: relative;
 }
 
+.resetIcon {
+  float: left;
+  margin-right: 5px;
+}
+
 .resetButton {
   position: absolute;
-  bottom: -45px;
-  padding: 15px;
+  bottom: -35px;
+  left: 5px;
+  padding: 5px;
+  width: 50%;
 }
 
 .resetButton > div {
   font-weight: bold;
   font-size: 12px;
+  line-height: -20px;
   color: #8c8a88;
+}
+
+.resetButton > div i {
+  position: relative;
+  margin-right: 5px;
+  top: 3px;
 }
 
 .resetButton > div:hover {

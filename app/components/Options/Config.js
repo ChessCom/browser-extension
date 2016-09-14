@@ -1,9 +1,9 @@
 export default {
   groups: [
     {
-      id: 'interface',
-      title: 'Interface',
-      icon: 'square-brush',
+      id: 'backgrounds',
+      title: 'Backgrounds',
+      icon: 'page-alt',
       options: [
         {
           type: 'ColorPicker',
@@ -44,7 +44,14 @@ export default {
             'ul.stats-list li',
             '.daily-chess #sidebar section:not(#chess-board-sidebar)'
           ]
-        },
+        }
+      ]
+    },
+    {
+      id: 'text',
+      title: 'Text',
+      icon: 'paper-pencil',
+      options: [
         {
           type: 'ColorPicker',
           name: 'text',
@@ -142,6 +149,31 @@ export default {
         },
         {
           type: 'ColorPicker',
+          name: 'icon-color',
+          title: 'Icon Color',
+          property: 'color',
+          selector: [
+            '.section-header [class^=\'icon-\']',
+            '.section-header [class*=\' icon-\']',
+            'main .header-clickable h3.section-clickable::before',
+            '#sidebar .section-clickable [class^=\'icon-\']',
+            '#sidebar section .iconized>i',
+            '.new-game-time [class^=\'icon-\']',
+            '#content section .iconized>i',
+            '#content section.section-header .iconized>i',
+            '#content section.section-row .iconized>i',
+            '#content .section-wrapper [class^=\'icon-\']'
+          ]
+        },
+      ]
+    },
+    {
+      id: 'buttons',
+      title: 'Buttons',
+      icon: 'square-checkmark',
+      options: [
+        {
+          type: 'ColorPicker',
           name: 'button-primary-color',
           title: 'Button Primary Color',
           property: 'backgroundColor',
@@ -184,25 +216,14 @@ export default {
             '#sidebar .quick-game-controls-row .btn',
             '.new-game-time .btn'
           ]
-        },
-        {
-          type: 'ColorPicker',
-          name: 'icon-color',
-          title: 'Icon Color',
-          property: 'color',
-          selector: [
-            '.section-header [class^=\'icon-\']',
-            '.section-header [class*=\' icon-\']',
-            'main .header-clickable h3.section-clickable::before',
-            '#sidebar .section-clickable [class^=\'icon-\']',
-            '#sidebar section .iconized>i',
-            '.new-game-time [class^=\'icon-\']',
-            '#content section .iconized>i',
-            '#content section.section-header .iconized>i',
-            '#content section.section-row .iconized>i',
-            '#content .section-wrapper [class^=\'icon-\']'
-          ]
-        },
+        }
+      ]
+    },
+    {
+      id: 'hide',
+      title: 'Hide',
+      icon: 'circle-stop',
+      options: [
         {
           type: 'ToggleDisplay',
           name: 'activity',

@@ -1,5 +1,4 @@
 .options {
-  padding: 20px;
   background-color: #fff;
 }
 
@@ -8,12 +7,26 @@
   padding: 0;
 }
 
+.options > li {
+  border-bottom: 1px solid #e8e7e6;
+}
+
+.options ul li {
+  padding: 0 15px;
+}
+
 .sectionHeading {
-  margin: 0 0 0.7rem;
   color: rgb(43, 43, 43);
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
+  display: block;
+  padding: 1rem;
+  -webkit-user-select: none;
+}
+
+.sectionHeading:hover {
+  cursor: pointer;
 }
 
 .sectionHeadingIcon {
@@ -21,4 +34,21 @@
   margin-right: 10px;
   position: relative;
   top: -3px;
+}
+
+.toggleIcon {
+  float: right;
+}
+
+.active, .inactive {
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.active {
+  transform: rotate(90deg);
+}
+
+.inactive {
+  transform: rotate(0deg);
 }

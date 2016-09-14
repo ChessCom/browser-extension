@@ -24,7 +24,7 @@ export default class App extends Component {
         <PlayContainer user={this.props.user} />
         <Options />
         <div className={style.resetButton}>
-          <Reset type="all" />
+          <Reset type="all" icon="undo" />
         </div>
         <div className={style.suggestions} onClick={this.handleSuggestionsClick}>
           <div className={style.suggestionsIcon}>
