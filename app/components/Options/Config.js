@@ -208,7 +208,63 @@ export default {
           name: 'activity',
           title: 'Hide Activity',
           selector: [
-            'section[ng-controller=\'MemberActivityCtrl\']'
+            'section[ng-controller=MemberActivityCtrl]'
+          ]
+        },
+        {
+          type: 'ToggleDisplay',
+          name: 'new-game',
+          title: 'Hide New Game',
+          selector: [
+            '.user-home section.new-game-container'
+          ]
+        },
+        {
+          type: 'ToggleDisplay',
+          name: 'friends',
+          title: 'Hide Friends',
+          selector: [
+            '.user-home #sidebar section:nth-child(3) div:nth-child(1)',
+            '.user-home #sidebar section:nth-child(3) .friends-grid'
+          ],
+          helpers: [
+            {
+              type: 'hide',
+              selector: '.user-home #sidebar section:nth-child(3)',
+              relation: 'clubs'
+            }
+          ]
+        },
+        {
+          type: 'ToggleDisplay',
+          name: 'clubs',
+          title: 'Hide Clubs',
+          selector: [
+            '.user-home #sidebar section:nth-child(3) div:nth-child(3)',
+            '.user-home #sidebar section:nth-child(3) .clubs'
+          ],
+          helpers: [
+            {
+              type: 'hide',
+              selector: '.user-home #sidebar section:nth-child(3)',
+              relation: 'friends'
+            }
+          ]
+        },
+        {
+          type: 'ToggleDisplay',
+          name: 'stats',
+          title: 'Hide Stats',
+          selector: [
+            '.user-home ratings-sidebar'
+          ]
+        },
+        {
+          type: 'ToggleDisplay',
+          name: 'trophies',
+          title: 'Hide Trophies',
+          selector: [
+            'div[ng-controller=UserTrophyShowcaseCtrl]'
           ]
         }
       ]

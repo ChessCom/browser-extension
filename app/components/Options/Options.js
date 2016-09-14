@@ -39,6 +39,7 @@ export default class Options extends Component {
                   name={option.name}
                   title={option.title}
                   selector={option.selector.join(',')}
+                  helpers={option.helpers}
                 />
               : null }
             </li>
