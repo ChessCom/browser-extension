@@ -52,9 +52,22 @@ function updateDisplay() {
   );
 }
 
+function reloadPage() {
+  chrome.runtime.onMessage.addListener(
+    (request, sender) => {
+      if (!sender.tab) {
+        if (request.update === 'reload') {
+          location.reload();
+        }
+      }
+    }
+  );
+}
+
 window.addEventListener('load', () => {
   updateStyles();
   updateDisplay();
+  reloadPage();
 });
 
 window.addEventListener('message', (event) => {
