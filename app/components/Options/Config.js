@@ -246,7 +246,7 @@ export default {
           title: 'Hide Friends',
           selector: [
             '.user-home #sidebar section:nth-child(3) div:nth-child(1)',
-            '.user-home #sidebar section:nth-child(3) .friends-grid'
+            '.user-home #sidebar section:nth-child(3) .users-grid'
           ],
           helpers: [
             {
