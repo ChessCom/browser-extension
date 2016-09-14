@@ -22,7 +22,7 @@ export default class ToggleDisplay extends Component {
       visible: true,
       helpers: this.props.helpers
     };
-    this.checkIfStorageAlreadyExists(this.props.name);
+    this.addStorageListener();
   }
 
   componentDidUpdate = () => {
@@ -56,6 +56,23 @@ export default class ToggleDisplay extends Component {
 
       if ({}.hasOwnProperty.call(result.display, name)) {
         this.setState({ visible: result.display[name].visible });
+      }
+    });
+  }
+
+  addStorageListener = () => {
+    this.checkIfStorageAlreadyExists(this.props.name);
+
+    // Reset toggle display when reset button is hit
+    chrome.storage.onChanged.addListener(changes => {
+      try {
+        const newValue = changes.display.newValue;
+
+        if (Object.keys(newValue).length === 0 && newValue.constructor === Object) {
+          this.setState({ visible: true });
+        }
+      } catch (e) {
+        this.checkIfStorageAlreadyExists();
       }
     });
   }
