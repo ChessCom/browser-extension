@@ -19,7 +19,7 @@ export default class Reset extends Component {
       <div onClick={this.handleClick}>
       { this.props.icon ?
         <Icon name={this.props.icon} size="24" />
-        : null }
+      : null }
       { this.props.type === 'all' ?
         <span>Reset All</span>
       : null }
