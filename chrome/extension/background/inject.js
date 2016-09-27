@@ -55,19 +55,18 @@ function injectDisplay(tabId, display) {
 }
 
 function updateBadge() {
-  chrome.runtime.onMessage.addListener(
-    (request) => {
-      if (request.badge || request.badge === 0) {
-        const total = request.badge.toString();
-        // Use orange background for now
-        chrome.browserAction.setBadgeBackgroundColor({ color: [228, 144, 45, 50] });
-        if (total >= 1) {
-          chrome.browserAction.setBadgeText({ text: total });
-        } else {
-          chrome.browserAction.setBadgeText({ text: '' });
-        }
+  chrome.runtime.onMessage.addListener((request) => {
+    if (request.badge || request.badge === 0) {
+      const total = request.badge.toString();
+      // Use orange background for now
+      chrome.browserAction.setBadgeBackgroundColor({ color: [228, 144, 45, 50] });
+      if (total >= 1) {
+        chrome.browserAction.setBadgeText({ text: total });
+      } else {
+        chrome.browserAction.setBadgeText({ text: '' });
       }
-    });
+    }
+  });
 }
 
 const arrowURLs = ['^https://www.chess\\.com'];
