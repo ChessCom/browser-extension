@@ -64,10 +64,31 @@ function reloadPage() {
   );
 }
 
+function getNotifications() {
+  const el = document.querySelectorAll('span[data-notifications]');
+  const nodes = [...el].splice(0, 3);
+  let total = 0;
+  nodes.map(target => {
+    const value = parseInt(target.dataset.notifications, 10);
+    total += value;
+    return value;
+  });
+  if (!total) {
+    total = 0;
+  }
+  chrome.runtime.sendMessage({
+    badge: total
+  });
+}
+
 window.addEventListener('load', () => {
   updateStyles();
   updateDisplay();
   reloadPage();
+
+  // Set a delay whilst we wait for on site to compute
+  // the totals for the DOM elements
+  setInterval(getNotifications, 1000);
 });
 
 window.addEventListener('message', (event) => {
