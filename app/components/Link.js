@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import style from './Link.css';
 
 export default class Link extends Component {
 
@@ -23,7 +24,7 @@ export default class Link extends Component {
 
   render() {
     return (
-      <div onClick={this.goTo}>
+      <div className={style.link} onClick={this.goTo}>
         { this.props.children }
       </div>
     );
