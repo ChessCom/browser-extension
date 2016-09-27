@@ -58,8 +58,8 @@ function updateBadge() {
   chrome.runtime.onMessage.addListener((request) => {
     if (request.badge || request.badge === 0) {
       const total = request.badge.toString();
-      // Use orange background for now
-      chrome.browserAction.setBadgeBackgroundColor({ color: [228, 144, 45, 50] });
+      // Use red background for now
+      chrome.browserAction.setBadgeBackgroundColor({ color: [179, 52, 48, 50] });
       if (total >= 1) {
         chrome.browserAction.setBadgeText({ text: total });
       } else {
