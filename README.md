@@ -14,9 +14,19 @@ Do chess your way! Even though Chess.com is working hard to provide the best onl
 
 ### Developing
 
-First clone the repo and then `npm install`. Then to run `npm run dev`.  
-Load the extension via [Chrome Apps & Extensions Developer Tool](https://chrome.google.com/webstore/detail/chrome-apps-extensions-de/ohmmkhmmmpcnpikjeljgnaoabkaalbgc?hl=en).  
-Remember to `npm run lint` before commiting your code!
+Once you've cloned the repo, install the NPM modules:
+
+```
+npm install
+``` 
+
+Then run the developer build:
+
+```
+npm run dev
+```
+
+Load the extension via [Chrome Apps & Extensions Developer Tool](https://chrome.google.com/webstore/detail/chrome-apps-extensions-de/ohmmkhmmmpcnpikjeljgnaoabkaalbgc?hl=en). Be sure to select the `dev` folder from the "Load unpacked..." step. 
 
 ### Contribute
 If you would like to contribute code, please submit a pull request. Meaningful contributors will get a free Diamond membership. 
@@ -26,6 +36,12 @@ If you would just like to submit an idea, please go here: [http://goo.gl/forms/A
 #### All contributions should: 
 - Respect the community (nothing negative or trolling)
 - Respect the service (don’t burden servers, hack around premium access, link to other sites)
+- Pass our ES6 lint standards, which you can check with this command:
+
+```
+npm run lint
+``` 
+
 
 ### Issues
 Check out our current outstanding issues [here](https://github.com/ChessCom/browser-extension/issues)
