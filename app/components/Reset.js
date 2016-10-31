@@ -20,12 +20,12 @@ export default class Reset extends Component {
   render() {
     return (
       <div onClick={this.handleClick}>
-      { this.props.icon ?
-        <Icon name={this.props.icon} size="24" />
-      : null }
-      { this.props.type === 'all' ?
-        <span>Reset All</span>
-      : null }
+        { this.props.icon ?
+          <Icon name={this.props.icon} size="24" />
+          : null }
+        { this.props.type === 'all' ?
+          <span>Reset All</span>
+          : null }
       </div>
     );
   }
