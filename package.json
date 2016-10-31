@@ -1,6 +1,6 @@
 {
   "name": "chess-browser-extension",
-  "version": "0.0.0",
+  "version": "0.0.7",
   "description": "Chess.com Browser Extension",
   "scripts": {
     "dev": "node scripts/dev",

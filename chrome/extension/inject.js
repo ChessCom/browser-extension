@@ -82,7 +82,7 @@ function getNotifications() {
       return total;
     });
     return sendNotification(total, getNotifications);
-  }, 1000);
+  }, 30000);
 }
 
 window.addEventListener('load', () => {
