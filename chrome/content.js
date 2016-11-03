@@ -1,4 +1,4 @@
-if (window.ChessConfig && window.ChessConfig.context) {
-  window.postMessage(window.ChessConfig.context.user, '*');
-  window.ChessConfig.context.chessBrowserExtension = true;
+if (window.ChessCom && window.ChessCom.context) {
+  window.postMessage(window.ChessCom.context.user, '*');
+  window.ChessCom.context.chessBrowserExtension = true;
 }
