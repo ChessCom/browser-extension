@@ -14,7 +14,16 @@ export default class Reset extends Component {
         style: {},
         display: {}
       });
+      this.sendReload();
     }
+  }
+
+  sendReload = () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+      chrome.tabs.sendMessage(tabs[0].id, {
+        update: 'reload'
+      });
+    });
   }
 
   render() {
