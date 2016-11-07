@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Header from '../components/Header';
+import NotificationBar from '../components/NotificationBar';
 import Icon from '../components/Icon';
 import PlayContainer from '../components/PlayContainer';
 import Options from '../components/Options/Options';
@@ -21,6 +22,7 @@ export default class App extends Component {
     return (
       <div className={style.normal}>
         <Header user={this.props.user} />
+        <NotificationBar />
         <PlayContainer user={this.props.user} />
         <Options />
         <div className={style.resetButton}>
