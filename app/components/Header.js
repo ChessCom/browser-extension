@@ -13,7 +13,7 @@ export default class Header extends Component {
     if (!this.props.user.loading) {
       if (this.props.user.loggedIn) {
         userInfo = (
-          <Link slug="home">
+          <Link slug={`member/${this.props.user.username}`}>
             <div className={style.userInfo}>
               <span className={style.username}>{this.props.user.username}</span>
               <img role="presentation" width="25" src={`http:${this.props.user.avatarUrl}`} />
