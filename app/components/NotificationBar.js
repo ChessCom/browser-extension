@@ -5,21 +5,34 @@ import Link from './Link.js';
 
 export default class NotificationBar extends Component {
   
+  static propTypes = {
+    notifications: PropTypes.object.isRequired,
+  };
+
   render() {
-    let notifications= {games:1,messages:10,alerts:100};
+    let games = (<span />);
+    let messages = (<span />);
+    let alerts = (<span />);
+    
+    if (!this.props.notifications.loading) {
+      games = (<span>{this.props.notifications.games}</span>);
+      messages = (<span>{this.props.notifications.messages}</span>);
+      alerts = (<span>{this.props.notifications.alerts}</span>);
+    }
+
     return (
       <div className={style.notificationBar}>
            <Link slug="daily">
              <Icon name="chess-pawn" size="28"/>
-             <span>{/*this.props.*/notifications.games}</span>
+             {games}
            </Link>
            <Link slug="messages">
              <Icon name="mail" size="28"/>
-             <span>{/*this.props.*/notifications.messages}</span>
+             {messages}
            </Link>
            <Link slug="daily">
              <Icon name="chess-board" size="28"/>
-             <span>{/*this.props.*/notifications.alerts}</span>
+             {alerts}
            </Link>
       </div>
     );

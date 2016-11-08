@@ -12,11 +12,22 @@ export default class Root extends Component {
         onV3: null,
         onChessCom: null,
         loggedIn: null
+      },
+      notifications: {
+        loading: true,
+        games:'',
+        messages:'',
+        alerts:''
       }
-    };
-  }
+    }
+  } 
 
   componentDidMount() {
+    chrome.storage.sync.get('notifications', result => {
+      result.notifications.loading = false;
+      this.setState({ notifications: result.notifications });
+    });
+
     const user = this.state.user;
 
     this.calcLoggedIn(user).then((user1) => {
@@ -134,7 +145,7 @@ export default class Root extends Component {
     return this.setState({ user: userToSave });
   }
 
-  render() {
-    return React.createElement(App, { user: this.state.user });
+  render() {    
+    return React.createElement(App, { user: this.state.user, notifications: this.state.notifications });
   }
 }
