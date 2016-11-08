@@ -72,26 +72,28 @@ function sendNotification(total, cb) {
 
 function getNotifications() {
   // Set a delay for getting notifcations
-  setTimeout(() => {    
+  setTimeout(() => {
     const el = document.querySelectorAll('span[data-notifications]');
     const nodes = [...el].splice(0, 3);
     let total = 0;
 
-    let notifications = {
-        games:'',
-        messages:'',
-        alerts:''
+    const notifications = {
+      games: '',
+      messages: '',
+      alerts: ''
     };
-    var notificationKeys = Object.keys( notifications );
+    const notificationKeys = Object.keys(notifications);
 
     nodes.map((target, index) => {
       const value = parseInt(target.dataset.notifications, 10);
       total += value;
-      if(value !== 0) notifications[notificationKeys[index]] = parseInt(target.dataset.notifications, 10);
+      if (value !== 0) {
+        notifications[notificationKeys[index]] = parseInt(target.dataset.notifications, 10);
+      }
       return total;
     });
 
-    chrome.storage.sync.set({'notifications': notifications });
+    chrome.storage.sync.set({ notifications });
     return sendNotification(total, getNotifications);
   }, 60000);
 }

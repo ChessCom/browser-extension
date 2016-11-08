@@ -23,7 +23,7 @@ export default class App extends Component {
     return (
       <div className={style.normal}>
         <Header user={this.props.user} />
-        <NotificationBar notifications={this.props.notifications}/>
+        <NotificationBar notifications={this.props.notifications} />
         <PlayContainer user={this.props.user} />
         <Options />
         <div className={style.resetButton}>
