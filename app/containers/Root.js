@@ -24,7 +24,7 @@ export default class Root extends Component {
 
   componentDidMount() {
     chrome.storage.sync.get('notifications', result => {
-      var data = Object.assing({}, result.notifications);
+      const data = Object.assign({}, result.notifications);
       data.loading = false;
       this.setState({ notifications: data });
     });
@@ -147,7 +147,7 @@ export default class Root extends Component {
   }
 
   render() {
-    return React.createElement(App, { user: this.state.user, 
+    return React.createElement(App, { user: this.state.user,
       notifications: this.state.notifications });
   }
 }
