@@ -15,17 +15,18 @@ export default class Root extends Component {
       },
       notifications: {
         loading: true,
-        games:'',
-        messages:'',
-        alerts:''
+        games: '',
+        messages: '',
+        alerts: ''
       }
-    }
-  } 
+    };
+  }
 
   componentDidMount() {
     chrome.storage.sync.get('notifications', result => {
-      result.notifications.loading = false;
-      this.setState({ notifications: result.notifications });
+      var data = Object.assing({}, result.notifications);
+      data.loading = false;
+      this.setState({ notifications: data });
     });
 
     const user = this.state.user;
@@ -145,7 +146,8 @@ export default class Root extends Component {
     return this.setState({ user: userToSave });
   }
 
-  render() {    
-    return React.createElement(App, { user: this.state.user, notifications: this.state.notifications });
+  render() {
+    return React.createElement(App, { user: this.state.user, 
+      notifications: this.state.notifications });
   }
 }

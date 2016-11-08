@@ -4,7 +4,7 @@ import Icon from './Icon.js';
 import Link from './Link.js';
 
 export default class NotificationBar extends Component {
-  
+
   static propTypes = {
     notifications: PropTypes.object.isRequired,
   };
@@ -13,7 +13,7 @@ export default class NotificationBar extends Component {
     let games = (<span />);
     let messages = (<span />);
     let alerts = (<span />);
-    
+
     if (!this.props.notifications.loading) {
       games = (<span>{this.props.notifications.games}</span>);
       messages = (<span>{this.props.notifications.messages}</span>);
@@ -22,18 +22,18 @@ export default class NotificationBar extends Component {
 
     return (
       <div className={style.notificationBar}>
-           <Link slug="daily">
-             <Icon name="chess-pawn" size="28"/>
-             {games}
-           </Link>
-           <Link slug="messages">
-             <Icon name="mail" size="28"/>
-             {messages}
-           </Link>
-           <Link slug="daily">
-             <Icon name="chess-board" size="28"/>
-             {alerts}
-           </Link>
+        <Link slug="daily">
+          <Icon name="chess-pawn" size="28" />
+          {games}
+        </Link>
+        <Link slug="messages">
+          <Icon name="mail" size="28" />
+          {messages}
+        </Link>
+        <Link slug="daily">
+          <Icon name="chess-board" size="28" />
+          {alerts}
+        </Link>
       </div>
     );
   }
