@@ -10,7 +10,8 @@ import style from './App.css';
 export default class App extends Component {
 
   static propTypes = {
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    notifications: PropTypes.object.isRequired
   };
 
   handleSuggestionsClick = () => {
@@ -22,7 +23,7 @@ export default class App extends Component {
     return (
       <div className={style.normal}>
         <Header user={this.props.user} />
-        <NotificationBar />
+        <NotificationBar notifications={this.props.notifications}/>
         <PlayContainer user={this.props.user} />
         <Options />
         <div className={style.resetButton}>
