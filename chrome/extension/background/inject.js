@@ -1,5 +1,5 @@
 function isInjected(tabId) {
-  return chrome.tabs.executeScriptAsync(tabId, {
+  return chrome.tabs.executeScript(tabId, {
     code: `var injected = window.chessBrowserExtension;
       window.chessBrowserExtension = true;
       injected;`,
@@ -84,8 +84,8 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
 
   if (changeInfo.status !== 'loading' || !tab.url.match(arrowURLs.join('|'))) return;
 
-  const result = await isInjected(tabId);
-  if (chrome.runtime.lastError || result[0]) return;
+  isInjected(tabId);
+  if (chrome.runtime.lastError) return;
 
   // Loads content script to manipulate the dom in real time
   loadScript('inject', tabId);
