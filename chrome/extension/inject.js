@@ -104,6 +104,6 @@ window.addEventListener('message', (event) => {
   }
 
   if (event.data.username) {
-    chrome.storage.sync.set({ user: event.data });
+    chrome.storage.local.set({ user: event.data });
   }
 }, false);

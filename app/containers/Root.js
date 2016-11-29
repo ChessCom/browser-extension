@@ -25,7 +25,7 @@ export default class Root extends Component {
           this.setAvatar(user1).then((user2) => {
             this.resolveUser(user2);
             // Save the avatar to localStorage so we can cache it
-            chrome.storage.sync.set({ user: user2 });
+            chrome.storage.local.set({ user: user2 });
           });
         } else {
           this.resolveUser(user1);
@@ -68,7 +68,7 @@ export default class Root extends Component {
    */
   calcLoggedIn(user) {
     return new Promise(resolve =>
-      chrome.storage.sync.get('user', (result) => {
+      chrome.storage.local.get('user', (result) => {
         if (result.user) {
           // Add payload and loggedIn property to user
           resolve(Object.assign({}, user, result.user, { loggedIn: true }));

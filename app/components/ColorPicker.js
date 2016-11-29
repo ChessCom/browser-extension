@@ -27,7 +27,7 @@ export default class ColorPicker extends Component {
   }
 
   setDefaultState = () => {
-    chrome.storage.sync.set({ style: {} });
+    chrome.storage.local.set({ style: {} });
     this.setState({ color: {
       r: '255',
       g: '255',
@@ -37,7 +37,7 @@ export default class ColorPicker extends Component {
   }
 
   checkIfStorageAlreadyExists = (name) => {
-    chrome.storage.sync.get(result => {
+    chrome.storage.local.get(result => {
       if (!{}.hasOwnProperty.call(result, 'style')) {
         this.setDefaultState();
         return;
@@ -96,15 +96,15 @@ export default class ColorPicker extends Component {
     const state = JSON.parse(JSON.stringify(this.state));
     const name = this.props.name;
 
-    chrome.storage.sync.get('style', result => {
+    chrome.storage.local.get('style', result => {
       const obj = result;
       if (Object.keys(result).length === 0 && obj.constructor === Object) {
-        chrome.storage.sync.set({ style: {} });
+        chrome.storage.local.set({ style: {} });
         obj.style = {};
       }
       obj.style[name] = state;
       delete obj.style[name].displayColorPicker;
-      chrome.storage.sync.set(obj);
+      chrome.storage.local.set(obj);
     });
   }
 
