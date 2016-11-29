@@ -16,10 +16,9 @@ exports.replaceWebpack = () => {
 exports.copyAssets = type => {
   let env = type;
 
-  if(type === 'build'){
+  if (type === 'build') {
     env = 'prod';
-  }
-  else if(type === 'buildFirefox'){
+  } else if (type === 'buildFirefox') {
     env = 'prodFirefox';
   }
 
