@@ -12,6 +12,11 @@
     "48": "img/icon-48.png",
     "128": "img/icon-128.png"
   },
+  "applications": {
+    "gecko": {
+      "id": "chesscom@gmail.com"
+    }
+  },
   "web_accessible_resources": [
     "inject.html",
     "content.js"
