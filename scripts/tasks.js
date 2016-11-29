@@ -14,7 +14,15 @@ exports.replaceWebpack = () => {
 };
 
 exports.copyAssets = type => {
-  const env = type === 'build' ? 'prod' : type;
+  let env = type;
+
+  if(type === 'build'){
+    env = 'prod';
+  }
+  else if(type === 'buildFirefox'){
+    env = 'prodFirefox';
+  }
+
   rm('-rf', type);
   mkdir(type);
   cp(`chrome/manifest.${env}.json`, `${type}/manifest.json`);
