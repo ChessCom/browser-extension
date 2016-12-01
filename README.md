@@ -22,11 +22,21 @@ npm install
 
 Then run the developer build:
 
+#### For Chrome
+
 ```
 npm run dev
 ```
 
 Load the extension via [Chrome Apps & Extensions Developer Tool](https://chrome.google.com/webstore/detail/chrome-apps-extensions-de/ohmmkhmmmpcnpikjeljgnaoabkaalbgc?hl=en). Be sure to select the `dev` folder from the "Load unpacked..." step. 
+
+#### For Firefox
+
+```
+npm run devFirefox
+```
+
+Load the extension [doing these steps](https://github.com/ChessCom/browser-extension/pull/48#issuecomment-264218199). 
 
 ### Contribute
 If you would like to contribute code, please submit a pull request. Meaningful contributors will get a free Diamond membership. 
@@ -52,3 +62,4 @@ Huge thanks to all of these people and all of this software:
 [Rish](https://github.com/rish)  
 [Martyn Chamberlin](https://github.com/martynchamberlin)  
 [Jhen-Jie Hong](https://github.com/jhen0409/react-chrome-extension-boilerplate)
+[Winner Crespo](https://github.com/wistcc)

@@ -5,10 +5,18 @@
   "description": "Customize your Chess.com Experience",
   "browser_action": {
     "default_title": "Chess.com Browser Extension",
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "img/icon-48.png"
+    }
   },
   "icons": {
     "128": "img/icon-128.png"
+  },
+  "applications": {
+    "gecko": {
+      "id": "chesscom@gmail.com"
+    }
   },
   "web_accessible_resources": [
     "inject.html",
@@ -37,5 +45,5 @@
     "storage",
     "https://www.chess.com/*"
   ],
-  "content_security_policy": "default-src 'self'; script-src 'self' https://localhost:3000 'unsafe-eval'; connect-src https://localhost:3000 https://www.chess.com; style-src * 'unsafe-inline' 'self' blob:; img-src 'self' https://images.chesscomfiles.com data:; font-src 'self' data:;"
+  "content_security_policy": "default-src 'self'; script-src 'self' https://localhost:3000 'unsafe-eval'; object-src 'self'; connect-src https://localhost:3000 https://www.chess.com; style-src 'self' blob:; img-src 'self' https://images.chesscomfiles.com data:; font-src 'self' data:;"
 }

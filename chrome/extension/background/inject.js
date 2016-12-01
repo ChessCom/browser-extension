@@ -1,5 +1,5 @@
 function isInjected(tabId) {
-  return chrome.tabs.executeScriptAsync(tabId, {
+  return chrome.tabs.executeScript(tabId, {
     code: `var injected = window.chessBrowserExtension;
       window.chessBrowserExtension = true;
       injected;`,
@@ -16,7 +16,7 @@ function loadScript(name, tabId, cb) {
     cb);
   } else {
     // dev: async fetch bundle
-    fetch(`http://localhost:3000/js/${name}.bundle.js`)
+    fetch(`https://localhost:3000/js/${name}.bundle.js`)
     .then(res => res.text())
     .then(fetchRes => {
       chrome.tabs.executeScript(tabId, { code: fetchRes, runAt: 'document_end' }, cb);
@@ -74,7 +74,7 @@ const arrowURLs = ['^https://www.chess\\.com'];
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   if (changeInfo.status === 'loading' && tab.url.match(arrowURLs.join('|'))) {
     // Get cached styles to inject before the DOM loads on each page load
-    chrome.storage.sync.get(storage => {
+    chrome.storage.local.get(storage => {
       injectCSS(tabId, storage.style);
       injectDisplay(tabId, storage.display);
     });
@@ -84,8 +84,8 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
 
   if (changeInfo.status !== 'loading' || !tab.url.match(arrowURLs.join('|'))) return;
 
-  const result = await isInjected(tabId);
-  if (chrome.runtime.lastError || result[0]) return;
+  isInjected(tabId);
+  if (chrome.runtime.lastError) return;
 
   // Loads content script to manipulate the dom in real time
   loadScript('inject', tabId);

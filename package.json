@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "node scripts/dev",
     "build": "node scripts/build",
+    "devFirefox": "node scripts/devFirefox",
+    "buildFirefox": "node scripts/buildFirefox",
     "compress": "node scripts/compress",
     "compress-keygen": "crx keygen",
     "clean": "rimraf build/ dev/ *.zip *.crx",

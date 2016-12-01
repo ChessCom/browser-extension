@@ -36,21 +36,21 @@ export default class ToggleDisplay extends Component {
   }
 
   save = (name, state) => {
-    chrome.storage.sync.get('display', result => {
+    chrome.storage.local.get('display', result => {
       const obj = result;
       if (Object.keys(result).length === 0 && obj.constructor === Object) {
-        chrome.storage.sync.set({ display: {} });
+        chrome.storage.local.set({ display: {} });
         obj.display = {};
       }
       obj.display[name] = state;
-      chrome.storage.sync.set(obj);
+      chrome.storage.local.set(obj);
     });
   }
 
   checkIfStorageAlreadyExists(name) {
-    chrome.storage.sync.get(result => {
+    chrome.storage.local.get(result => {
       if (!{}.hasOwnProperty.call(result, 'display')) {
-        chrome.storage.sync.set({ display: {} });
+        chrome.storage.local.set({ display: {} });
         return;
       }
 
@@ -83,7 +83,7 @@ export default class ToggleDisplay extends Component {
       let shouldHide = false;
       let obj = {};
 
-      chrome.storage.sync.get('display', result => {
+      chrome.storage.local.get('display', result => {
         this.state.helpers.map(helper => {
           if (helper.type === 'hide') {
             if (!{}.hasOwnProperty.call(result.display, helper.relation)) {

@@ -5,12 +5,20 @@
   "description": "Customize your Chess.com Experience",
   "browser_action": {
     "default_title": "Chess.com Browser Extension",
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "img/icon-48.png"
+    }
   },
   "icons": {
     "16": "img/icon-16.png",
     "48": "img/icon-48.png",
     "128": "img/icon-128.png"
+  },
+  "applications": {
+    "gecko": {
+      "id": "chesscom@gmail.com"
+    }
   },
   "web_accessible_resources": [
     "inject.html",
