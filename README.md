@@ -36,7 +36,7 @@ Load the extension via [Chrome Apps & Extensions Developer Tool](https://chrome.
 npm run devFirefox
 ```
 
-Load the extension [doing this steps](https://github.com/ChessCom/browser-extension/pull/48#issuecomment-264218199). 
+Load the extension [doing these steps](https://github.com/ChessCom/browser-extension/pull/48#issuecomment-264218199). 
 
 ### Contribute
 If you would like to contribute code, please submit a pull request. Meaningful contributors will get a free Diamond membership. 
