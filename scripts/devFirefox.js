@@ -15,5 +15,6 @@ console.log('please allow `https://localhost:3000` connections in Firefox,');
 console.log('and load unpacked extensions with `./devFirefox` folder. (see https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Your_first_WebExtension)\n');
 createWebpackServer(devConfigFirefox, {
   host: 'localhost',
-  port: 3000
+  port: 3000,
+  protocol: 'https'
 });
