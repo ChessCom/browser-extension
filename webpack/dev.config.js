@@ -7,6 +7,13 @@ const port = 3000;
 const customPath = path.join(__dirname, './customPublicPath');
 const hotScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&dynamicPublicPath=true';
 
+const config = {};
+if (process.env.platform === 'firefox') {
+  config.outputDir = '../devFirefox/js';
+} else {
+  config.outputDir = '../dev/js';
+}
+
 const baseDevConfig = () => ({
   devtool: 'eval-source-map',
   entry: {
@@ -24,7 +31,7 @@ const baseDevConfig = () => ({
     path: '/js/__webpack_hmr'
   },
   output: {
-    path: path.join(__dirname, '../dev/js'),
+    path: path.join(__dirname, config.outputDir),
     filename: '[name].bundle.js',
     chunkFilename: '[id].chunk.js'
   },
@@ -74,7 +81,7 @@ delete injectPageConfig.hotMiddleware;
 delete injectPageConfig.module.loaders[0].query;
 injectPageConfig.plugins.shift(); // remove HotModuleReplacementPlugin
 injectPageConfig.output = {
-  path: path.join(__dirname, '../dev/js'),
+  path: path.join(__dirname, config.outputDir),
   filename: 'inject.bundle.js',
 };
 const appConfig = baseDevConfig();

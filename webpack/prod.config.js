@@ -4,6 +4,13 @@ const webpack = require('webpack');
 
 const customPath = path.join(__dirname, './customPublicPath');
 
+const config = {};
+if (process.env.platform === 'firefox') {
+  config.outputDir = '../buildFirefox/js';
+} else {
+  config.outputDir = '../build/js';
+}
+
 module.exports = {
   entry: {
     options: [customPath, path.join(__dirname, '../chrome/extension/options')],
@@ -11,7 +18,7 @@ module.exports = {
     inject: [customPath, path.join(__dirname, '../chrome/extension/inject')]
   },
   output: {
-    path: path.join(__dirname, '../build/js'),
+    path: path.join(__dirname, config.outputDir),
     filename: '[name].bundle.js',
     chunkFilename: '[id].chunk.js'
   },
