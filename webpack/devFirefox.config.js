@@ -1,3 +1,3 @@
 const createDevConfig = require('./dev.config.base');
 
-module.exports = createDevConfig('chrome');
+module.exports = createDevConfig('firefox');
