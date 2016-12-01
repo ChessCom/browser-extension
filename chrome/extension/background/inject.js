@@ -16,7 +16,7 @@ function loadScript(name, tabId, cb) {
     cb);
   } else {
     // dev: async fetch bundle
-    fetch(`http://localhost:3000/js/${name}.bundle.js`)
+    fetch(`https://localhost:3000/js/${name}.bundle.js`)
     .then(res => res.text())
     .then(fetchRes => {
       chrome.tabs.executeScript(tabId, { code: fetchRes, runAt: 'document_end' }, cb);

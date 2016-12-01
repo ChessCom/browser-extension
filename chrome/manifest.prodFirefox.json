@@ -35,5 +35,5 @@
     "page": "background.html"
   },
   "permissions": [ "contextMenus", "tabs", "storage", "https://www.chess.com/*" ],
-  "content_security_policy": "default-src 'self'; script-src 'self'; connect-src https://www.chess.com; style-src * 'unsafe-inline'; img-src 'self' http://images.chesscomfiles.com data:; font-src 'self' data:;"
+  "content_security_policy": "default-src 'self'; script-src 'self'; connect-src https://www.chess.com; style-src * 'unsafe-inline'; img-src 'self' https://images.chesscomfiles.com data:; font-src 'self' data:;"
 }
