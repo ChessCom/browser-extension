@@ -75,8 +75,8 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   if (changeInfo.status === 'loading' && tab.url.match(arrowURLs.join('|'))) {
     // Get cached styles to inject before the DOM loads on each page load
     chrome.storage.local.get(storage => {
-      injectCSS(tabId, storage.style);
-      injectDisplay(tabId, storage.display);
+      injectCSS(tabId, storage.style || {});
+      injectDisplay(tabId, storage.display || {});
     });
 
     updateBadge();
