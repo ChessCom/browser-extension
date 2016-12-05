@@ -229,7 +229,9 @@ export default {
           name: 'activity',
           title: 'Hide Activity',
           selector: [
-            'section[ng-controller=MemberActivityCtrl]'
+            '.user-home #content > div > recent-content > section', //https://www.chess.com/home
+            '.social-share-present #content > div:nth-child(7) > recent-content > section', //https://www.chess.com/member/wistcc
+            '.social-share-present #content > div:nth-child(7)' //https://www.chess.com/member/wistcc?view=trophies
           ]
         },
         {
@@ -237,7 +239,8 @@ export default {
           name: 'new-game',
           title: 'Hide New Game',
           selector: [
-            '.user-home section.new-game-container'
+            '#sidebar > section.new-game-container.with-friends-list.recent-opponents', //https://www.chess.com/daily
+            '.user-home #sidebar > section.new-game-container.recent-opponents' //https://www.chess.com/home
           ]
         },
         {
@@ -245,8 +248,10 @@ export default {
           name: 'friends',
           title: 'Hide Friends',
           selector: [
-            '.user-home #sidebar section:nth-child(3) div:nth-child(1)',
-            '.user-home #sidebar section:nth-child(3) .users-grid'
+            '.social-share-present #sidebar > section:nth-child(2)', //https://www.chess.com/member/wistcc
+            '#sidebar > section.new-game-container.with-friends-list.recent-opponents > div.anim-panel.shown > ul.section-wrapper.users-grid', //https://www.chess.com/daily
+            '.user-home #sidebar > section:nth-child(4)', //https://www.chess.com/home
+            '#sidebar > section:nth-child(2)', //https://www.chess.com/members
           ],
           helpers: [
             {
@@ -261,8 +266,7 @@ export default {
           name: 'clubs',
           title: 'Hide Clubs',
           selector: [
-            '.user-home #sidebar section:nth-child(3) div:nth-child(3)',
-            '.user-home #sidebar section:nth-child(3) .clubs'
+            '.clubs-index #sidebar > section:nth-child(1)' //https://www.chess.com/clubs
           ],
           helpers: [
             {
@@ -277,7 +281,10 @@ export default {
           name: 'stats',
           title: 'Hide Stats',
           selector: [
-            '.user-home ratings-sidebar'
+            '.user-home #user-rating-sidebar', //https://www.chess.com/home
+            '.stats #sidebar > section:nth-child(1)', //https://www.chess.com/stats/daily?type=chess
+            '.social-share-present #user-rating-sidebar', //https://www.chess.com/member/wistcc
+            '#sidebar > section.rating-sidebar' //https://www.chess.com/daily
           ]
         },
         {
@@ -285,7 +292,8 @@ export default {
           name: 'trophies',
           title: 'Hide Trophies',
           selector: [
-            'div[ng-controller=UserTrophyShowcaseCtrl]'
+            '.social-share-present #sidebar-user-trophy-showcase', //https://www.chess.com/member/wistcc
+            '.user-home #sidebar-user-trophy-showcase', //https://www.chess.com/home
           ]
         }
       ]
