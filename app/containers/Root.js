@@ -23,7 +23,7 @@ export default class Root extends Component {
   }
 
   componentDidMount() {
-    chrome.storage.sync.get('notifications', result => {
+    chrome.storage.local.get('notifications', result => {
       const data = Object.assign({}, result.notifications);
       data.loading = false;
       this.setState({ notifications: data });

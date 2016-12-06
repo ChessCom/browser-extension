@@ -93,7 +93,7 @@ function getNotifications() {
       return total;
     });
 
-    chrome.storage.sync.set({ notifications });
+    chrome.storage.local.set({ notifications });
     return sendNotification(total, getNotifications);
   }, 60000);
 }
