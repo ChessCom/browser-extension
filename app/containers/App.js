@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Header from '../components/Header';
+import NotificationBar from '../components/NotificationBar';
 import Icon from '../components/Icon';
 import PlayContainer from '../components/PlayContainer';
 import Options from '../components/Options/Options';
@@ -9,7 +10,8 @@ import style from './App.css';
 export default class App extends Component {
 
   static propTypes = {
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    notifications: PropTypes.object.isRequired
   };
 
   handleSuggestionsClick = () => {
@@ -21,6 +23,7 @@ export default class App extends Component {
     return (
       <div className={style.normal}>
         <Header user={this.props.user} />
+        <NotificationBar notifications={this.props.notifications} />
         <PlayContainer user={this.props.user} />
         <Options />
         <div className={style.resetButton}>

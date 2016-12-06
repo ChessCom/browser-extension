@@ -76,11 +76,24 @@ function getNotifications() {
     const el = document.querySelectorAll('span[data-notifications]');
     const nodes = [...el].splice(0, 3);
     let total = 0;
-    nodes.map(target => {
+
+    const notifications = {
+      games: '',
+      messages: '',
+      alerts: ''
+    };
+    const notificationKeys = Object.keys(notifications);
+
+    nodes.map((target, index) => {
       const value = parseInt(target.dataset.notifications, 10);
       total += value;
+      if (value !== 0) {
+        notifications[notificationKeys[index]] = parseInt(target.dataset.notifications, 10);
+      }
       return total;
     });
+
+    chrome.storage.sync.set({ notifications });
     return sendNotification(total, getNotifications);
   }, 60000);
 }
