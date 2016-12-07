@@ -22,24 +22,28 @@ export default class ColorPicker extends Component {
       color: {},
       displayColorPicker: false
     };
-
-    this.addStorageListener();
   }
 
   setDefaultState = () => {
+    this.setState({
+      color: {
+        r: '255',
+        g: '255',
+        b: '255',
+        a: '1'
+      }
+    });
+  }
+
+  setDefaultStateAndSave = () =>  {
     chrome.storage.local.set({ style: {} });
-    this.setState({ color: {
-      r: '255',
-      g: '255',
-      b: '255',
-      a: '1'
-    } });
+    this.setDefaultState();
   }
 
   checkIfStorageAlreadyExists = (name) => {
     chrome.storage.local.get(result => {
       if (!{}.hasOwnProperty.call(result, 'style')) {
-        this.setDefaultState();
+        this.setDefaultStateAndSave();
         return;
       }
 
@@ -60,7 +64,6 @@ export default class ColorPicker extends Component {
 
         if (Object.keys(newValue).length === 0 && newValue.constructor === Object) {
           this.setDefaultState();
-          this.handleChange(newValue);
         }
       } catch (e) {
         this.checkIfStorageAlreadyExists();
@@ -106,6 +109,10 @@ export default class ColorPicker extends Component {
       delete obj.style[name].displayColorPicker;
       chrome.storage.local.set(obj);
     });
+  }
+
+  componentDidMount() {
+    this.addStorageListener();
   }
 
   render() {
@@ -172,7 +179,7 @@ export default class ColorPicker extends Component {
               />
             </div>
           </div>
-        : null }
+          : null }
       </div>
     );
   }
