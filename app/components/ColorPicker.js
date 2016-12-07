@@ -24,6 +24,10 @@ export default class ColorPicker extends Component {
     };
   }
 
+  componentDidMount() {
+    this.addStorageListener();
+  }
+
   setDefaultState = () => {
     this.setState({
       color: {
@@ -35,7 +39,7 @@ export default class ColorPicker extends Component {
     });
   }
 
-  setDefaultStateAndSave = () =>  {
+  setDefaultStateAndSave = () => {
     chrome.storage.local.set({ style: {} });
     this.setDefaultState();
   }
@@ -109,10 +113,6 @@ export default class ColorPicker extends Component {
       delete obj.style[name].displayColorPicker;
       chrome.storage.local.set(obj);
     });
-  }
-
-  componentDidMount() {
-    this.addStorageListener();
   }
 
   render() {
