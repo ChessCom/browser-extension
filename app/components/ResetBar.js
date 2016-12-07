@@ -4,6 +4,12 @@ import Icon from './Icon.js';
 import Reset from '../components/Reset';
 
 export default class ResetBar extends Component {
+
+  handleSuggestionsClick = () => {
+    const suggestions = 'http://goo.gl/forms/AVaggClVWuIyP87k1';
+    chrome.tabs.create({ url: suggestions });
+  }
+
   render() {
     return (
       <div className={style.resetBar}>

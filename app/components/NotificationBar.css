@@ -6,7 +6,7 @@
     display:inline-block;
 	margin-left: 20%;	
 }
-.notificationBar div span {
+.notificationBar div span span {
     position: absolute;
     right:-20px;
     top:10px;

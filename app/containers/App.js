@@ -13,11 +13,6 @@ export default class App extends Component {
     notifications: PropTypes.object.isRequired
   };
 
-  handleSuggestionsClick = () => {
-    const suggestions = 'http://goo.gl/forms/AVaggClVWuIyP87k1';
-    chrome.tabs.create({ url: suggestions });
-  }
-
   render() {
     return (
       <div className={style.normal}>
