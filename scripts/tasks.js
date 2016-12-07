@@ -16,15 +16,13 @@ exports.replaceWebpack = () => {
 exports.copyAssets = type => {
   let env = type;
 
-  if (type === 'build') {
+  if (type.indexOf('build') >= 0) {
     env = 'prod';
-  } else if (type === 'buildFirefox') {
-    env = 'prodFirefox';
   }
 
   rm('-rf', type);
   mkdir(type);
-  cp(`chrome/manifest.${env}.json`, `${type}/manifest.json`);
+  cp(`chrome/manifest.${type}.json`, `${type}/manifest.json`);
   cp('-R', 'chrome/assets/*', type);
   cp('-R', 'chrome/*.js', type);
   exec(`jade -O "{ env: '${env}' }" -o ${type} chrome/views/`);
