@@ -23,18 +23,20 @@ export default class App extends Component {
     return (
       <div className={style.normal}>
         <Header user={this.props.user} />
-        <NotificationBar notifications={this.props.notifications} />
         <PlayContainer user={this.props.user} />
         <Options />
-        <div className={style.resetButton}>
-          <Reset type="all" icon="undo" />
-        </div>
-        <div className={style.suggestions} onClick={this.handleSuggestionsClick}>
-          <div className={style.suggestionsIcon}>
-            <Icon name="circle-question" size="24" />
+        <div className={style.resetBar}>
+          <div className={style.resetButton}>
+            <Reset type="all" icon="undo" />
           </div>
-          Suggestions
+          <div className={style.suggestions} onClick={this.handleSuggestionsClick}>
+            <div className={style.suggestionsIcon}>
+              <Icon name="circle-question" size="24" />
+            </div>
+            Suggestions
+          </div>
         </div>
+        <NotificationBar notifications={this.props.notifications} />
       </div>
     );
   }
