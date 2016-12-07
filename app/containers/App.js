@@ -14,13 +14,23 @@ export default class App extends Component {
   };
 
   render() {
+    let notificationBar = (<div />);
+
+    if (!this.props.user.loading) {
+      if (this.props.user.loggedIn) {
+        notificationBar = (
+          <NotificationBar notifications={this.props.notifications} />
+        );
+      }
+    }
+
     return (
       <div className={style.normal}>
         <Header user={this.props.user} />
         <PlayContainer user={this.props.user} />
         <Options />
         <ResetBar />
-        <NotificationBar notifications={this.props.notifications} />
+        { notificationBar }
       </div>
     );
   }

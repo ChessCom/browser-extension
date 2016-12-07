@@ -22,7 +22,7 @@ export default class NotificationBar extends Component {
 
     return (
       <div className={style.notificationBar}>
-        <Link slug="home">
+        <Link slug="goto_ready_game">
           <span>
             <Icon name="chess-move" size="28" />
             {games}
