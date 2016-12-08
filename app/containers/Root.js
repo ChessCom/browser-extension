@@ -12,11 +12,23 @@ export default class Root extends Component {
         onV3: null,
         onChessCom: null,
         loggedIn: null
+      },
+      notifications: {
+        loading: true,
+        games: '',
+        messages: '',
+        alerts: ''
       }
     };
   }
 
   componentDidMount() {
+    chrome.storage.local.get('notifications', result => {
+      const data = Object.assign({}, result.notifications);
+      data.loading = false;
+      this.setState({ notifications: data });
+    });
+
     const user = this.state.user;
 
     this.calcLoggedIn(user).then((user1) => {
@@ -135,6 +147,7 @@ export default class Root extends Component {
   }
 
   render() {
-    return React.createElement(App, { user: this.state.user });
+    return React.createElement(App, { user: this.state.user,
+      notifications: this.state.notifications });
   }
 }
