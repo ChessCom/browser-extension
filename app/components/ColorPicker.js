@@ -193,7 +193,7 @@ export default class ColorPicker extends Component {
             className={style.arrow}
             src="img/arrow-down-small.png"
             role="presentation"
-            />
+          />
         </div>
         <div onClick={this.handleReset} className={style.resetButton}>
           <Icon name={'undo'} size="24" />
@@ -206,7 +206,7 @@ export default class ColorPicker extends Component {
                 color={this.state.color}
                 onChange={this.handleChange}
                 onChangeComplete={this.handleChangeComplete}
-                />
+              />
             </div>
           </div>
           : null}
