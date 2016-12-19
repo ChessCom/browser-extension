@@ -15,3 +15,9 @@ label {
   top: 40%;
   right: 10%;
 }
+
+.resetButton {
+  cursor: pointer;
+  float: right;
+  margin-right: 5px;
+}

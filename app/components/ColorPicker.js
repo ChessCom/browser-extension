@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { ChromePicker } from 'react-color';
 import reactCSS from 'reactcss';
 import style from './ColorPicker.css';
+import Icon from './Icon';
 
 export default class ColorPicker extends Component {
 
@@ -113,6 +114,32 @@ export default class ColorPicker extends Component {
       delete obj.style[name].displayColorPicker;
       chrome.storage.local.set(obj);
     });
+  };
+
+  handleReset = () => {
+    const name = this.props.name;
+    const self = this;
+
+    chrome.storage.local.get('style', result => {
+      const obj = result;
+      delete obj.style[name];
+      chrome.storage.local.set(obj);
+
+      self.setState({
+        color: { r: 0, b: 0, g: 0, a: 0 },
+        selector: this.props.selector,
+        property: this.props.property
+      });
+      self.sendReload();
+    });
+  };
+
+  sendReload = () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+      chrome.tabs.sendMessage(tabs[0].id, {
+        update: 'reload'
+      });
+    });
   }
 
   render() {
@@ -166,9 +193,12 @@ export default class ColorPicker extends Component {
             className={style.arrow}
             src="img/arrow-down-small.png"
             role="presentation"
-          />
+            />
         </div>
-        { this.state.displayColorPicker ?
+        <div onClick={this.handleReset} className={style.resetButton}>
+          <Icon name={'undo'} size="24" />
+        </div>
+        {this.state.displayColorPicker ?
           <div style={styles.popover}>
             <div style={styles.cover} onClick={this.handleClose} />
             <div style={styles.picker}>
@@ -176,10 +206,10 @@ export default class ColorPicker extends Component {
                 color={this.state.color}
                 onChange={this.handleChange}
                 onChangeComplete={this.handleChangeComplete}
-              />
+                />
             </div>
           </div>
-          : null }
+          : null}
       </div>
     );
   }
