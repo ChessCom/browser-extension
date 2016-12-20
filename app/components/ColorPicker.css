@@ -22,3 +22,7 @@ label {
   margin-right: 5px;
   padding-top: 3px;
 }
+
+.row:hover .resetButton i {
+  color: #8c8a88 !important;
+}
