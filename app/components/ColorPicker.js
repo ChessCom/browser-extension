@@ -45,6 +45,9 @@ export default class ColorPicker extends Component {
     this.setDefaultState();
   }
 
+  isDefaultColor = color => Object.keys(color).length === 0 ||
+      (color.r === '255' && color.g === '255' && color.b === '255' && color.a === '1');
+
   checkIfStorageAlreadyExists = (name) => {
     chrome.storage.local.get(result => {
       if (!{}.hasOwnProperty.call(result, 'style')) {
@@ -119,17 +122,13 @@ export default class ColorPicker extends Component {
   handleReset = () => {
     const name = this.props.name;
     const self = this;
+    this.setDefaultState();
 
     chrome.storage.local.get('style', result => {
       const obj = result;
       delete obj.style[name];
       chrome.storage.local.set(obj);
 
-      self.setState({
-        color: { r: 0, b: 0, g: 0, a: 0 },
-        selector: this.props.selector,
-        property: this.props.property
-      });
       self.sendReload();
     });
   };
@@ -195,9 +194,11 @@ export default class ColorPicker extends Component {
             role="presentation"
           />
         </div>
-        <div onClick={this.handleReset} className={style.resetButton}>
-          <Icon name={'undo'} size="24" />
-        </div>
+        {!this.isDefaultColor(color) ?
+          <div onClick={this.handleReset} className={style.resetButton}>
+            <Icon name={'undo'} size="24" color="221, 221, 221, 1" />
+          </div>
+          : null}
         {this.state.displayColorPicker ?
           <div style={styles.popover}>
             <div style={styles.cover} onClick={this.handleClose} />
