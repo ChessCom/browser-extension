@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { ChromePicker } from 'react-color';
 import reactCSS from 'reactcss';
 import style from './ColorPicker.css';
+import Icon from './Icon';
 
 export default class ColorPicker extends Component {
 
@@ -43,6 +44,9 @@ export default class ColorPicker extends Component {
     chrome.storage.local.set({ style: {} });
     this.setDefaultState();
   }
+
+  isDefaultColor = color => Object.keys(color).length === 0 ||
+      (color.r === '255' && color.g === '255' && color.b === '255' && color.a === '1');
 
   checkIfStorageAlreadyExists = (name) => {
     chrome.storage.local.get(result => {
@@ -113,6 +117,28 @@ export default class ColorPicker extends Component {
       delete obj.style[name].displayColorPicker;
       chrome.storage.local.set(obj);
     });
+  };
+
+  handleReset = () => {
+    const name = this.props.name;
+    const self = this;
+    this.setDefaultState();
+
+    chrome.storage.local.get('style', result => {
+      const obj = result;
+      delete obj.style[name];
+      chrome.storage.local.set(obj);
+
+      self.sendReload();
+    });
+  };
+
+  sendReload = () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+      chrome.tabs.sendMessage(tabs[0].id, {
+        update: 'reload'
+      });
+    });
   }
 
   render() {
@@ -168,7 +194,12 @@ export default class ColorPicker extends Component {
             role="presentation"
           />
         </div>
-        { this.state.displayColorPicker ?
+        {!this.isDefaultColor(color) ?
+          <div onClick={this.handleReset} className={style.resetButton}>
+            <Icon name={'undo'} size="24" color="221, 221, 221, 1" />
+          </div>
+          : null}
+        {this.state.displayColorPicker ?
           <div style={styles.popover}>
             <div style={styles.cover} onClick={this.handleClose} />
             <div style={styles.picker}>
@@ -179,7 +210,7 @@ export default class ColorPicker extends Component {
               />
             </div>
           </div>
-          : null }
+          : null}
       </div>
     );
   }
