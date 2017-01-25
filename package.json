@@ -72,7 +72,6 @@
     "bluebird": "^3.3.4",
     "classnames": "^2.2.5",
     "lodash": "^4.15.0",
-    "npm-shrinkwrap": "^6.0.2",
     "react": "^15.0.2",
     "react-color": "^2.2.0",
     "react-dock": "^0.2.3",
