@@ -17,7 +17,7 @@ Do chess your way! Even though Chess.com is working hard to provide the best onl
 Once you've cloned the repo, install the NPM modules:
 
 ```
-npm install
+yarn install
 ``` 
 
 Then run the developer build:
@@ -25,7 +25,7 @@ Then run the developer build:
 #### For Chrome
 
 ```
-npm run dev
+yarn run dev
 ```
 
 Load the extension via [Chrome Apps & Extensions Developer Tool](https://chrome.google.com/webstore/detail/chrome-apps-extensions-de/ohmmkhmmmpcnpikjeljgnaoabkaalbgc?hl=en). Be sure to select the `dev` folder from the "Load unpacked..." step. 
@@ -33,7 +33,7 @@ Load the extension via [Chrome Apps & Extensions Developer Tool](https://chrome.
 #### For Firefox
 
 ```
-npm run devFirefox
+yarn run devFirefox
 ```
 
 Load the extension [doing these steps](https://github.com/ChessCom/browser-extension/pull/48#issuecomment-264218199). 
@@ -49,7 +49,7 @@ If you would just like to submit an idea, please go here: [http://goo.gl/forms/A
 - Pass our ES6 lint standards, which you can check with this command:
 
 ```
-npm run lint
+yarn run lint
 ``` 
 
 
