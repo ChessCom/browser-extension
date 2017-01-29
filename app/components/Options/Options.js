@@ -3,6 +3,7 @@ import Config from './Config';
 import Icon from '../Icon';
 import ColorPicker from '../ColorPicker';
 import ToggleDisplay from '../ToggleDisplay';
+import FontFamily from '../FontFamily';
 import style from './Options.css';
 
 export default class Options extends Component {
@@ -76,6 +77,12 @@ export default class Options extends Component {
                         title={option.title}
                         selector={option.selector.join(',')}
                         helpers={option.helpers}
+                      />
+                      : null }
+                      { option.type === 'FontFamily' ?
+                      <FontFamily
+                        name={option.name}
+                        title={option.title}
                       />
                       : null }
                   </li>

@@ -13,14 +13,14 @@ function loadScript(name, tabId, cb) {
       file: `/js/${name}.bundle.js`,
       runAt: 'document_start'
     },
-    cb);
+      cb);
   } else {
     // dev: async fetch bundle
     fetch(`https://localhost:3000/js/${name}.bundle.js`)
-    .then(res => res.text())
-    .then(fetchRes => {
-      chrome.tabs.executeScript(tabId, { code: fetchRes, runAt: 'document_end' }, cb);
-    });
+      .then(res => res.text())
+      .then(fetchRes => {
+        chrome.tabs.executeScript(tabId, { code: fetchRes, runAt: 'document_end' }, cb);
+      });
   }
 }
 
@@ -54,6 +54,19 @@ function injectDisplay(tabId, display) {
   });
 }
 
+function injectFontFamily(tabId, fontFamily) {
+  Object.keys(fontFamily).map(key => {
+    const name = fontFamily[key];
+    if (name.isSelected) {
+      const code = `document.body.style.fontFamily =  "${ name.title }"; `;
+      return chrome.tabs.executeScript(tabId, {
+        code: code,
+        runAt: 'document_end'
+      });
+    }
+  });
+}
+
 function updateBadge() {
   chrome.runtime.onMessage.addListener((request) => {
     if (request.badge || request.badge === 0) {
@@ -77,6 +90,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     chrome.storage.local.get(storage => {
       injectCSS(tabId, storage.style || {});
       injectDisplay(tabId, storage.display || {});
+      injectFontFamily(tabId, storage.fontFamily || {});
     });
 
     updateBadge();

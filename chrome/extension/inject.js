@@ -52,6 +52,27 @@ function updateDisplay() {
   );
 }
 
+function updateFontFamily() {
+  chrome.runtime.onMessage.addListener(
+    (request, sender) => {
+      if (!sender.tab) {
+        if (request.update === 'fontFamily') {
+          try {
+            if (!request.isSelected) {
+              document.body.style.fontFamily = '';
+            }
+            else {
+              document.body.style.fontFamily = request.title;
+            }
+          } catch (e) {
+            throw e;
+          }
+        }
+      }
+    }
+  );
+}
+
 function reloadPage() {
   chrome.runtime.onMessage.addListener(
     (request, sender) => {
@@ -101,6 +122,7 @@ function getNotifications() {
 window.addEventListener('load', () => {
   updateStyles();
   updateDisplay();
+  updateFontFamily();
   reloadPage();
 
   /**
