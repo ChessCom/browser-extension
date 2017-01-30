@@ -10,6 +10,7 @@ export default class FontFamily extends Component {
     super(props, context);
     this.state = { options: [] };
     this.state.options = this.props.options.map(option => {
+      // eslint-disable-next-line no-param-reassign
       option.isSelected = false;
       return option;
     });
@@ -30,6 +31,7 @@ export default class FontFamily extends Component {
 
   handleClick = (id, isSelected) => {
     this.state.options.forEach(option => {
+      // eslint-disable-next-line no-param-reassign
       option.isSelected = false;
     });
     this.state.options[id].isSelected = isSelected;

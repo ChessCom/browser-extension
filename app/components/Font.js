@@ -31,7 +31,8 @@ export default class Font extends Component {
         <div
           id={inputId}
           className={toggle}
-          onClick={this.handleClick} >
+          onClick={this.handleClick}
+        >
           <div className={style.button} />
         </div>
       </div>
