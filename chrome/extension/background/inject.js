@@ -85,7 +85,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     chrome.storage.local.get(storage => {
       injectCSS(tabId, storage.style || {});
       injectDisplay(tabId, storage.display || {});
-      injectFontFamily(tabId, storage.fontFamily || "");
+      injectFontFamily(tabId, storage.fontFamily || '');
     });
 
     updateBadge();

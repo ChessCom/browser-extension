@@ -58,7 +58,7 @@ function updateFontFamily() {
       if (!sender.tab) {
         if (request.update === 'fontFamily') {
           try {
-              document.body.style.fontFamily = request.font === 'None' ? '' : request.font;
+            document.body.style.fontFamily = request.font === 'None' ? '' : request.font;
           } catch (e) {
             throw e;
           }
