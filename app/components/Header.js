@@ -16,7 +16,7 @@ export default class Header extends Component {
           <Link slug={`member/${this.props.user.username}`}>
             <div className={style.userInfo}>
               <span className={style.username}>{this.props.user.username}</span>
-              <img role="presentation" width="25" src={`https:${this.props.user.avatarUrl}`} />
+              <img role="presentation" width="25" src={`${this.props.user.avatarUrl}`} />
             </div>
           </Link>
         );
