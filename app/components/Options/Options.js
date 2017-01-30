@@ -26,7 +26,7 @@ export default class Options extends Component {
     chrome.storage.onChanged.addListener(changes => {
       try {
         const newValue = changes.fontFamily.newValue;
-        
+
         if (Object.keys(newValue).length === 0) {
           this.setState({
             fontFamily: changes.fontFamily.newValue,
@@ -34,6 +34,7 @@ export default class Options extends Component {
           });
         }
       } catch (e) {
+        // empty
       }
     });
   }
