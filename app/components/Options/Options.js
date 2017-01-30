@@ -9,7 +9,7 @@ export default class Options extends Component {
 
   constructor() {
     super();
-    this.state = {fontFamily: '', visible: {}};
+    this.state = { fontFamily: '', visible: {} };
 
     Config.groups.map(group => {
       this.state.visible[group.id] = false;
@@ -17,7 +17,7 @@ export default class Options extends Component {
     });
 
     chrome.storage.local.get(result => {
-      this.setState({fontFamily: result.fontFamily,
+      this.setState({ fontFamily: result.fontFamily,
         visible: this.state.visible
       });
     });
@@ -25,24 +25,22 @@ export default class Options extends Component {
 
   handleToggle = (e) => {
     const id = e.target.id;
-    this.setState({fontFamily: this.state.fontFamily,
+    this.setState({ fontFamily: this.state.fontFamily,
       visible: {
         [id]: !this.state.visible[id]
       }
     });
   }
 
-  createFontOptions = (fonts) => {
-    return fonts.map(function(font, i) {
-      return <option key={i} value={font}>{font}</option>;
-    });
-  }
+  createFontOptions = (fonts) =>
+    fonts.map((font, i) =>
+      <option key={i} value={font}>{font}</option>)
 
   handleOnChange = (e) => {
     const font = e.target.value;
     chrome.storage.local.set({ fontFamily: font });
     this.sendMessageToDOM(font);
-    this.setState({fontFamily: font,
+    this.setState({ fontFamily: font,
       visible: this.state.visible
     });
   }
@@ -99,11 +97,12 @@ export default class Options extends Component {
                         : null}
                     {option.type === 'FontFamily' ?
                         (<div>
-                          <label htmlFor='fontSelect'>{option.type}</label> 
-                          <select 
-                            id='fontSelect'
+                          <label htmlFor="fontSelect">{option.type}</label>
+                          <select
+                            id="fontSelect"
                             value={this.state.fontFamily}
-                            onChange={this.handleOnChange}>
+                            onChange={this.handleOnChange}
+                          >
                             {this.createFontOptions(option.optionFonts)}
                           </select>
                         </div>)
