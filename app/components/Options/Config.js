@@ -178,8 +178,8 @@ export default {
             },
             {
               title: 'System Default',
-              value: '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,' +
-              'sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+              value: '-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,' +
+              'sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol'
             },
             {
               title: 'Helvetica',
