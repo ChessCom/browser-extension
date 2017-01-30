@@ -39,56 +39,53 @@ export default class Options extends Component {
               id={group.id}
               className={style.sectionHeading}
               onClick={this.handleToggle}
-            >
+              >
               <div className={style.sectionHeadingIcon}>
                 <Icon
                   name={group.icon}
                   size="28"
                   color="43,43,43,1"
-                />
+                  />
               </div>
               {group.title}
               <div
                 className={style.toggleIcon}
-              >
+                >
                 <Icon
                   name="caret-right"
                   size="14"
                   color="140,138,136,1"
                   className={this.state[group.id].visible ? style.active : style.inactive}
-                />
+                  />
               </div>
             </div>
-            { this.state[group.id].visible ?
+            {this.state[group.id].visible ?
               <ul>
                 {group.options.map((option) =>
                   <li key={option.name}>
-                    { option.type === 'ColorPicker' ?
+                    {option.type === 'ColorPicker' ?
                       <ColorPicker
                         name={option.name}
                         title={option.title}
                         property={option.property}
                         selector={option.selector.join(',')}
-                      />
-                      : null }
-                    { option.type === 'ToggleDisplay' ?
+                        />
+                      : null}
+                    {option.type === 'ToggleDisplay' ?
                       <ToggleDisplay
                         name={option.name}
                         title={option.title}
                         selector={option.selector.join(',')}
                         helpers={option.helpers}
-                      />
-                      : null }
-                      { option.type === 'FontFamily' ?
-                      <FontFamily
-                        name={option.name}
-                        title={option.title}
-                      />
-                      : null }
+                        />
+                      : null}
                   </li>
                 )}
+                {group.id === 'fontFamily' ?
+                  <li><FontFamily options={group.options} /></li>
+                  : null}
               </ul>
-              : null }
+              : null}
           </li>
         )}
       </ul>
