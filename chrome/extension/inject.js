@@ -58,7 +58,8 @@ function updateFontFamily() {
       if (!sender.tab) {
         if (request.update === 'fontFamily') {
           try {
-            document.body.style.fontFamily = request.font;
+            document.body.style.fontFamily = `${request.font} !important`;
+            location.reload();
           } catch (e) {
             throw e;
           }

@@ -55,10 +55,10 @@ function injectDisplay(tabId, display) {
 }
 
 function injectFontFamily(tabId, fontFamily) {
-  const code = `document.body.style.fontFamily =  "${fontFamily}";`;
-  chrome.tabs.executeScript(tabId, {
+  const code = `body { font-family: ${fontFamily} !important }`;
+  chrome.tabs.insertCSS(tabId, {
     code,
-    runAt: 'document_end'
+    runAt: 'document_start'
   });
 }
 
