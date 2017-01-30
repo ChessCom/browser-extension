@@ -169,23 +169,24 @@ export default {
           type: 'FontFamily',
           optionFonts: [
             {
-              title: 'Default', 
+              title: 'Default',
               value: ''
             },
             {
-              title: 'Trebuchet (V2)', 
+              title: 'Trebuchet (V2)',
               value: 'Trebuchet MS'
             },
             {
-              title: 'System Default', 
-              value: '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+              title: 'System Default',
+              value: '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,' +
+              'sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
             },
             {
-              title: 'Helvetica', 
+              title: 'Helvetica',
               value: 'Helvetica'
             },
             {
-              title: 'Arial', 
+              title: 'Arial',
               value: 'Arial'
             }
           ]
