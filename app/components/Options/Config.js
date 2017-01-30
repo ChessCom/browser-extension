@@ -304,22 +304,18 @@ export default {
       icon: 'printer',
       options: [
         {
-          type: 'FontFamily',
           name: 'openSans',
           title: 'Open Sans'
         },
         {
-          type: 'FontFamily',
           name: 'mSTrebuchet',
           title: 'MS Trebuchet'
         },
         {
-          type: 'FontFamily',
           name: 'helvetica',
           title: 'Helvetica'
         },
         {
-          type: 'FontFamily',
           name: 'arial',
           title: 'Arial'
         },

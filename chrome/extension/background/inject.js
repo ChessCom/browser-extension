@@ -58,12 +58,13 @@ function injectFontFamily(tabId, fontFamily) {
   Object.keys(fontFamily).map(key => {
     const name = fontFamily[key];
     if (name.isSelected) {
-      const code = `document.body.style.fontFamily =  "${ name.title }"; `;
+      const code = `document.body.style.fontFamily =  "${name.title}"; `;
       return chrome.tabs.executeScript(tabId, {
-        code: code,
+        code,
         runAt: 'document_end'
       });
     }
+    return {};
   });
 }
 

@@ -60,8 +60,7 @@ function updateFontFamily() {
           try {
             if (!request.isSelected) {
               document.body.style.fontFamily = '';
-            }
-            else {
+            } else {
               document.body.style.fontFamily = request.title;
             }
           } catch (e) {

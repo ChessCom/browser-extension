@@ -38,25 +38,23 @@ export default class Options extends Component {
             <div
               id={group.id}
               className={style.sectionHeading}
-              onClick={this.handleToggle}
-              >
+              onClick={this.handleToggle} 
+            >
               <div className={style.sectionHeadingIcon}>
                 <Icon
                   name={group.icon}
                   size="28"
-                  color="43,43,43,1"
-                  />
+                  color="43,43,43,1" 
+                />
               </div>
               {group.title}
-              <div
-                className={style.toggleIcon}
-                >
+              <div className={style.toggleIcon}>
                 <Icon
                   name="caret-right"
                   size="14"
                   color="140,138,136,1"
-                  className={this.state[group.id].visible ? style.active : style.inactive}
-                  />
+                  className={this.state[group.id].visible ? style.active : style.inactive} 
+                />
               </div>
             </div>
             {this.state[group.id].visible ?
@@ -68,17 +66,17 @@ export default class Options extends Component {
                         name={option.name}
                         title={option.title}
                         property={option.property}
-                        selector={option.selector.join(',')}
-                        />
-                      : null}
+                        selector={option.selector.join(',')} 
+                      />
+                        : null}
                     {option.type === 'ToggleDisplay' ?
                       <ToggleDisplay
                         name={option.name}
                         title={option.title}
                         selector={option.selector.join(',')}
                         helpers={option.helpers}
-                        />
-                      : null}
+                      />
+                        : null}
                   </li>
                 )}
                 {group.id === 'fontFamily' ?

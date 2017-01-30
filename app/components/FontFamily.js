@@ -14,7 +14,7 @@ export default class FontFamily extends Component {
       return option;
     });
 
-    this.checkIfStorageAlreadyExists()
+    this.checkIfStorageAlreadyExists();
   }
 
   checkIfStorageAlreadyExists() {
@@ -39,7 +39,7 @@ export default class FontFamily extends Component {
     this.sendMessageToDOM(this.state.options[id]);
   }
 
-  save = (name, state) => {
+  save = () => {
     chrome.storage.local.set({ fontFamily: this.state.options });
   }
 
@@ -62,7 +62,7 @@ export default class FontFamily extends Component {
         key={id}
         id={id}
         handleClick={this.handleClick}
-        />);
+      />);
     return (<div>{fonts}</div>);
   }
 }
