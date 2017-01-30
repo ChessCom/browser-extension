@@ -58,11 +58,7 @@ function updateFontFamily() {
       if (!sender.tab) {
         if (request.update === 'fontFamily') {
           try {
-            if (!request.isSelected) {
-              document.body.style.fontFamily = '';
-            } else {
-              document.body.style.fontFamily = request.title;
-            }
+              document.body.style.fontFamily = request.font === 'None' ? '' : request.font;
           } catch (e) {
             throw e;
           }

@@ -55,16 +55,10 @@ function injectDisplay(tabId, display) {
 }
 
 function injectFontFamily(tabId, fontFamily) {
-  Object.keys(fontFamily).map(key => {
-    const name = fontFamily[key];
-    if (name.isSelected) {
-      const code = `document.body.style.fontFamily =  "${name.title}"; `;
-      return chrome.tabs.executeScript(tabId, {
-        code,
-        runAt: 'document_end'
-      });
-    }
-    return {};
+  const code = `document.body.style.fontFamily =  "${fontFamily === 'None' ? '' : fontFamily}"; `;
+  chrome.tabs.executeScript(tabId, {
+    code,
+    runAt: 'document_end'
   });
 }
 
@@ -91,7 +85,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     chrome.storage.local.get(storage => {
       injectCSS(tabId, storage.style || {});
       injectDisplay(tabId, storage.display || {});
-      injectFontFamily(tabId, storage.fontFamily || {});
+      injectFontFamily(tabId, storage.fontFamily || "");
     });
 
     updateBadge();

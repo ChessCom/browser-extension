@@ -165,6 +165,16 @@ export default {
             '#content .section-wrapper [class^=\'icon-\']'
           ]
         },
+        {
+          type: 'FontFamily',
+          optionFonts: [
+            'None',
+            'Open Sans',
+            'MS Trebuchet',
+            'Helvetica',
+            'Arial'
+          ]
+        }
       ]
     },
     {
