@@ -13,7 +13,7 @@ export default class Reset extends Component {
       chrome.storage.local.set({
         style: {},
         display: {},
-        fontFamily: {}
+        fontFamily: ''
       });
       this.sendReload();
     }

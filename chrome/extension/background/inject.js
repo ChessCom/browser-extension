@@ -55,7 +55,7 @@ function injectDisplay(tabId, display) {
 }
 
 function injectFontFamily(tabId, fontFamily) {
-  const code = `document.body.style.fontFamily =  "${fontFamily === 'None' ? '' : fontFamily}"; `;
+  const code = `document.body.style.fontFamily =  "${fontFamily}"; `;
   chrome.tabs.executeScript(tabId, {
     code,
     runAt: 'document_end'

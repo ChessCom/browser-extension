@@ -34,7 +34,7 @@ export default class Options extends Component {
 
   createFontOptions = (fonts) =>
     fonts.map((font, i) =>
-      <option key={i} value={font}>{font}</option>)
+      <option key={i} value={font.value}>{font.title}</option>)
 
   handleOnChange = (e) => {
     const font = e.target.value;
