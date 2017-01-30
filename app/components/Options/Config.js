@@ -307,29 +307,6 @@ export default {
           ]
         }
       ]
-    },
-    {
-      id: 'fontFamily',
-      title: 'Font Family',
-      icon: 'printer',
-      options: [
-        {
-          name: 'openSans',
-          title: 'Open Sans'
-        },
-        {
-          name: 'mSTrebuchet',
-          title: 'MS Trebuchet'
-        },
-        {
-          name: 'helvetica',
-          title: 'Helvetica'
-        },
-        {
-          name: 'arial',
-          title: 'Arial'
-        },
-      ]
     }
   ]
 };
