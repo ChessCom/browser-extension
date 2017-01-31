@@ -9,21 +9,64 @@ export default class Options extends Component {
 
   constructor() {
     super();
-    this.state = {};
+    this.state = { fontFamily: '', visible: {} };
+
     Config.groups.map(group => {
-      this.state[group.id] = {
-        visible: false
-      };
+      this.state.visible[group.id] = false;
       return group;
+    });
+
+    chrome.storage.local.get(result => {
+      this.setState({ fontFamily: result.fontFamily,
+        visible: this.state.visible
+      });
+    });
+
+    // Reset dropdown list when reset button is hit
+    chrome.storage.onChanged.addListener(changes => {
+      try {
+        const newValue = changes.fontFamily.newValue;
+
+        if (Object.keys(newValue).length === 0) {
+          this.setState({
+            fontFamily: changes.fontFamily.newValue,
+            visible: this.state.visible
+          });
+        }
+      } catch (e) {
+        // empty
+      }
     });
   }
 
   handleToggle = (e) => {
     const id = e.target.id;
-    this.setState({
-      [id]: {
-        visible: !this.state[id].visible
+    this.setState({ fontFamily: this.state.fontFamily,
+      visible: {
+        [id]: !this.state.visible[id]
       }
+    });
+  }
+
+  createFontOptions = (fonts) =>
+    fonts.map((font, i) =>
+      <option key={i} value={font.value}>{font.title}</option>)
+
+  handleOnChange = (e) => {
+    const font = e.target.value;
+    chrome.storage.local.set({ fontFamily: font });
+    this.sendMessageToDOM(font);
+    this.setState({ fontFamily: font,
+      visible: this.state.visible
+    });
+  }
+
+  sendMessageToDOM = (font) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+      chrome.tabs.sendMessage(tabs[0].id, {
+        update: 'fontFamily',
+        font
+      });
     });
   }
 
@@ -47,41 +90,51 @@ export default class Options extends Component {
                 />
               </div>
               {group.title}
-              <div
-                className={style.toggleIcon}
-              >
+              <div className={style.toggleIcon}>
                 <Icon
                   name="caret-right"
                   size="14"
                   color="140,138,136,1"
-                  className={this.state[group.id].visible ? style.active : style.inactive}
+                  className={this.state.visible[group.id] ? style.active : style.inactive}
                 />
               </div>
             </div>
-            { this.state[group.id].visible ?
+            {this.state.visible[group.id] ?
               <ul>
-                {group.options.map((option) =>
-                  <li key={option.name}>
-                    { option.type === 'ColorPicker' ?
+                {group.options.map((option, i) =>
+                  <li key={`${option.name}-${i}`}>
+                    {option.type === 'ColorPicker' ?
                       <ColorPicker
                         name={option.name}
                         title={option.title}
                         property={option.property}
                         selector={option.selector.join(',')}
                       />
-                      : null }
-                    { option.type === 'ToggleDisplay' ?
+                        : null}
+                    {option.type === 'FontFamily' ?
+                        (<div>
+                          <label htmlFor="fontSelect">{option.type}</label>
+                          <select
+                            id="fontSelect"
+                            value={this.state.fontFamily}
+                            onChange={this.handleOnChange}
+                          >
+                            {this.createFontOptions(option.optionFonts)}
+                          </select>
+                        </div>)
+                        : null}
+                    {option.type === 'ToggleDisplay' ?
                       <ToggleDisplay
                         name={option.name}
                         title={option.title}
                         selector={option.selector.join(',')}
                         helpers={option.helpers}
                       />
-                      : null }
+                        : null}
                   </li>
                 )}
               </ul>
-              : null }
+              : null}
           </li>
         )}
       </ul>

@@ -52,6 +52,23 @@ function updateDisplay() {
   );
 }
 
+function updateFontFamily() {
+  chrome.runtime.onMessage.addListener(
+    (request, sender) => {
+      if (!sender.tab) {
+        if (request.update === 'fontFamily') {
+          try {
+            document.body.style.fontFamily = `${request.font} !important`;
+            location.reload();
+          } catch (e) {
+            throw e;
+          }
+        }
+      }
+    }
+  );
+}
+
 function reloadPage() {
   chrome.runtime.onMessage.addListener(
     (request, sender) => {
@@ -101,6 +118,7 @@ function getNotifications() {
 window.addEventListener('load', () => {
   updateStyles();
   updateDisplay();
+  updateFontFamily();
   reloadPage();
 
   /**

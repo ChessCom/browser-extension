@@ -165,6 +165,32 @@ export default {
             '#content .section-wrapper [class^=\'icon-\']'
           ]
         },
+        {
+          type: 'FontFamily',
+          optionFonts: [
+            {
+              title: 'Default',
+              value: ''
+            },
+            {
+              title: 'Trebuchet (V2)',
+              value: 'Trebuchet MS'
+            },
+            {
+              title: 'System Default',
+              value: 'system,-apple-system,BlinkMacSystemFont,Segoe UI,' +
+              'Helvetica Neue,Helvetica,Lucida Grande'
+            },
+            {
+              title: 'Helvetica',
+              value: 'Helvetica'
+            },
+            {
+              title: 'Arial',
+              value: 'Arial'
+            }
+          ]
+        }
       ]
     },
     {

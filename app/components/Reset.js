@@ -12,7 +12,8 @@ export default class Reset extends Component {
     if (this.props.type === 'all') {
       chrome.storage.local.set({
         style: {},
-        display: {}
+        display: {},
+        fontFamily: ''
       });
       this.sendReload();
     }
