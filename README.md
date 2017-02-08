@@ -6,7 +6,7 @@ Do chess your way! Even though Chess.com is working hard to provide the best onl
 
 ## Download the extension for...
 - [Chrome](https://chrome.google.com/webstore/detail/chess-browser-extension/fcfojodfingmafbdmlekaaoogcfpjegg)
-- Firefox: (TBA)
+- [Firefox](https://addons.mozilla.org/en-US/firefox/addon/chess-com-browser-extension)
 - Safari: (TBA)
 - Opera: (TBA)
 
