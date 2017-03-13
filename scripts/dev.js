@@ -10,8 +10,9 @@ tasks.copyAssets('dev');
 
 console.log('[Webpack Dev]');
 console.log('-'.repeat(80));
-console.log('If you\'re developing Inject page,');
+console.log('In order to allow access to inject.js');
 console.log('please allow `https://localhost:3000` connections in Google Chrome,');
+console.log('which can be done by enabling #allow-insecure-localhost at chrome://flags');
 console.log('and load unpacked extensions with `./dev` folder. (see https://developer.chrome.com/extensions/getstarted#unpacked)\n');
 createWebpackServer(devConfig, {
   host: 'localhost',
