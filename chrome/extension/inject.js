@@ -13,8 +13,7 @@ function updateStyles() {
             rgba = `rgba(${color.r},${color.g},${color.b},${color.a})`;
           }
 
-          el.forEach(target => {
-            const element = target;
+          el.forEach(element => {
             if (request.color) {
               element.style[property] = rgba;
             } else {
@@ -35,8 +34,7 @@ function updateDisplay() {
         if (request.update === 'display') {
           const el = document.querySelectorAll(request.selector);
           try {
-            el.forEach(target => {
-              const element = target;
+            el.forEach(element => {
               if (!request.display) {
                 element.style.display = 'none';
               } else {
