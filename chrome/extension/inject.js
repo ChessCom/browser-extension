@@ -4,9 +4,8 @@ function updateStyles() {
     (request, sender) => {
       if (!sender.tab) {
         if (request.update === 'style') {
-          const property = request.property;
-          const el = document.querySelectorAll(request.selector);
-          const color = request.color;
+          const { property, selector, color } = request;
+          const el = document.querySelectorAll(selector);
           let rgba;
 
           if (color) {
@@ -14,7 +13,7 @@ function updateStyles() {
           }
 
           el.forEach(element => {
-            if (request.color) {
+            if (color) {
               element.style[property] = rgba;
             } else {
               element.removeAttribute('style');
