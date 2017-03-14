@@ -39,7 +39,6 @@ export default class ToggleDisplay extends Component {
     chrome.storage.local.get('display', result => {
       const obj = result;
       if (Object.keys(result).length === 0 && obj.constructor === Object) {
-        chrome.storage.local.set({ display: {} });
         obj.display = {};
       }
       obj.display[name] = state;
