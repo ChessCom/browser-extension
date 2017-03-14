@@ -1,7 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import style from './Link.css';
+import BaseComponent from '../BaseComponent';
 
-export default class Link extends Component {
+export default class Link extends BaseComponent {
 
   static propTypes = {
     slug: PropTypes.string.isRequired,

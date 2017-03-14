@@ -1,10 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import style from '../components/Button.css';
+import BaseComponent from '../BaseComponent';
 
 const cx = classNames.bind(style);
 
-export default class Button extends Component {
+export default class Button extends BaseComponent {
 
   static propTypes = {
     onClick: PropTypes.func.isRequired,

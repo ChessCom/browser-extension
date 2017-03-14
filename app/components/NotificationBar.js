@@ -1,9 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import style from './NotificationBar.css';
 import Icon from './Icon.js';
 import Link from './Link.js';
+import BaseComponent from '../BaseComponent';
 
-export default class NotificationBar extends Component {
+export default class NotificationBar extends BaseComponent {
 
   static propTypes = {
     notifications: PropTypes.object.isRequired,

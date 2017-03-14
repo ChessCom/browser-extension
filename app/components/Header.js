@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import style from './Header.css';
 import Link from './Link';
+import BaseComponent from '../BaseComponent';
 
-export default class Header extends Component {
+export default class Header extends BaseComponent {
 
   static propTypes = {
     user: PropTypes.object.isRequired,

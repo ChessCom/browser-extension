@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Config from './Config';
 import Icon from '../Icon';
 import ColorPicker from '../ColorPicker';
 import ToggleDisplay from '../ToggleDisplay';
 import style from './Options.css';
+import BaseComponent from '../../BaseComponent.js';
 
-export default class Options extends Component {
+export default class Options extends BaseComponent {
 
   constructor() {
     super();

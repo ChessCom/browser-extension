@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import style from './ResetBar.css';
 import Icon from './Icon.js';
 import Reset from '../components/Reset';
+import BaseComponent from '../BaseComponent';
 
-export default class ResetBar extends Component {
+export default class ResetBar extends BaseComponent {
 
   handleSuggestionsClick = () => {
     const suggestions = 'http://goo.gl/forms/AVaggClVWuIyP87k1';

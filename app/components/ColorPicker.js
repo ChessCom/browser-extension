@@ -1,11 +1,12 @@
 /* eslint quote-props: 0 */
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { ChromePicker } from 'react-color';
 import reactCSS from 'reactcss';
 import style from './ColorPicker.css';
 import Icon from './Icon';
+import BaseComponent from '../BaseComponent';
 
-export default class ColorPicker extends Component {
+export default class ColorPicker extends BaseComponent {
 
   static propTypes = {
     name: PropTypes.string.isRequired,

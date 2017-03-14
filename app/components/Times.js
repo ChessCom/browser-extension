@@ -1,13 +1,14 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import Button from './Button';
 import Icon from '../components/Icon';
 import buttonStyle from '../components/Button.css';
 import style from '../components/Play.css';
+import BaseComponent from '../BaseComponent';
 
 const cx = classNames.bind(style);
 
-export default class Times extends Component {
+export default class Times extends BaseComponent {
 
   static propTypes = {
     liveTimes: PropTypes.array.isRequired,
