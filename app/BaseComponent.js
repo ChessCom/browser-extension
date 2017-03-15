@@ -12,7 +12,7 @@ function shallowComp(A, B) {
     // If they are not the function could have unintended behaviour
     return false;
   }
-  
+
   // Check that keys are the same
   const keysA = Object.keys(A);
   const keysB = Object.keys(B);
@@ -20,7 +20,7 @@ function shallowComp(A, B) {
     return false;
   }
   return keysA.every(key => {
-    if (!B.hasOwnProperty(key)) {
+    if (!Object.hasOwnProperty.call(B, key)) {
       return false;
     }
     return A[key] === B[key];
@@ -35,8 +35,8 @@ export default class BaseComponent extends React.Component {
     }
   }
 
-  shouldComponentUpdate = (nextProps, nextState) => {
-    return (!shallowComp(this.props, nextProps) ||
-            !shallowComp(this.state, nextState));
-  }
+  shouldComponentUpdate = (nextProps, nextState) => (
+    !shallowComp(this.props, nextProps) ||
+    !shallowComp(this.state, nextState)
+  );
 }
