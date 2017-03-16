@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import lodash from 'lodash';
 import Play from './Play';
+import BaseComponent from '../BaseComponent';
 
-export default class PlayContainer extends Component {
+export default class PlayContainer extends BaseComponent {
 
   static propTypes = {
     user: PropTypes.object.isRequired

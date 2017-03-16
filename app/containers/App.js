@@ -1,12 +1,13 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import Header from '../components/Header';
 import NotificationBar from '../components/NotificationBar';
 import ResetBar from '../components/ResetBar';
 import PlayContainer from '../components/PlayContainer';
 import Options from '../components/Options/Options';
 import style from './App.css';
+import BaseComponent from '../BaseComponent';
 
-export default class App extends Component {
+export default class App extends BaseComponent {
 
   static propTypes = {
     user: PropTypes.object.isRequired,

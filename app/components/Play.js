@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import Variants from './Variants';
 import Times from './Times';
 import Button from './Button';
@@ -6,8 +6,9 @@ import Link from './Link';
 import Icon from '../components/Icon';
 import style from '../components/Play.css';
 import buttonStyle from '../components/Button.css';
+import BaseComponent from '../BaseComponent';
 
-export default class Play extends Component {
+export default class Play extends BaseComponent {
 
   static propTypes = {
     api: PropTypes.object.isRequired

@@ -1,7 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import Icon from './Icon';
+import BaseComponent from '../BaseComponent';
 
-export default class Reset extends Component {
+export default class Reset extends BaseComponent {
 
   static propTypes = {
     type: PropTypes.string.isRequired,

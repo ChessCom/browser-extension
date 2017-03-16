@@ -1,11 +1,12 @@
 /* eslint quote-props: 0 */
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import icon from './Icon.css';
+import BaseComponent from '../BaseComponent';
 
 const cx = classNames.bind(icon);
 
-export default class Icon extends Component {
+export default class Icon extends BaseComponent {
 
   static propTypes = {
     name: PropTypes.string.isRequired,

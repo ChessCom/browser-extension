@@ -1,10 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import style from './Toggle.css';
+import BaseComponent from '../BaseComponent';
 
 const cx = classNames.bind(style);
 
-export default class ToggleDisplay extends Component {
+export default class ToggleDisplay extends BaseComponent {
 
   static propTypes = {
     name: PropTypes.string.isRequired,

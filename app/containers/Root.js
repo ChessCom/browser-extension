@@ -1,8 +1,9 @@
 import xhr from 'xhr';
-import React, { Component } from 'react';
+import React from 'react';
 import App from './App';
+import BaseComponent from '../BaseComponent';
 
-export default class Root extends Component {
+export default class Root extends BaseComponent {
 
   constructor() {
     super();
