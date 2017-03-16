@@ -4,18 +4,16 @@ function updateStyles() {
     (request, sender) => {
       if (!sender.tab) {
         if (request.update === 'style') {
-          const property = request.property;
-          const el = document.querySelectorAll(request.selector);
-          const color = request.color;
+          const { property, selector, color } = request;
+          const el = document.querySelectorAll(selector);
           let rgba;
 
           if (color) {
             rgba = `rgba(${color.r},${color.g},${color.b},${color.a})`;
           }
 
-          el.forEach(target => {
-            const element = target;
-            if (request.color) {
+          el.forEach(element => {
+            if (color) {
               element.style[property] = rgba;
             } else {
               element.removeAttribute('style');
@@ -35,8 +33,7 @@ function updateDisplay() {
         if (request.update === 'display') {
           const el = document.querySelectorAll(request.selector);
           try {
-            el.forEach(target => {
-              const element = target;
+            el.forEach(element => {
               if (!request.display) {
                 element.style.display = 'none';
               } else {

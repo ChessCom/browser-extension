@@ -39,7 +39,6 @@ export default class ToggleDisplay extends Component {
     chrome.storage.local.get('display', result => {
       const obj = result;
       if (Object.keys(result).length === 0 && obj.constructor === Object) {
-        chrome.storage.local.set({ display: {} });
         obj.display = {};
       }
       obj.display[name] = state;
@@ -80,28 +79,17 @@ export default class ToggleDisplay extends Component {
 
   runHelpers = () => {
     if (this.state.helpers) {
-      let shouldHide = false;
-      let obj = {};
-
       chrome.storage.local.get('display', result => {
-        this.state.helpers.map(helper => {
+        this.state.helpers.forEach(helper => {
           if (helper.type === 'hide') {
             if (!{}.hasOwnProperty.call(result.display, helper.relation)) {
-              return helper;
+              return;
             }
             const relation = result.display[helper.relation].visible;
-            shouldHide = this.state.visible + relation;
-            obj = helper;
-            obj.display = true;
+            helper.display = (this.state.visible + relation) !== 0;
+            this.sendHelperToDOM(helper);
           }
-          return helper;
         });
-        if (shouldHide === 0) {
-          obj.display = false;
-        } else {
-          obj.display = true;
-        }
-        this.sendHelperToDOM(obj);
       });
     }
   }
