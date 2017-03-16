@@ -88,13 +88,12 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     });
 
     updateBadge();
+
+    isInjected(tabId);
+    if (chrome.runtime.lastError) return;
+
+    // Loads content script to manipulate the dom in real time
+    loadScript('inject', tabId);
   }
 
-  if (changeInfo.status !== 'loading' || !tab.url.match(arrowURLs.join('|'))) return;
-
-  isInjected(tabId);
-  if (chrome.runtime.lastError) return;
-
-  // Loads content script to manipulate the dom in real time
-  loadScript('inject', tabId);
 });
