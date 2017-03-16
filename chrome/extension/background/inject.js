@@ -1,8 +1,7 @@
 function isInjected(tabId) {
   return chrome.tabs.executeScript(tabId, {
     code: `var injected = window.chessBrowserExtension;
-      window.chessBrowserExtension = true;
-      injected;`,
+      window.chessBrowserExtension = true;`,
     runAt: 'document_start'
   });
 }
@@ -29,13 +28,13 @@ function jsNameToCssName(name) {
 }
 
 function injectCSS(tabId, style) {
-  Object.keys(style).map(key => {
+  Object.keys(style).forEach(key => {
     const prop = style[key];
     const color = prop.color;
     const property = jsNameToCssName(prop.property);
     const rgba = `rgba(${color.r},${color.g},${color.b},${color.a})`;
     const css = `${prop.selector} { ${property}: ${rgba} }`;
-    return chrome.tabs.insertCSS(tabId, {
+    chrome.tabs.insertCSS(tabId, {
       code: css,
       runAt: 'document_start'
     });
@@ -43,11 +42,11 @@ function injectCSS(tabId, style) {
 }
 
 function injectDisplay(tabId, display) {
-  Object.keys(display).map(key => {
+  Object.keys(display).forEach(key => {
     const name = display[key];
     const visible = name.visible ? 'block' : 'none';
     const css = `${name.selector} { display: ${visible} }`;
-    return chrome.tabs.insertCSS(tabId, {
+    chrome.tabs.insertCSS(tabId, {
       code: css,
       runAt: 'document_start'
     });

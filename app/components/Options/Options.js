@@ -12,9 +12,8 @@ export default class Options extends BaseComponent {
     super();
     this.state = { fontFamily: '', visible: {} };
 
-    Config.groups.map(group => {
+    Config.groups.forEach(group => {
       this.state.visible[group.id] = false;
-      return group;
     });
 
     chrome.storage.local.get(result => {
