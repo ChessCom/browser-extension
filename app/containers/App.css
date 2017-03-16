@@ -6,8 +6,8 @@
   /* Max height of extension is 600px, if we don't add our
    * our own max-height, a second scrollbar will appear when
    * the extension tries to exceed 600px. Notification bar is 45px
-   * so 600-45 = 555.
+   * and Header is 55 so 600-45-55 = 500.
    */
-  max-height: 555px;
+  max-height: 500px;
   overflow-y: scroll;
 }
