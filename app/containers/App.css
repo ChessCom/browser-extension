@@ -1,9 +1,13 @@
 .normal {
   background: #1d1c1a;
-  overflow-y: scroll;
+}
+
+.app-bulk {
   /* Max height of extension is 600px, if we don't add our
    * our own max-height, a second scrollbar will appear when
-   * the extension tries to exceed 600px.
+   * the extension tries to exceed 600px. Notification bar is 45px
+   * so 600-45 = 555.
    */
-  max-height: 600px;
+  max-height: 555px;
+  overflow-y: scroll;
 }
