@@ -17,8 +17,8 @@ export default class Link extends BaseComponent {
   // We need to a routing function to handle actions
   // that send the user to various url targets on site
   goTo() {
-    chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-      chrome.tabs.update(tabs[0].id, { url: `https://www.chess.com/${this.props.slug}` });
+    chrome.tabs.query({ currentWindow: true, active: true }, () => {
+      chrome.tabs.create({ url: `https://www.chess.com/${this.props.slug}` });
       window.close();
     });
   }
