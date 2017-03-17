@@ -17,7 +17,7 @@ const createDevConfig = (platform) => {
   const baseDevConfig = () => ({
     devtool: 'eval-source-map',
     entry: {
-      options: [customPath, hotScript, path.join(__dirname, '../chrome/extension/options')],
+      popup: [customPath, hotScript, path.join(__dirname, '../chrome/extension/popup')],
       background: [customPath, hotScript, path.join(__dirname, '../chrome/extension/background')],
     },
     devMiddleware: {

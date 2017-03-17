@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from '../../app/containers/Root';
-import './options.css';
+import './popup.css';
 
 ReactDOM.render(
   <Root />,
