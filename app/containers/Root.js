@@ -138,13 +138,12 @@ export default class Root extends BaseComponent {
    * @return promise
    */
   resolveUser(user) {
-    const userToSave = Object.assign({}, user);
     const userInfoComplete = user.avatarUrl;
     if (userInfoComplete || user.onChessCom === false ||
       (user.onV3 !== null && user.onChessCom !== null && user.loggedIn !== null)) {
-      userToSave.loading = false;
+      const userToSave = Object.assign({}, user, {loading: false});
+      this.setState({user: userToSave});
     }
-    return this.setState({ user: userToSave });
   }
 
   render() {
