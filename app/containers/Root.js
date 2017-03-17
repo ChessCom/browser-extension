@@ -141,8 +141,8 @@ export default class Root extends BaseComponent {
     const userInfoComplete = user.avatarUrl;
     if (userInfoComplete || user.onChessCom === false ||
       (user.onV3 !== null && user.onChessCom !== null && user.loggedIn !== null)) {
-      const userToSave = Object.assign({}, user, {loading: false});
-      this.setState({user: userToSave});
+      const userToSave = Object.assign({}, user, { loading: false });
+      this.setState({ user: userToSave });
     }
   }
 

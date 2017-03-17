@@ -95,5 +95,4 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     // Loads content script to manipulate the dom in real time
     loadScript('handleLiveChanges', tabId);
   }
-
 });
