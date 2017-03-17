@@ -33,7 +33,13 @@ function injectCSS(tabId, style) {
     const color = prop.color;
     const property = jsNameToCssName(prop.property);
     const rgba = `rgba(${color.r},${color.g},${color.b},${color.a})`;
-    const css = `${prop.selector} { ${property}: ${rgba} }`;
+    let selector = prop.selector;
+    if (selector) {
+      selector = selector.split(',').map(singleSelector => (
+        `body.removable-initial-styles ${singleSelector}`
+      )).join(',');
+    }
+    const css = `${selector} { ${property}: ${rgba} }`;
     chrome.tabs.insertCSS(tabId, {
       code: css,
       runAt: 'document_start'
@@ -43,9 +49,15 @@ function injectCSS(tabId, style) {
 
 function injectDisplay(tabId, display) {
   Object.keys(display).forEach(key => {
-    const name = display[key];
-    const visible = name.visible ? 'block' : 'none';
-    const css = `${name.selector} { display: ${visible} }`;
+    const prop = display[key];
+    const visible = prop.visible ? 'block' : 'none';
+    let selector = prop.selector;
+    if (selector) {
+      selector = selector.split(',').map(singleSelector => (
+        `body.removable-initial-styles ${singleSelector}`
+      )).join(',');
+    }
+    const css = `${selector} { display: ${visible} }`;
     chrome.tabs.insertCSS(tabId, {
       code: css,
       runAt: 'document_start'
@@ -54,11 +66,40 @@ function injectDisplay(tabId, display) {
 }
 
 function injectFontFamily(tabId, fontFamily) {
-  const code = `body { font-family: ${fontFamily} !important }`;
+  const code = `body.removable-initial-styles { font-family: ${fontFamily} !important }`;
   chrome.tabs.insertCSS(tabId, {
     code,
     runAt: 'document_start'
   });
+}
+
+function injectTempStylesClass(tabId) {
+  // We use a mutation observer to be able to modify the DOM
+  // as soon as the body element is created but before anything is
+  // rendered so as to avoid FOUC
+  const code = (`
+    const observer = new MutationObserver(function(mutations) {
+      // Use .some instead of .forEach as .forEach can't be cancelled and
+      // .some cancels as soon as a truthy return value is given
+      mutations.some(function(mutation) {
+        if (mutation.target.nodeName === 'HTML' && mutation.addedNodes &&
+            mutation.addedNodes.length && mutation.addedNodes[0].nodeName === 'BODY') {
+          // The body element was created in the dom
+          const body = mutation.addedNodes[0];
+          body.classList.add('removable-initial-styles');
+          // Stop observer listening
+          observer.disconnect();
+          // Stop the loop by returning true to .some
+          return true;
+        }
+      });
+    });
+
+    const config = {childList: true, subtree: true};
+    observer.observe(document, config);
+  `);
+
+  chrome.tabs.executeScript(tabId, { code, runAt: 'document_start' });
 }
 
 function updateBadge() {
@@ -86,6 +127,8 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
       injectDisplay(tabId, storage.display || {});
       injectFontFamily(tabId, storage.fontFamily || '');
     });
+    // Insert the temp styles class in body so initial css shows
+    injectTempStylesClass(tabId);
 
     updateBadge();
   }
