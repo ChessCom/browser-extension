@@ -72,22 +72,22 @@ const createDevConfig = (platform) => {
     }
   });
 
-  const injectPageConfig = baseDevConfig();
-  injectPageConfig.entry = [
+  const handleLiveChangesConfig = baseDevConfig();
+  handleLiveChangesConfig.entry = [
     customPath,
-    path.join(__dirname, '../chrome/extension/inject')
+    path.join(__dirname, '../chrome/extension/handleLiveChanges')
   ];
-  delete injectPageConfig.hotMiddleware;
-  delete injectPageConfig.module.loaders[0].query;
-  injectPageConfig.plugins.shift(); // remove HotModuleReplacementPlugin
-  injectPageConfig.output = {
+  delete handleLiveChangesConfig.hotMiddleware;
+  delete handleLiveChangesConfig.module.loaders[0].query;
+  handleLiveChangesConfig.plugins.shift(); // remove HotModuleReplacementPlugin
+  handleLiveChangesConfig.output = {
     path: path.join(__dirname, config.outputDir),
-    filename: 'inject.bundle.js',
+    filename: 'handleLiveChanges.bundle.js',
   };
   const appConfig = baseDevConfig();
 
   return [
-    injectPageConfig,
+    handleLiveChangesConfig,
     appConfig
   ];
 };
