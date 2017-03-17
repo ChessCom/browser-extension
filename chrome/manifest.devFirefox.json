@@ -19,7 +19,6 @@
     }
   },
   "web_accessible_resources": [
-    "inject.html",
     "img/*",
     "fonts/*",
     "content.js"

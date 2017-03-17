@@ -21,7 +21,6 @@
     }
   },
   "web_accessible_resources": [
-    "inject.html",
     "content.js"
   ],
   "content_scripts": [
