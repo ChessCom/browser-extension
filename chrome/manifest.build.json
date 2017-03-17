@@ -13,12 +13,12 @@
     "128": "img/icon-128.png"
   },
   "web_accessible_resources": [
-    "content.js"
+    "getCurrentUser.js"
   ],
   "content_scripts": [
     {
       "matches": ["https://www.chess.com/*"],
-      "js": ["inject.js"],
+      "js": ["injectScriptWithWindowAccess.js"],
       "all_frames": true
     }
   ],
