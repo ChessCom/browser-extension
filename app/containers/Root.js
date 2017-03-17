@@ -69,7 +69,7 @@ export default class Root extends BaseComponent {
         { json: true },
         (err, resp) => {
           if (resp.statusCode === 200) {
-            resolve(Object.assign({}, user, { avatarUrl: resp.body.avatarUrl }));
+            return resolve(Object.assign({}, user, { avatarUrl: resp.body.avatarUrl }));
           }
           resolve(user);
         })
