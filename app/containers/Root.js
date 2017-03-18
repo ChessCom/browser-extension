@@ -69,7 +69,7 @@ export default class Root extends BaseComponent {
         { json: true },
         (err, resp) => {
           if (resp.statusCode === 200) {
-            resolve(Object.assign({}, user, { avatarUrl: resp.body.avatarUrl }));
+            return resolve(Object.assign({}, user, { avatarUrl: resp.body.avatarUrl }));
           }
           resolve(user);
         })
@@ -138,13 +138,12 @@ export default class Root extends BaseComponent {
    * @return promise
    */
   resolveUser(user) {
-    const userToSave = Object.assign({}, user);
     const userInfoComplete = user.avatarUrl;
     if (userInfoComplete || user.onChessCom === false ||
       (user.onV3 !== null && user.onChessCom !== null && user.loggedIn !== null)) {
-      userToSave.loading = false;
+      const userToSave = Object.assign({}, user, { loading: false });
+      this.setState({ user: userToSave });
     }
-    return this.setState({ user: userToSave });
   }
 
   render() {

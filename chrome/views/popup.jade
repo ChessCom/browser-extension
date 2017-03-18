@@ -4,10 +4,7 @@ html
   head
     meta(charset='UTF-8')
     title Chess.com Browser Extension
-    //link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,800italic,800,700italic,700,600italic,600,400italic,300italic,300', rel='stylesheet', type='text/css')
-    style.
-      body { width: 300px;}
 
   body
     #root
-    script(src=env == 'prod' ? '/js/options.bundle.js' : 'https://localhost:3000/js/options.bundle.js')
+    script(src=env == 'prod' ? '/js/popup.bundle.js' : 'https://localhost:3000/js/popup.bundle.js')
