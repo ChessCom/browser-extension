@@ -28,6 +28,14 @@ body {
   margin: 0 auto;
 }
 
+/* This is more specific and put after
+ * the body so should override with specifics
+ * for OSX styling
+ */
+body.is-mac-os {
+  width: 300px;
+}
+
 button,
 input[type="checkbox"] {
   outline: none;

@@ -1,5 +1,12 @@
-.normal {
+.app-base {
   background: #1d1c1a;
+}
+
+.not-mac-os {
+  /* If not MacOS we make vertical scroll bar always show
+   * so as to avoid the extension being jumpy when overflow
+   * sets in on expanding an option.
+   */
   overflow-y: scroll;
   /* Max height of extension is 600px, if we don't add our
    * our own max-height, a second scrollbar will appear when
