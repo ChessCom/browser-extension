@@ -128,7 +128,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
       injectFontFamily(tabId, storage.fontFamily || '');
     });
     // Insert the temp styles class in body so initial css shows
-    injectTempStylesClass(tabId);
+//    injectTempStylesClass(tabId);
 
     updateBadge();
   }

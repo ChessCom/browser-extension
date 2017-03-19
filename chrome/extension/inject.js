@@ -66,6 +66,23 @@ function updateFontFamily() {
   );
 }
 
+function reset() {
+  // Resets all styles on all elements given in selector
+  chrome.runtime.onMessage.addListener(
+    (request, sender) => {
+      if (!sender.tab) {
+        if (request.update === 'reset') {
+          const elements = document.querySelectorAll(request.selector);
+          elements.forEach(element => {
+            element.style = '';
+          });
+        }
+      }
+    }
+  );
+}
+
+
 function reloadPage() {
   chrome.runtime.onMessage.addListener(
     (request, sender) => {
@@ -116,6 +133,7 @@ window.addEventListener('load', () => {
   updateStyles();
   updateDisplay();
   updateFontFamily();
+  reset();
   reloadPage();
 
   /**

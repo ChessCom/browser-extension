@@ -5,8 +5,10 @@ import BaseComponent from '../BaseComponent';
 export default class Reset extends BaseComponent {
 
   static propTypes = {
-    type: PropTypes.string.isRequired,
-    icon: PropTypes.string
+    type: PropTypes.oneOf(['all', 'color']).isRequired,
+    iconProps: PropTypes.object.isRequired,
+    selector: PropTypes.string.isRequired,
+    colorName: PropTypes.string,
   };
 
   handleClick = () => {
@@ -16,14 +18,19 @@ export default class Reset extends BaseComponent {
         display: {},
         fontFamily: ''
       });
-      this.sendReload();
     }
-  }
+    else if (this.props.type === 'color') {
+      const name = this.props.colorName;
+      chrome.storage.local.get('style', result => {
+        delete result.style[name];
+        chrome.storage.local.set(result);
+      });
+    }
 
-  sendReload = () => {
     chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
       chrome.tabs.sendMessage(tabs[0].id, {
-        update: 'reload'
+        update: 'reset',
+        selector: this.props.selector,
       });
     });
   }
@@ -31,9 +38,7 @@ export default class Reset extends BaseComponent {
   render() {
     return (
       <div onClick={this.handleClick}>
-        { this.props.icon ?
-          <Icon name={this.props.icon} size="24" />
-          : null }
+        <Icon {...this.props.iconProps} />
         { this.props.type === 'all' ?
           <span>Reset All</span>
           : null }
