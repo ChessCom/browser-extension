@@ -148,12 +148,12 @@ export default class Root extends BaseComponent {
   }
 
   render() {
-      return (
-        <App
-          user={this.state.user}
-          notifications={this.state.notifications}
-          os={this.props.os}
-        />
-      );
+    return (
+      <App
+        user={this.state.user}
+        notifications={this.state.notifications}
+        os={this.props.os}
+      />
+    );
   }
 }
