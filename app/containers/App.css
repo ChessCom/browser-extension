@@ -1,4 +1,4 @@
-.normal {
+.app-base {
   background: #1d1c1a;
 }
 
@@ -9,5 +9,13 @@
    * and Header is 55 so 600-45-55 = 500.
    */
   max-height: 500px;
+  overflow-y: auto;
+}
+
+.not-mac-os .app-bulk {
+  /* If not MacOS we make vertical scroll bar always show
+   * so as to avoid the extension being jumpy when overflow
+   * sets in on expanding an option.
+   */
   overflow-y: scroll;
 }
