@@ -18,8 +18,7 @@ export default class Reset extends BaseComponent {
         display: {},
         fontFamily: ''
       });
-    }
-    else if (this.props.type === 'color') {
+    } else if (this.props.type === 'color') {
       const name = this.props.colorName;
       chrome.storage.local.get('style', result => {
         delete result.style[name];

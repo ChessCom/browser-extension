@@ -16,13 +16,13 @@ export default class ResetBar extends BaseComponent {
     let resetAllSelector = '';
     Config.groups.forEach(group => {
       group.options.forEach(option => {
-        if (!Object.hasOwnProperty.call(option, "selector")) {
+        if (!Object.hasOwnProperty.call(option, 'selector')) {
           return;
         }
         const localSelectorArray = option.selector;
         if (resetAllSelector) {
           // Only do this if it's not the first time
-          resetAllSelector += ','
+          resetAllSelector += ',';
         }
         resetAllSelector += localSelectorArray.join(',');
       });

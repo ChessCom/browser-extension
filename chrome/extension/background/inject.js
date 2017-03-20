@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 function isInjected(tabId) {
   return chrome.tabs.executeScript(tabId, {
     code: `var injected = window.chessBrowserExtension;
@@ -138,53 +136,12 @@ function onLoading(tabId) {
   loadScript('inject', tabId);
 }
 
-function onLoadComplete(tabId) {
-  // We make all the injected styles inline for easier
-  // manipulation and then remove the removable-initial-styles class from body
-  chrome.storage.local.get(storage => {
-    const { style, display, fontFamily } = storage;
-    // Browsers should batch all these DOM updates as they are all consecutive
-    // First insert inline-styles
-    if (style) {
-      _.forEach(style, updateObject => {
-        { color, selector } = updateObject;
-        const property = jsNameToCssName(updateObject.property);
-        const rgba = `rgba(${color.r},${color.g},${color.b},${color.a})`;
-        const elementsArray = document.querySelectorAll(selector);
-        elementsArray.forEach(element => {
-          element.style[property] = rgba;
-        });
-      });
-    }
-    // Then we insert inline-display
-    if (display) {
-      _.forEach(display, updateObject => {
-        const visible = updateObject.visible ? 'block' : 'none';
-        const elementsArray = document.querySelectorAll(updateObject.selector);
-        elementsArray.forEach(element => {
-          element.style.display = visible;
-        });
-      });
-    }
-    // Finally insert inline-fontFamily
-    if (fontFamily) {
-      document.body.style.fontFamily = `${fontFamily} !important`;
-    }
-
-    // When all inline-styles are applied we can remove the class from the body
-    document.body.classList.remove('removable-initial-styles');
-}
-
-
 const arrowURLs = ['^https://www.chess\\.com'];
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   if (tab.url.match(arrowURLs.join('|'))) {
-    if (changeInfo.status === "loading") {
+    if (changeInfo.status === 'loading') {
       onLoading(tabId);
-    }
-    else if (changeInfo.status === "complete") {
-      onLoadComplete(tabId);
     }
   }
 });
