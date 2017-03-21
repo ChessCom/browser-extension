@@ -23,7 +23,7 @@ export default class ToggleDisplay extends BaseComponent {
       visible: true,
       helpers: this.props.helpers
     };
-    this.addStorageListener();
+    this.checkIfStorageAlreadyExists();
   }
 
   componentDidUpdate = () => {
@@ -47,33 +47,15 @@ export default class ToggleDisplay extends BaseComponent {
     });
   }
 
-  checkIfStorageAlreadyExists(name) {
+  checkIfStorageAlreadyExists() {
+    const name = this.props.name;
     chrome.storage.local.get(result => {
       if (!{}.hasOwnProperty.call(result, 'display')) {
-        chrome.storage.local.set({ display: {} });
-        return;
+        return chrome.storage.local.set({ display: {} });
       }
 
       if ({}.hasOwnProperty.call(result.display, name)) {
         this.setState({ visible: result.display[name].visible });
-      }
-    });
-  }
-
-  addStorageListener = () => {
-    this.checkIfStorageAlreadyExists(this.props.name);
-
-    // Reset toggle display when reset button is hit
-    chrome.storage.onChanged.addListener(changes => {
-      try {
-        const newValue = changes.display.newValue;
-
-        if (Object.keys(newValue).length === 0 && newValue.constructor === Object) {
-          this.setState({ visible: true });
-          this.sendReload();
-        }
-      } catch (e) {
-        this.checkIfStorageAlreadyExists();
       }
     });
   }
@@ -134,14 +116,6 @@ export default class ToggleDisplay extends BaseComponent {
     if (typeof obj.visible !== 'undefined') {
       this.save(obj.name, obj);
     }
-  }
-
-  sendReload = () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-      chrome.tabs.sendMessage(tabs[0].id, {
-        update: 'reload'
-      });
-    });
   }
 
   render() {
