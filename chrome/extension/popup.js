@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from '../../app/containers/Root';
-import styles from './options.css';
+import styles from './popup.css';
 
 // Get platformInfo before rendering Root
 chrome.runtime.getPlatformInfo(platformInfo => {
