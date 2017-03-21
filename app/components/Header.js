@@ -21,14 +21,6 @@ export default class Header extends BaseComponent {
             </div>
           </Link>
         );
-      } else if (this.props.user.onChessCom && !this.props.user.onV3) {
-        userInfo = (
-          <Link slug="switch">
-            <button className={style.btn}>
-              New Chess.com
-            </button>
-          </Link>
-        );
       } else {
         userInfo = (
           <Link slug="login">
