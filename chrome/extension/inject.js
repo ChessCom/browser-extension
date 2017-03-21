@@ -11,20 +11,15 @@ function updateStyles() {
       if (!sender.tab) {
         if (request.update === 'style') {
           const { property, selector, color } = request;
-          const el = document.querySelectorAll(selector);
-          let rgba;
+          const elementsArray = document.querySelectorAll(selector);
 
+          let rgba = '';
           if (color) {
             rgba = `rgba(${color.r},${color.g},${color.b},${color.a})`;
           }
 
-          el.forEach(element => {
-            if (color) {
-              element.style[property] = rgba;
-            } else {
-              element.removeAttribute('style');
-              location.reload();
-            }
+          elementsArray.forEach(element => {
+            element.style[property] = rgba;
           });
         }
       }
@@ -37,9 +32,9 @@ function updateDisplay() {
     (request, sender) => {
       if (!sender.tab) {
         if (request.update === 'display') {
-          const el = document.querySelectorAll(request.selector);
+          const elementsArray = document.querySelectorAll(request.selector);
           try {
-            el.forEach(element => {
+            elementsArray.forEach(element => {
               if (!request.display) {
                 element.style.display = 'none';
               } else {
@@ -62,7 +57,6 @@ function updateFontFamily() {
         if (request.update === 'fontFamily') {
           try {
             document.body.style.fontFamily = `${request.font} !important`;
-            location.reload();
           } catch (e) {
             throw e;
           }
@@ -78,23 +72,10 @@ function reset() {
     (request, sender) => {
       if (!sender.tab) {
         if (request.update === 'reset') {
-          const elements = document.querySelectorAll(request.selector);
-          elements.forEach(element => {
+          const elementsArray = document.querySelectorAll(request.selector);
+          elementsArray.forEach(element => {
             element.style = '';
           });
-        }
-      }
-    }
-  );
-}
-
-
-function reloadPage() {
-  chrome.runtime.onMessage.addListener(
-    (request, sender) => {
-      if (!sender.tab) {
-        if (request.update === 'reload') {
-          location.reload();
         }
       }
     }
@@ -110,8 +91,8 @@ function sendNotification(total, cb) {
 function getNotifications() {
   // Set a delay for getting notifcations
   setTimeout(() => {
-    const el = document.querySelectorAll('span[data-notifications]');
-    const nodes = [...el].splice(0, 3);
+    const elementsArray = document.querySelectorAll('span[data-notifications]');
+    const nodes = [...elementsArray].splice(0, 3);
     let total = 0;
 
     const notifications = {
@@ -178,7 +159,6 @@ window.addEventListener('load', () => {
   updateDisplay();
   updateFontFamily();
   reset();
-  reloadPage();
   onLoadComplete();
 
   /**
