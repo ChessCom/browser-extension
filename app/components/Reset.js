@@ -8,9 +8,8 @@ export default class Reset extends BaseComponent {
     type: PropTypes.oneOf(['all', 'color']).isRequired,
     iconProps: PropTypes.object.isRequired,
     selector: PropTypes.string.isRequired,
-    // This is the name of the property to change the color of
-    // if using the color prop
     colorName: PropTypes.string,
+    colorProperty: PropTypes.string,
     className: PropTypes.string,
   };
 
@@ -21,20 +20,26 @@ export default class Reset extends BaseComponent {
         display: {},
         fontFamily: ''
       });
+      chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+        chrome.tabs.sendMessage(tabs[0].id, {
+          update: 'reset',
+          selector: this.props.selector,
+        });
+      });
     } else if (this.props.type === 'color') {
       const name = this.props.colorName;
       chrome.storage.local.get('style', result => {
         delete result.style[name];
         chrome.storage.local.set(result);
       });
-    }
-
-    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-      chrome.tabs.sendMessage(tabs[0].id, {
-        update: 'reset',
-        selector: this.props.selector,
+      chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+        chrome.tabs.sendMessage(tabs[0].id, {
+          update: 'style',
+          selector: this.props.selector,
+          property: this.props.colorProperty,
+        });
       });
-    });
+    }
   }
 
   render() {

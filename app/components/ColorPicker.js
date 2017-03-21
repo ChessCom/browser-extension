@@ -183,6 +183,7 @@ export default class ColorPicker extends BaseComponent {
             }}
             selector={this.props.selector}
             colorName={this.props.name}
+            colorProperty={this.props.property}
             className={style.resetButton}
           />
           : null}
