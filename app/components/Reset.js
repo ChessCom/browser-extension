@@ -9,22 +9,22 @@ export default class Reset extends BaseComponent {
     className: PropTypes.string,
     iconProps: PropTypes.object.isRequired,
     selector: PropTypes.string.isRequired,
-    colorName: (props, propName, componentName) {
+    colorName: (props, propName, componentName) => {
       // This is the name given in the Config file and used to
       // store the styles of this kind of node in the local storage
       if (props.type === 'color' &&
           ((typeof props.colorName) !== 'string' ||
-          props.colorName)) {
+          !props.colorName)) {
         return new Error(`Invalid prop '${propName}' supplied to \
 '${componentName}'. Validation failed`);
       }
     },
-    colorProperty: (props, propName, componentName) {
+    colorProperty: (props, propName, componentName) => {
       // This is the name of the property in the inline-styling
       // that should be reset
       if (props.type === 'color' &&
           ((typeof props.colorProperty) !== 'string' ||
-          props.colorName)) {
+          !props.colorName)) {
         return new Error(`Invalid prop '${propName}' supplied to \
 '${componentName}'. Validation failed`);
       }
