@@ -11,6 +11,7 @@ export default class Reset extends BaseComponent {
     // This is the name of the property to change the color of
     // if using the color prop
     colorName: PropTypes.string,
+    className: PropTypes.string,
   };
 
   handleClick = () => {
@@ -38,7 +39,7 @@ export default class Reset extends BaseComponent {
 
   render() {
     return (
-      <div onClick={this.handleClick}>
+      <div onClick={this.handleClick} className={this.props.className}>
         <Icon {...this.props.iconProps} />
         { this.props.type === 'all' ?
           <span>Reset All</span>
