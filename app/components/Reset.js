@@ -8,6 +8,8 @@ export default class Reset extends BaseComponent {
     type: PropTypes.oneOf(['all', 'color']).isRequired,
     iconProps: PropTypes.object.isRequired,
     selector: PropTypes.string.isRequired,
+    // This is the name of the property to change the color of
+    // if using the color prop
     colorName: PropTypes.string,
   };
 
