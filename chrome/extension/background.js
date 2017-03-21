@@ -1,11 +1,3 @@
-function isInjected(tabId) {
-  return chrome.tabs.executeScript(tabId, {
-    code: `var injected = window.chessBrowserExtension;
-      window.chessBrowserExtension = true;`,
-    runAt: 'document_start'
-  });
-}
-
 function loadScript(name, tabId, cb) {
   if (process.env.NODE_ENV === 'production') {
     chrome.tabs.executeScript(tabId, {
@@ -89,7 +81,6 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
 
     updateBadge();
 
-    isInjected(tabId);
     if (chrome.runtime.lastError) return;
 
     // Loads content script to manipulate the dom in real time
