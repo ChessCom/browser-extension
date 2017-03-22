@@ -1,0 +1,3 @@
+{
+  "content_security_policy": "default-src 'self'; script-src 'self'; connect-src https://www.chess.com; style-src * 'unsafe-inline'; img-src 'self' https://images.chesscomfiles.com data:; font-src 'self' data:;"
+}

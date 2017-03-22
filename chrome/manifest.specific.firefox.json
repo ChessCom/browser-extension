@@ -1,0 +1,12 @@
+{
+  "browser_action": {
+    "default_icon": {
+      "48": "img/icon-48.png"
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "chesscom@gmail.com"
+    }
+  }
+}

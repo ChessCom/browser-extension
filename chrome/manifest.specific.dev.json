@@ -1,0 +1,7 @@
+{
+  "web_accessible_resources": [
+    "img/*",
+    "fonts/*"
+  ],
+  "content_security_policy": "default-src 'self'; script-src 'self' https://localhost:3000 'unsafe-eval'; object-src 'self'; connect-src https://localhost:3000 https://www.chess.com; style-src 'self' blob:; img-src 'self' https://images.chesscomfiles.com data:; font-src 'self' data:;"
+}
