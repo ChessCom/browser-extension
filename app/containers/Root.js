@@ -116,7 +116,12 @@ export default class Root extends BaseComponent {
   }
 
   render() {
-    return React.createElement(App, { user: this.state.user,
-      notifications: this.state.notifications });
+    return (
+      <App
+        user={this.state.user}
+        notifications={this.state.notifications}
+        os={this.props.os}
+      />
+    );
   }
 }

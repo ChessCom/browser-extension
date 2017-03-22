@@ -1,9 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from '../../app/containers/Root';
-import './popup.css';
+import styles from './popup.css';
 
-ReactDOM.render(
-  <Root />,
-  document.querySelector('#root')
-);
+// Get platformInfo before rendering Root
+chrome.runtime.getPlatformInfo(platformInfo => {
+  if (platformInfo.os === 'mac') {
+    document.body.classList.add(styles['is-mac-os']);
+  }
+  ReactDOM.render(
+    <Root os={platformInfo.os} />,
+    document.querySelector('#root')
+  );
+});
