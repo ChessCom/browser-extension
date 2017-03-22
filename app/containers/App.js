@@ -33,9 +33,11 @@ export default class App extends BaseComponent {
     return (
       <div className={appClassName}>
         <Header user={this.props.user} />
-        <PlayContainer user={this.props.user} />
-        <Options />
-        <ResetBar />
+        <div className={style['app-bulk']}>
+          <PlayContainer user={this.props.user} />
+          <Options />
+          <ResetBar />
+        </div>
         { notificationBar }
       </div>
     );
