@@ -159,6 +159,10 @@ exports.copyAssets = type => {
   shell.mkdir(type);
   // eslint-disable-next-line prefer-template
   fs.writeFileSync(`${type}/manifest.json`, JSON.stringify(outputManifest, null, 4) + '\n');
+  // The line just below is just temporary to test that we didn't modify the manifests
+  // and should be removed along with the files it creates before any PR is merged
+  // eslint-disable-next-line prefer-template
+  fs.writeFileSync(`chrome/manifest.${type}.json`, JSON.stringify(outputManifest, null, 4) + '\n');
   shell.cp('-R', 'chrome/assets/*', type);
   shell.cp('-R', 'chrome/*.js', type);
   shell.exec(`jade -O "{ env: '${env}' }" -o ${type} chrome/views/`);
