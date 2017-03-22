@@ -24,7 +24,7 @@ export default class Reset extends BaseComponent {
       // that should be reset
       if (props.type === 'color' &&
           ((typeof props.colorProperty) !== 'string' ||
-          !props.colorName)) {
+          !props.colorProperty)) {
         return new Error(`Invalid prop '${propName}' supplied to \
 '${componentName}'. Validation failed`);
       }
