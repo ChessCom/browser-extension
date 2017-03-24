@@ -10,7 +10,6 @@ export default class Root extends BaseComponent {
     this.state = {
       user: {
         loading: true,
-        onV3: null,
         onChessCom: null,
         loggedIn: null
       },
@@ -45,13 +44,7 @@ export default class Root extends BaseComponent {
         }
       } else {
         this.calcOnChessCom(user1).then((user2) => {
-          if (user2.onChessCom) {
-            this.calcOnV3(user2).then((user3) => {
-              this.resolveUser(user3);
-            });
-          } else {
-            this.resolveUser(user2);
-          }
+          this.resolveUser(user2);
         });
       }
     });
@@ -69,7 +62,7 @@ export default class Root extends BaseComponent {
         { json: true },
         (err, resp) => {
           if (resp.statusCode === 200) {
-            resolve(Object.assign({}, user, { avatarUrl: resp.body.avatarUrl }));
+            return resolve(Object.assign({}, user, { avatarUrl: resp.body.avatarUrl }));
           }
           resolve(user);
         })
@@ -89,30 +82,6 @@ export default class Root extends BaseComponent {
           resolve(Object.assign({}, user, { loggedIn: false }));
         }
       }));
-  }
-
-  /**
-   * We have no easy way of knowing the difference between someone who
-   * is logged out on V3 versus someone who is logged out on V2.
-   *
-   * Only call this function if we know for certain that the user
-   * is not logged in AND that the user is on Chess.com. The result of this
-   * function will determine whether we prompt the user to /switch or to
-   * log in. If on V2, then we prompt to switch. Else, we prompt to log in.
-   *
-   * @return Promise
-   */
-  calcOnV3(user) {
-    return new Promise(resolve =>
-      xhr.get('https://www.chess.com/callback/user/popup/chesscom',
-        { json: true },
-        (err, resp) => {
-          if (resp.statusCode === 200) {
-            resolve(Object.assign({}, user, { onV3: true }));
-          } else {
-            resolve(Object.assign({}, user, { onV3: false }));
-          }
-        }));
   }
 
   /**
@@ -138,17 +107,21 @@ export default class Root extends BaseComponent {
    * @return promise
    */
   resolveUser(user) {
-    const userToSave = Object.assign({}, user);
     const userInfoComplete = user.avatarUrl;
     if (userInfoComplete || user.onChessCom === false ||
-      (user.onV3 !== null && user.onChessCom !== null && user.loggedIn !== null)) {
-      userToSave.loading = false;
+      (user.onChessCom !== null && user.loggedIn !== null)) {
+      const userToSave = Object.assign({}, user, { loading: false });
+      this.setState({ user: userToSave });
     }
-    return this.setState({ user: userToSave });
   }
 
   render() {
-    return React.createElement(App, { user: this.state.user,
-      notifications: this.state.notifications });
+    return (
+      <App
+        user={this.state.user}
+        notifications={this.state.notifications}
+        os={this.props.os}
+      />
+    );
   }
 }

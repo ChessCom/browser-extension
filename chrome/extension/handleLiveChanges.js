@@ -168,6 +168,9 @@ window.addEventListener('load', () => {
   setTimeout(getNotifications, 1000);
 });
 
+// This listener catches the message from chrome/getCurrentUser.js
+// which contains the current logged in user and then stores it locally
+// so our extension knows we are logged in
 window.addEventListener('message', (event) => {
   // We only accept messages from ourselves
   if (event.source !== window) {

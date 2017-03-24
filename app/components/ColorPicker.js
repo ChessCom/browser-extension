@@ -50,15 +50,14 @@ export default class ColorPicker extends BaseComponent {
       (color.r === '255' && color.g === '255' && color.b === '255' && color.a === '1');
 
   checkIfStorageAlreadyExists = (name) => {
-    chrome.storage.local.get(result => {
+    chrome.storage.local.get('style', result => {
       if (!{}.hasOwnProperty.call(result, 'style')) {
-        this.setDefaultStateAndSave();
-        return;
+        return this.setDefaultStateAndSave();
       }
 
       if ({}.hasOwnProperty.call(result.style, name)) {
-        const store = result.style[name].color;
-        this.setState({ color: store });
+        const storedColor = result.style[name].color;
+        this.setState({ color: storedColor });
       }
     });
   }
@@ -109,14 +108,13 @@ export default class ColorPicker extends BaseComponent {
     const name = this.props.name;
 
     chrome.storage.local.get('style', result => {
-      const obj = result;
-      if (Object.keys(result).length === 0 && obj.constructor === Object) {
+      if (Object.keys(result).length === 0 && result.constructor === Object) {
         chrome.storage.local.set({ style: {} });
-        obj.style = {};
+        result.style = {};
       }
-      obj.style[name] = state;
-      delete obj.style[name].displayColorPicker;
-      chrome.storage.local.set(obj);
+      result.style[name] = state;
+      delete result.style[name].displayColorPicker;
+      chrome.storage.local.set(result);
     });
   };
 

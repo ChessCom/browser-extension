@@ -25,12 +25,19 @@ export default class App extends BaseComponent {
       }
     }
 
+    let appClassName = style['app-base'];
+    if (this.props.os !== 'mac') {
+      appClassName += ` ${style['not-mac-os']}`;
+    }
+
     return (
-      <div className={style.normal}>
+      <div className={appClassName}>
         <Header user={this.props.user} />
-        <PlayContainer user={this.props.user} />
-        <Options />
-        <ResetBar />
+        <div className={style['app-bulk']}>
+          <PlayContainer user={this.props.user} />
+          <Options />
+          <ResetBar />
+        </div>
         { notificationBar }
       </div>
     );

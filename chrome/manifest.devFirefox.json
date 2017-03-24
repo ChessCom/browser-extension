@@ -19,10 +19,9 @@
     }
   },
   "web_accessible_resources": [
-    "inject.html",
     "img/*",
     "fonts/*",
-    "content.js"
+    "getCurrentUser.js"
   ],
   "content_scripts": [
     {
@@ -30,7 +29,7 @@
         "https://www.chess.com/*"
       ],
       "js": [
-        "inject.js"
+        "injectScriptWithWindowAccess.js"
       ],
       "all_frames": true
     }

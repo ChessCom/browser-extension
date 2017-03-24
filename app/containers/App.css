@@ -1,3 +1,21 @@
-.normal {
+.app-base {
   background: #1d1c1a;
+}
+
+.app-bulk {
+  /* Max height of extension is 600px, if we don't add our
+   * our own max-height, a second scrollbar will appear when
+   * the extension tries to exceed 600px. Notification bar is 45px
+   * and Header is 55 so 600-45-55 = 500.
+   */
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.not-mac-os .app-bulk {
+  /* If not MacOS we make vertical scroll bar always show
+   * so as to avoid the extension being jumpy when overflow
+   * sets in on expanding an option.
+   */
+  overflow-y: scroll;
 }

@@ -14,9 +14,9 @@ module.exports = (platform) => {
 
   return {
     entry: {
-      options: [customPath, path.join(__dirname, '../chrome/extension/options')],
+      popup: [customPath, path.join(__dirname, '../chrome/extension/popup')],
       background: [customPath, path.join(__dirname, '../chrome/extension/background')],
-      inject: [customPath, path.join(__dirname, '../chrome/extension/inject')]
+      handleLiveChanges: [customPath, path.join(__dirname, '../chrome/extension/handleLiveChanges')]
     },
     output: {
       path: path.join(__dirname, config.outputDir),
