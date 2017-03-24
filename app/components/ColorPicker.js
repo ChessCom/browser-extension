@@ -3,8 +3,8 @@ import React, { PropTypes } from 'react';
 import { ChromePicker } from 'react-color';
 import reactCSS from 'reactcss';
 import style from './ColorPicker.css';
-import Icon from './Icon';
 import BaseComponent from '../BaseComponent';
+import Reset from './Reset';
 
 export default class ColorPicker extends BaseComponent {
 
@@ -118,26 +118,6 @@ export default class ColorPicker extends BaseComponent {
     });
   };
 
-  handleReset = () => {
-    const name = this.props.name;
-    this.setDefaultState();
-
-    chrome.storage.local.get('style', result => {
-      delete result.style[name];
-      chrome.storage.local.set(result);
-
-      this.sendReload();
-    });
-  };
-
-  sendReload = () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-      chrome.tabs.sendMessage(tabs[0].id, {
-        update: 'reload'
-      });
-    });
-  }
-
   render() {
     const colorpicker = this.props;
     const inputId = `${this.props.name}_input`;
@@ -192,9 +172,18 @@ export default class ColorPicker extends BaseComponent {
           />
         </div>
         {!this.isDefaultColor(color) ?
-          <div onClick={this.handleReset} className={style.resetButton}>
-            <Icon name={'undo'} size="24" color="221, 221, 221, 1" />
-          </div>
+          <Reset
+            type="color"
+            iconProps={{
+              name: 'undo',
+              size: '24',
+              color: '221, 221, 221, 1',
+            }}
+            selector={this.props.selector}
+            colorName={this.props.name}
+            colorProperty={this.props.property}
+            className={style.resetButton}
+          />
           : null}
         {this.state.displayColorPicker ?
           <div style={styles.popover}>
