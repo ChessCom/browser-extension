@@ -1,5 +1,5 @@
 {
-  "version": "0.0.10",
+  "version": "1.0.0",
   "name": "Chess Browser Extension",
   "manifest_version": 2,
   "description": "Customize your Chess.com Experience",
